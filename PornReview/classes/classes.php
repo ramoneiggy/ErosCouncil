@@ -15,6 +15,10 @@ class Draw
         //CODE TO DRAW LIST
     }
 
+    public static function drawListFeatured(){
+        //CODE TO DRAW LIST OF FEATURED PAGES
+    }
+
     public static function drawLoginForm(){
         //CODE TO DRAW LOGIN OVERLAY
     }
