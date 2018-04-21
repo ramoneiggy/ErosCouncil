@@ -6,7 +6,7 @@ class Draw
     //  the page.
     */
 
-    
+    /* MISLIM DA OVO NE TREBA
     public static function drawHeader(){
         //CODE TO DRAW HEADER
         $headerCode = <<<header
@@ -34,7 +34,7 @@ header;
         echo $headerCode;
         
     }
-
+    */
     public static function drawList(){
         //CODE TO DRAW LIST
     }
