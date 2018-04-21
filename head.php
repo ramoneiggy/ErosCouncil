@@ -31,17 +31,25 @@
       <li class="nav-item">
         <a class="nav-link" href="#">Contact us</a>
       </li>
+      </ul>    
 
       <!-- ovaj dio će se trebati kod za login-->
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Log In</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="login.php">Sign Up</a>
-      </li>
+        <div class="nav-login">
+          <form action="">
+            <input type="text" name="uid" placeholder="Username/e-mail">
+            <input type="password" name="pwd" placeholder="password">
+            <button type="submit" name="submit" class="btn btn-primary">Login</button>
+          </form>
+        </div>
+        <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="login.php">Sign Up</a>
+        </li>
+        </ul>
+      </div>
       <!--- -->
 
-    </ul>
+    
   </div>
 </nav>
 
