@@ -15,7 +15,7 @@ class Draw
                     
                     <div class="col-md-2 col-4">
                         <div>
-                            <img src="logo.png" class="float-center img-thumbnail img-fluid"> 
+                            <img src="Pictures\logo.png" class="float-center img-thumbnail img-fluid"> 
                         </div>
                     </div>
                     
