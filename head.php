@@ -52,6 +52,7 @@ session_start();
           <div class="nav-login">
             <?php
               if (isset($_SESSION['u_id'])){
+                echo "<li class='notif'>".$_SESSION['u_uid'].", you are logged in!&nbsp;&nbsp;&nbsp;"."</li>";
                 echo '<form action="includes/logout.inc.php" method="POST">
                 <button type="submit" name="submit" class="btn btn-primary">Logout</button>              
               </form>';
