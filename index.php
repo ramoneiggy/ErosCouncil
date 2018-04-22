@@ -4,7 +4,7 @@
 
 <?php
     if (isset($_SESSION['u_id'])){
-        echo $_SESSION['u_uid'].", you are logged in!";
+        echo $_SESSION['u_uid'].", how's it hangin'!";
 
     }
 ?>
