@@ -71,14 +71,15 @@ header;
                                     <div class="row">
 
                                         <div class="col-2">
-                                            <img src="'.$pornPage["logo"].'" class="img-fluid" alt="">
+                                            <a href="pornSite.php?site='.$pornPage["name"].'"><img src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
                                         </div>
 
                                         <div class="col-8">
                                             <div class="row">
                                                 <div class="col-6">
                                                     <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
-                                                        <h3>'.$pornPage["name"].'</h3>
+                                                    <h3>'.$pornPage["name"].'</h3>
+                                                    
                                                     </button>
                                                 </div>
                                                 <div class="col-6">'.self::drawStars($score).'</div>
@@ -86,14 +87,15 @@ header;
                                             </div class="col-12">
                                             <div class="collapse text-white" id="description'.$i.'">
                                                 <p>'.$pornPage["description"].'</p>
+                                                <a class="btn btn-danger" href="pornSite.php?site='.$pornPage["name"].'">View '.$pornPage["name"].'</a>
                                             </div>
 
                                         </div>
 
                                         <div class="col-2">
-                                            <div class="text-center">
+                                        <!--<div class="text-center">
                                                 <button class="btn">OPEN</button>
-                                            </div>
+                                            </div>-->
                                         </div>
                                     </div>
                                 </div>

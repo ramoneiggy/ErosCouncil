@@ -1,5 +1,13 @@
+body{
+    background-color: lightslategray;
+}
 .logo-nav{
     width: 50px;
 }.notif{
     color: white;
+}
+footer {
+    background-color: black;
+    color: white;
+    padding: 15px;
 }
