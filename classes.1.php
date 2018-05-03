@@ -39,7 +39,7 @@ header;
         //CODE TO DRAW LIST
 
         echo '
-                <div class="container float col-sm-12">
+                <div class="container float">
                     <ul class="list-group">
             ';
             //Using for to draw List lines 
@@ -65,35 +65,40 @@ header;
         $pornPage = $query->fetch();
 
         $listLineCode = '
-                            <li class="list-group-item bg-dark">                                
-                                <div class="row">
+                            <li class="list-group-item bg-dark">
 
-                                    <div class="col-sm-3">
-                                        <a href="pornSite.php?site='.$pornPage["name"].'"><img class="logo-stretch" src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
-                                    </div>
+                                <div class="container m-0 p-0">
+                                    <div class="row">
 
-                                    <div class="col-sm-9">
+                                        <div class="col-2">
+                                            <a href="pornSite.php?site='.$pornPage["name"].'"><img src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
+                                        </div>
 
-                                        <div class="row">
-
-                                            <div class="col-sm-6 float-left">
-                                                <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
-                                                <h3>'.$pornPage["name"].'</h3>
+                                        <div class="col-8">
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
+                                                    <h3>'.$pornPage["name"].'</h3>
+                                                    
+                                                    </button>
+                                                </div>
+                                                <div class="col-6">'.self::drawStars($score).'</div>
                                                 
-                                                </button>
+                                            </div class="col-12">
+                                            <div class="collapse text-white" id="description'.$i.'">
+                                                <p>'.$pornPage["description"].'</p>
+                                                <a class="btn btn-danger" href="pornSite.php?site='.$pornPage["name"].'">View '.$pornPage["name"].'</a>
                                             </div>
-                                            <div class="col-sm-6 float-right">
-                                                '.self::drawStars($score).'
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="collapse text-white" id="description'.$i.'">
-                                            <p>'.$pornPage["description"].'</p>
-                                            <a class="btn btn-danger" href="pornSite.php?site='.$pornPage["name"].'">View '.$pornPage["name"].'</a>
+
                                         </div>
 
+                                        <div class="col-2">
+                                        <!--<div class="text-center">
+                                                <button class="btn">OPEN</button>
+                                            </div>-->
+                                        </div>
                                     </div>
-                                </div>                                
+                                </div>
                             </li>
                         ';
 
@@ -115,7 +120,7 @@ header;
     public static function drawStars($score){
         $code = '';
         for($i=0;$i<$score;$i++){
-            $code .= '<img class="float-right" src="Pictures/star.png" class="img-fluid">';
+            $code .= '<img src="Pictures/star.png" class="img-fluid">';
         }
         return $code;
     }

@@ -11,12 +11,26 @@ include "classes.php";
         }
     ?>
 </div>
+<hr>
 
-<div class="row">
-    <?php
-    Draw::drawList();
-    ?>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-6">
+            <h5><b>STAFF FAVORITES:</b></h3><hr><!--  treba napraviti klasu za ovo -->
+            <?php
+                Draw::drawList();
+            ?>
+        </div>
+        <div class="col-sm-6">
+            <h5><b>USER RECOMENDED SITES:</b></h3><hr>
+            <?php
+                Draw::drawList();
+            ?>
+        </div>
+    </div>
 </div>
+
+
 
 
 <?php 

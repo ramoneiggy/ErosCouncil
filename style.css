@@ -11,3 +11,8 @@ footer {
     color: white;
     padding: 15px;
 }
+.logo-stretch{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
