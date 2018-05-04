@@ -18,13 +18,13 @@ include "classes.php";
         <div class="col-sm-6">
             <h5><b>STAFF FAVORITES:</b></h3><hr><!--  treba napraviti klasu za ovo -->
             <?php
-                Draw::drawList();
+                Draw::drawListUserRecomendedSites();
             ?>
         </div>
         <div class="col-sm-6">
             <h5><b>USER RECOMENDED SITES:</b></h3><hr>
             <?php
-                Draw::drawList();
+                Draw::drawListUserRecomendedSites();
             ?>
         </div>
     </div>

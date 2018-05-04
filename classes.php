@@ -35,15 +35,23 @@ header;
         
     }
     */
-    public static function drawList(){
+    public static function drawListUserRecomendedSites(){
         //CODE TO DRAW LIST
+        $conn = PDOConnect::getPDOInstance();
+        $numberOfSites;
+
+        $sql = "SELECT `name` FROM `pornpages`";
+
+                $query = $conn->query($sql);
+                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $selectAll = $query->fetchAll();
 
         echo '
                 <div class="container float col-sm-12">
                     <ul class="list-group">
             ';
             //Using for to draw List lines 
-                    for($i=1;$i<=6;$i++){
+                    for($i=1;$i<=count($selectAll);$i++){
                         echo self::drawListLine($i);
                     }
         echo'    

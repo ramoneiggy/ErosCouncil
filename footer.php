@@ -1,5 +1,5 @@
 <br><br><br>
-<footer class="container-fluid text-center">
+<footer class="container-fluid text-center fixed-bottom">
   <!-- dodajte si linkove ako želite -->
     <p>
       &copy; 

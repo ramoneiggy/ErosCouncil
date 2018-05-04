@@ -9,7 +9,6 @@ body{
 footer {
     background-color: black;
     color: white;
-    padding: 15px;
 }
 .logo-stretch{
     display: block;
@@ -25,4 +24,10 @@ footer {
 .link-black{
     color:black;
     text-decoration-line: underline;
+}
+.text-red{
+    color: red;
+}
+.text-green{
+    color: green;
 }

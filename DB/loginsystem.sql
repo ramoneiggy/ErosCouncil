@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2018 at 07:27 PM
+-- Generation Time: May 04, 2018 at 09:49 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -58,7 +58,9 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (26, 13, 4, 'still works', 1, '2018-05-04 14:41:00'),
 (27, 13, 4, 'mama ti je partizan', 1, '2018-05-04 14:41:12'),
 (28, 13, 1, 'kaeeee', 1, '2018-05-04 14:47:13'),
-(29, 13, 1, 'vidi\r\n', 1, '2018-05-04 15:25:19');
+(29, 13, 1, 'vidi\r\n', 1, '2018-05-04 15:25:19'),
+(30, 12, 10, 'Jebenica pajdo', 1, '2018-05-04 21:44:27'),
+(31, 12, 10, 'moÅ¡ pisat kolko oÅ¡', 1, '2018-05-04 21:44:50');
 
 -- --------------------------------------------------------
 
@@ -85,9 +87,13 @@ INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `
 (1, 'Pornhub', 'https://www.Pornhub.com', 'Pornhub is a pornographic video sharing website and the largest pornography site on the Internet.[5][6] Pornhub was launched in Montreal, providing professional and amateur photography since 2007.[7] Pornhub also has offices and servers in San Francisco, Houston, New Orleans and London. In March 2010, Pornhub was bought by Manwin (now known as MindGeek), which owns numerous other pornographic websites.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', '2018-04-22', '2007-03-25'),
 (2, 'TubeGalore', 'https://www.tubegalore.com', 'If you search a large database of many millions of the best porn tubes. Then I have to tell you about Tube Galore. This website has almost all videos available out there floating around on the internet. Awesome right? I think so. The website has existed since 2007 and has done a lot of work to be among the top. And that is Tube Galore definitely succeeded. As the webmaster says himself, Tube Galore is a vortex! And I agree. I think if you are a porn lover, you definitely need to know this site. Because this is truly one of the best porn site whichcan be found on the Internet.', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', '2018-04-22', '2007-01-15'),
 (3, 'YouJizz', 'https://www.youjizz.com', 'Youjizz Porn Tube! Free porn movies and sex videos on your desktop or mobile phone.', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', '2018-04-22', '2010-05-15'),
-(4, 'YouPorn', 'https://www.YouPorn.com', 'YouPorn is a free pornographic video sharing website and one of the 100 most accessed websites in the world. Since launching in August 2006, it grew to become the most popular pornographic website on the internet, and, in November 2007, it was reported to be the largest free pornographic website as well As of February 2013, it was the 83rd most popular website overall and the fifth most popular pornographic website. In the category of pornographic websites, it was surpassed in the rankings by competitor sites xHamster, XVideos, and Pornhub, as well as the adult webcam site LiveJasmin.\r\n\r\nThis Web 2.0 (or Porn 2.0) site differs from many other pornographic websites in that it is completely free and ad-supported. One journalist reported that in May 2007 it generated a monthly ad revenue of $120,000 and that it was owned by Stephen Paul Jones.', 'https://upload.wikimedia.org/wikipedia/commons/c/cb/Logo_of_YouPorn.png', 'https://en.wikipedia.org/wiki/YouPorn#/media/File:Logo_of_YouPorn.png', '2018-04-22', '2006-08-26'),
+(4, 'YouPorn', 'https://www.youporn.com/', 'YouPorn is a free pornographic video sharing website and one of the 100 most accessed websites in the world. Since launching in August 2006, it grew to become the most popular pornographic website on the internet, and, in November 2007, it was reported to be the largest free pornographic website as well. As of February 2013, it was the 83rd most popular website overall and the fifth most popular pornographic website. In the category of pornographic websites, it was surpassed in the rankings by competitor sites xHamster, XVideos, and Pornhub, as well as the adult webcam site LiveJasmin.\r\n\r\nThis Web 2.0 (or Porn 2.0) site differs from many other pornographic websites in that it is completely free and ad-supported. One journalist reported that in May 2007 it generated a monthly ad revenue of $120,000 and that it was owned by Stephen Paul Jones.', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', '2018-05-04', '2006-08-26'),
 (5, 'xHamster', 'https://xhamster.com/', 'xHamster is a pornographic media and social networking site headquartered in Limassol, Cyprus.[1] xHamster serves user-submitted pornographic videos, webcam models, pornographic photographs, and erotic literature, and incorporates social networking features. xHamster was founded in 2007. With more than 10 million members, it is the third most popular pornography website on the Internet after XVideos and Pornhub.\r\n\r\nThe site produces The Sex Factor, a reality series in which men and women compete to become porn stars. The site has been targeted as part of malvertising campaigns, and various governments have blocked xHamster as part of larger initiatives against Internet pornography.', 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/XHamster_logo_2016.svg/512px-XHamster_logo_2016.svg.png', 'https://en.wikipedia.org/wiki/XHamster#/media/File:XHamster_logo_2016.svg', '2018-04-22', '2007-04-02'),
-(6, 'xVideos', 'https://www.xvideos.com/', 'XVideos serves as a pornographic media aggregator, a type of website which gives access to adult content in a similar manner as YouTube does for general content.[6][7] Video clips from professional videos (sometimes pirated) are mixed with amateur and other types of content.[6][7] By 2012, XVideos was the largest adult website in the world, with over 4.4 billion page views per month.[8] Fabian Thylmann, the owner of MindGeek, attempted to purchase XVideos in 2012 in order to create a monopoly of pornographic tube sites. The French owner of XVideos turned down a reported offer of more than $120 million by saying, \"Sorry, I have to go and play Diablo II.\"[7] In 2014, XVideos controversially attempted to force content providers to either pledge to renounce the right to delete videos from their accounts or to shut down their accounts immediately.[9]', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', '2018-05-04', '2007-03-01');
+(6, 'xVideos', 'https://www.xvideos.com/', 'XVideos serves as a pornographic media aggregator, a type of website which gives access to adult content in a similar manner as YouTube does for general content.[6][7] Video clips from professional videos (sometimes pirated) are mixed with amateur and other types of content.[6][7] By 2012, XVideos was the largest adult website in the world, with over 4.4 billion page views per month.[8] Fabian Thylmann, the owner of MindGeek, attempted to purchase XVideos in 2012 in order to create a monopoly of pornographic tube sites. The French owner of XVideos turned down a reported offer of more than $120 million by saying, \"Sorry, I have to go and play Diablo II.\"[7] In 2014, XVideos controversially attempted to force content providers to either pledge to renounce the right to delete videos from their accounts or to shut down their accounts immediately.[9]', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', '2018-05-04', '2007-03-01'),
+(7, 'XNXX', 'https://www.xnxx.com/', '100% Free Porn Movies and Sex Content', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', '2018-05-04', '2018-05-04'),
+(8, 'HClips', 'https://www.hclips.com/', 'Magnificent porn tube website showing a wide array of HUD movies.', 'https://www.hclips.com/images/logo.png', 'https://www.hclips.com/images/logo.png', '2018-05-04', '2018-05-04'),
+(9, 'Porn', 'https://www.porn.com/', 'Top porn tube site sharing an incredible amount of top notch hardcore videos ranging among all the most popular porn niches.', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', '2018-05-04', '2018-05-04'),
+(10, 'TNAFlix', 'https://www.tnaflix.com', 'Amazing porn tube website showing thousand of hot porn videos.', 'https://www.tnaflix.com/images/mx.png', 'https://www.tnaflix.com/images/mx.png', '2018-05-04', '2018-05-04');
 
 -- --------------------------------------------------------
 
@@ -161,13 +167,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
 --
 ALTER TABLE `pornpages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `ratingscore`
