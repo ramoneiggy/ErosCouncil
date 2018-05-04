@@ -36,7 +36,7 @@ $score = 5;
         if (isset($_SESSION['u_id'])){
             echo $_SESSION['u_uid']."! Welcome to - <b>".$name."</b> - profile page.";
         } else {
-        echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a href='signup.php'>sign up</a>.";
+        echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a class='link-black' href='signup.php'>sign up</a>.";
         }
         ?>
     </h4>
@@ -64,51 +64,48 @@ $score = 5;
                 <p><?php echo $description; ?></p>
             </div>
 
-            <!-- COMMENTS -->
+            <!-- REVIEWS -->
             <div class="col-sm 12">
                 <h6><?php echo "<b>".$name." reviews:</b>"; ?><hr></h6>
-                
+
+                <!-- ADD REVIEW -->
+                <?php
+                if (!isset($_SESSION['u_id'])) {
+                    echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a review.";
+                } else{
+                ?>
+                <form action="reviews.php" method="post">
+                    <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
+                    <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
+                    <textarea name="review" class="form-control" placeholder="Write your review here" rows="1" required></textarea>             
+                    <button type="submit" class="btn btn-warning float-right" name="submit">Add review</button>
+                    <br>
+                </form>
+                <?php } ?>
+                <br>
+                <hr>
+
+                <!-- LIST REVIEWS -->
                 <ul class="list-group">
 
                 <?php
-                $sql = "SELECT\n"
+                $sql = "SELECT users.user_uid, comments.content, comments.PageID, comments.datePublished FROM comments INNER JOIN users ON comments.personID = users.user_id WHERE comments.PageID = $pageID ORDER BY datePublished DESC";
 
-                . "    users.user_uid,\n"
-            
-                . "    comments.content,\n"
-            
-                . "    comments.PageID,\n"
-            
-                . "    comments.datePublished\n"
-            
-                . "FROM\n"
-            
-                . "    `comments`\n"
-            
-                . "INNER JOIN users ON comments.personID = users.user_id\n"
-            
-                . "WHERE\n"
-            
-                . "    comments.PageID = $pageID\n"
-            
-                . "ORDER BY\n"
-            
-                . "    datePublished\n"
-            
-                . "DESC";
                 $query = $conn->query($sql);
                 $query->setFetchMode(PDO::FETCH_ASSOC);
                 $allComments = $query->fetchAll();
-                foreach ($allComments as $singleComment){
+            
+                if (empty($allComments) == true) {
+                    echo "<p>No reviews yet, why don't you add one.</p>";
+                }
+
+                foreach ($allComments as $singleComment){                    
                     echo 
                     "<li class='list-group-item'>"
                     ."<small>".$singleComment["user_uid"]." said on ".$singleComment['datePublished']."</small><br>"
                     .$singleComment["content"].
-                    "</li>";
-                }
-
-
-
+                    "</li>";                    
+                }         
                 ?>
 
                 </ul>

@@ -16,3 +16,13 @@ footer {
     max-width: 100%;
     height: auto;
 }
+.link-white{
+    color:white;
+}
+.link-white:hover{
+    color: red;
+}
+.link-black{
+    color:black;
+    text-decoration-line: underline;
+}
