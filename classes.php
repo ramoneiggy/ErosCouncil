@@ -43,7 +43,7 @@ header;
                     <ul class="list-group">
             ';
             //Using for to draw List lines 
-                    for($i=1;$i<=5;$i++){
+                    for($i=1;$i<=6;$i++){
                         echo self::drawListLine($i);
                     }
         echo'    

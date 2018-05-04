@@ -1,6 +1,7 @@
 <?php
 
 session_start();
+error_reporting(E_ALL & ~E_NOTICE);
 
 ?>
 
@@ -86,3 +87,9 @@ session_start();
   <h1 class="display-4">PORN REVIEW</h1>
   <p class="lead">Review porn sites</p>  
 </div>
+
+<?php 
+if ($_SESSION['u_uid'] == "adminFaca") {
+  echo "<a href='administration.php'><button type='submit' class='btn btn-warning' name='admin'>ADMINISTRATION</button></a>";
+}
+?>
