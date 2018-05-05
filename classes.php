@@ -35,15 +35,23 @@ header;
         
     }
     */
-    public static function drawList(){
+    public static function drawListUserRecomendedSites(){
         //CODE TO DRAW LIST
+        $conn = PDOConnect::getPDOInstance();
+        $numberOfSites;
+
+        $sql = "SELECT `name` FROM `pornpages`";
+
+                $query = $conn->query($sql);
+                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $selectAll = $query->fetchAll();
 
         echo '
-                <div class="container float">
+                <div class="container float col-sm-8">
                     <ul class="list-group">
             ';
             //Using for to draw List lines 
-                    for($i=1;$i<=5;$i++){
+                    for($i=1;$i<=count($selectAll);$i++){
                         echo self::drawListLine($i);
                     }
         echo'    
@@ -52,9 +60,47 @@ header;
             ';
     }
 
+
+    public static function ratingSystem($i){//BUG SOMEWHERE
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
+        
+        
+        $query->bindParam(':pornPageID', $i);
+        $query->execute();
+
+        $siteAvgRating = $query->fetch();
+        $rating = $siteAvgRating['avgRating'];
+        $starSymbol = "&#9734;";
+
+        // for ($i=1; $i<=$rating; $i++) {
+        //     return $starSymbol;
+        // } ovo ne funkcionira kako sam očekivao, uvijek prikaže samo jednu zvijezdu
+
+        return $rating." ".$starSymbol;
+    }
+
+    public static function ratingSystemInSite($i){
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
+        
+        
+        $query->bindParam(':pornPageID', $i);
+        $query->execute();
+
+        $siteAvgRating = $query->fetch();
+        $rating = $siteAvgRating['avgRating'];
+        $starSymbol = "&#9734;";
+
+        for ($i=1; $i<=$rating; $i++) {
+            echo $starSymbol;
+        }
+    }
+
+
     public static function drawListLine($i){
 
-        $score=5;
+
 
         //Create a connection to database and fetch data.
         $conn = PDOConnect::getPDOInstance();
@@ -65,38 +111,35 @@ header;
         $pornPage = $query->fetch();
 
         $listLineCode = '
-                            <li class="list-group-item bg-dark">
+                            <li class="list-group-item bg-dark">                                
+                                <div class="row">
 
-                                <div class="container m-0 p-0">
-                                    <div class="row">
-
-                                        <div class="col-2">
-                                            <img src="'.$pornPage["logo"].'" class="img-fluid" alt="">
-                                        </div>
-
-                                        <div class="col-8">
-                                            <div class="row">
-                                                <div class="col-6">
-                                                    <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
-                                                        <h3>'.$pornPage["name"].'</h3>
-                                                    </button>
-                                                </div>
-                                                <div class="col-6">'.self::drawStars($score).'</div>
-                                                
-                                            </div class="col-12">
-                                            <div class="collapse text-white" id="description'.$i.'">
-                                                <p>'.$pornPage["description"].'</p>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-2">
-                                            <div class="text-center">
-                                                <button class="btn">OPEN</button>
-                                            </div>
-                                        </div>
+                                    <div class="col-sm-4">
+                                        <a href="pornSite.php?site='.$pornPage["name"].'"><img class="logo-stretch" src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
                                     </div>
-                                </div>
+
+                                    <div class="col-sm-8">
+
+                                        <div class="row">
+
+                                            <div class="col-sm-7 float-left">
+                                                <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
+                                                <h3>'.$pornPage["name"].'</h3>
+                                                
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-5 float-right">                                            
+                                                <p class="ratingSys">'.self::ratingSystem($i).'</p>
+                                            </div>
+                                            
+                                        </div>
+                                        <div class="collapse text-white" id="description'.$i.'">
+                                            <p>'.$pornPage["description"].'</p>
+                                            <a class="btn btn-danger" href="pornSite.php?site='.$pornPage["name"].'">View '.$pornPage["name"].'</a>
+                                        </div>
+
+                                    </div>
+                                </div>                                
                             </li>
                         ';
 
@@ -118,10 +161,47 @@ header;
     public static function drawStars($score){
         $code = '';
         for($i=0;$i<$score;$i++){
-            $code .= '<img src="Pictures/star.png" class="img-fluid">';
+            $code .= '<img class="float-right" src="Pictures/star.png" class="img-fluid">';
         }
         return $code;
     }
+
+    /*public function drawSinglePornSiteInfo(){
+        //CODE TO DRAW SINGLE PORN SITE INFO
+        $sitePage = $_GET['site'];
+
+        $pdo = PDOConnect::getPDOInstance();
+
+        $sql = "SELECT * FROM pornpages WHERE name = '$sitePage'";
+        $q = $pdo->query($sql);
+        $q->setFetchMode(PDO::FETCH_ASSOC);
+
+        $siteInfo = $q->fetch();
+
+        function __construct($id, $name, $url, $description, $logo, $images, $dateAdded, $dateCreated) {
+
+            $this->name = $name;
+            $this->url = $url;
+            $this->description = $description;
+            $this->logo = $logo;
+            $this->images = $images;
+            $this->dateAdded = $dateAdded;
+            $this->dateCreated = $dateCreated;
+        $name = $siteInfo['name'];
+        $url = $siteInfo['url'];
+        $description = $siteInfo['description'];
+        $logo = $siteInfo['logo'];
+        $images = $siteInfo['images'];
+        $dateAdded = $siteInfo['dateAdded'];
+        $dateCreated = $siteInfo['dateCreated'];
+        }
+
+        if ($sitePage !== $name){
+            echo "<p>Sorry, site doesn't exist!</p>";
+            die();
+        }
+    }*/
+
 }
 
 class PDOConnect
@@ -144,3 +224,4 @@ class PDOConnect
         return self::$pdoInstance;
       }
 }
+

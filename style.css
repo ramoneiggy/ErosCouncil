@@ -1,5 +1,38 @@
+body{
+    background-color: lightslategray;
+}
 .logo-nav{
     width: 50px;
 }.notif{
     color: white;
+}
+footer {
+    background-color: black;
+    color: white;
+}
+.logo-stretch{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.link-white{
+    color:white;
+}
+.link-white:hover{
+    color: red;
+}
+.link-black{
+    color:black;
+    text-decoration-line: underline;
+}
+.text-red{
+    color: red;
+}
+.text-green{
+    color: green;
+}
+.ratingSys{
+    color:gold;
+    font-weight: bold;
+    font-size: 30px
 }
