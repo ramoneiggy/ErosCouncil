@@ -16,13 +16,13 @@ include "classes.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
-            <h5><b>STAFF FAVORITES:</b></h3><hr><!--  treba napraviti klasu za ovo -->
+            <h5><b>STAFF FAVORITES:</b></h5><hr><!--  treba napraviti klasu za ovo -->
             <?php
                 Draw::drawListUserRecomendedSites();
             ?>
         </div>
         <div class="col-sm-6">
-            <h5><b>USER RECOMENDED SITES:</b></h3><hr>
+            <h5><b>USER RECOMENDED SITES:</b></h5><hr>
             <?php
                 Draw::drawListUserRecomendedSites();
             ?>

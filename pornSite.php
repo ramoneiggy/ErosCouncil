@@ -52,9 +52,11 @@ $score = 5;
                 <p><a target="_blank" class="btn btn-warning" href="<?php echo $url; ?>">VISIT <?php echo $name; ?></a></p>
                 <hr>
             </div>
+
+            <!-- RATING SYSTEM -->
             <div class="col-sm-12">
-                <p>USER RATING:</p>
-                <?php Draw::drawStars($score);//ovo ne funkcionira ?><hr>
+                <h5>USER RATING:</h5>
+                <p class="ratingSys"><?php Draw::ratingSystemInSite($pageID);//ovo ne funkcionira ?></p><hr>
             </div>
         </div>
 

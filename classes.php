@@ -47,7 +47,7 @@ header;
                 $selectAll = $query->fetchAll();
 
         echo '
-                <div class="container float col-sm-12">
+                <div class="container float col-sm-8">
                     <ul class="list-group">
             ';
             //Using for to draw List lines 
@@ -60,9 +60,47 @@ header;
             ';
     }
 
+
+    public static function ratingSystem($i){//BUG SOMEWHERE
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
+        
+        
+        $query->bindParam(':pornPageID', $i);
+        $query->execute();
+
+        $siteAvgRating = $query->fetch();
+        $rating = $siteAvgRating['avgRating'];
+        $starSymbol = "&#9734;";
+
+        // for ($i=1; $i<=$rating; $i++) {
+        //     return $starSymbol;
+        // } ovo ne funkcionira kako sam očekivao, uvijek prikaže samo jednu zvijezdu
+
+        return $rating." ".$starSymbol;
+    }
+
+    public static function ratingSystemInSite($i){
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
+        
+        
+        $query->bindParam(':pornPageID', $i);
+        $query->execute();
+
+        $siteAvgRating = $query->fetch();
+        $rating = $siteAvgRating['avgRating'];
+        $starSymbol = "&#9734;";
+
+        for ($i=1; $i<=$rating; $i++) {
+            echo $starSymbol;
+        }
+    }
+
+
     public static function drawListLine($i){
 
-        $score=5;
+
 
         //Create a connection to database and fetch data.
         $conn = PDOConnect::getPDOInstance();
@@ -76,22 +114,22 @@ header;
                             <li class="list-group-item bg-dark">                                
                                 <div class="row">
 
-                                    <div class="col-sm-3">
+                                    <div class="col-sm-4">
                                         <a href="pornSite.php?site='.$pornPage["name"].'"><img class="logo-stretch" src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
                                     </div>
 
-                                    <div class="col-sm-9">
+                                    <div class="col-sm-8">
 
                                         <div class="row">
 
-                                            <div class="col-sm-6 float-left">
+                                            <div class="col-sm-7 float-left">
                                                 <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
                                                 <h3>'.$pornPage["name"].'</h3>
                                                 
                                                 </button>
                                             </div>
-                                            <div class="col-sm-6 float-right">
-                                                '.self::drawStars($score).'
+                                            <div class="col-sm-5 float-right">                                            
+                                                <p class="ratingSys">'.self::ratingSystem($i).'</p>
                                             </div>
                                             
                                         </div>

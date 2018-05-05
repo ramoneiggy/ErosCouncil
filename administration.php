@@ -10,12 +10,12 @@ if ($_SESSION['u_uid'] !== "adminFaca" && $hashedPwdCheck !== "PustiMe#123"){
 }
 ?>
 
- <!-- ADD PORN SITE TO DB -->
+
 <div class="container-fluid">
     <div class="row">
-        
+         <!-- ADD PORN SITE TO DB -->
         <div class="col-sm-3">
-
+            
             <h4 class="text-center">ADD PORN SITE TO DATABASE</h4><hr>
 
             <form class="form-control" action="addSiteToDB.php" method="post">

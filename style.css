@@ -31,3 +31,8 @@ footer {
 .text-green{
     color: green;
 }
+.ratingSys{
+    color:gold;
+    font-weight: bold;
+    font-size: 30px
+}
