@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 04, 2018 at 09:49 PM
+-- Generation Time: May 05, 2018 at 03:34 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -60,7 +60,8 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (28, 13, 1, 'kaeeee', 1, '2018-05-04 14:47:13'),
 (29, 13, 1, 'vidi\r\n', 1, '2018-05-04 15:25:19'),
 (30, 12, 10, 'Jebenica pajdo', 1, '2018-05-04 21:44:27'),
-(31, 12, 10, 'moÅ¡ pisat kolko oÅ¡', 1, '2018-05-04 21:44:50');
+(31, 12, 10, 'moÅ¡ pisat kolko oÅ¡', 1, '2018-05-04 21:44:50'),
+(32, 12, 2, 'hvala', 1, '2018-05-04 21:54:41');
 
 -- --------------------------------------------------------
 
@@ -105,8 +106,44 @@ CREATE TABLE `ratingscore` (
   `id` int(11) NOT NULL,
   `personID` int(11) NOT NULL,
   `PageID` int(11) NOT NULL,
-  `rating` int(11) NOT NULL
+  `rating` int(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ratingscore`
+--
+
+INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
+(1, 12, 8, 5),
+(2, 12, 9, 4),
+(3, 12, 1, 3),
+(4, 12, 10, 4),
+(5, 12, 2, 5),
+(6, 12, 5, 5),
+(7, 12, 7, 4),
+(8, 12, 6, 2),
+(9, 12, 3, 5),
+(10, 12, 4, 4),
+(11, 13, 8, 4),
+(12, 13, 9, 5),
+(13, 13, 1, 3),
+(14, 13, 10, 1),
+(15, 13, 2, 2),
+(16, 13, 5, 4),
+(17, 13, 7, 4),
+(18, 13, 6, 5),
+(19, 13, 3, 3),
+(20, 13, 4, 4),
+(21, 14, 8, 5),
+(22, 14, 9, 3),
+(23, 14, 1, 4),
+(24, 14, 10, 4),
+(25, 14, 2, 5),
+(26, 14, 5, 3),
+(27, 14, 7, 4),
+(28, 14, 6, 5),
+(29, 14, 3, 3),
+(30, 14, 4, 4);
 
 -- --------------------------------------------------------
 
@@ -139,7 +176,9 @@ INSERT INTO `users` (`user_id`, `user_uid`, `user_email`, `user_pwd`) VALUES
 -- Indexes for table `comments`
 --
 ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `PageID` (`PageID`),
+  ADD KEY `personID` (`personID`);
 
 --
 -- Indexes for table `pornpages`
@@ -151,7 +190,9 @@ ALTER TABLE `pornpages`
 -- Indexes for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `PageID` (`PageID`),
+  ADD KEY `personID` (`personID`);
 
 --
 -- Indexes for table `users`
@@ -167,25 +208,43 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
 --
 ALTER TABLE `pornpages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `comments`
+--
+ALTER TABLE `comments`
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`PageID`) REFERENCES `pornpages` (`id`),
+  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`personID`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `ratingscore`
+--
+ALTER TABLE `ratingscore`
+  ADD CONSTRAINT `ratingscore_ibfk_1` FOREIGN KEY (`PageID`) REFERENCES `pornpages` (`id`),
+  ADD CONSTRAINT `ratingscore_ibfk_2` FOREIGN KEY (`personID`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
