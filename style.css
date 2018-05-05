@@ -3,8 +3,6 @@ body{
 }
 .logo-nav{
     width: 50px;
-}.notif{
-    color: white;
 }
 footer {
     background-color: black;
@@ -15,11 +13,18 @@ footer {
     max-width: 100%;
     height: auto;
 }
+.logo-inline-stretch{
+    max-width: 100px;
+    height: auto;
+}
+
+/* TEXT DECORATION */
 .link-white{
     color:white;
 }
 .link-white:hover{
     color: red;
+    text-decoration-line: none;
 }
 .link-black{
     color:black;
@@ -36,3 +41,7 @@ footer {
     font-weight: bold;
     font-size: 30px
 }
+.notif{
+    color: white;
+}
+

@@ -3,7 +3,7 @@ include "head.php";
 include "classes.php";
 
 if ($_SESSION['u_uid'] !== "adminFaca" && $hashedPwdCheck !== "PustiMe#123"){
-    die("<p>RESTRICTED, GO AWAY!!!</p>");//smisliti bolji način za ovo
+    die("<p>RESTRICTED, GO AWAY!!!</p>");//smisliti bolji način za ovo!!!
 }else{
     echo "<br>WELCOME MR. ADMINISTRATOR!<hr><br>";
 
