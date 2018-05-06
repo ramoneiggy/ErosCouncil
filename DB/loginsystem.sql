@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2018 at 12:08 AM
+-- Generation Time: May 06, 2018 at 02:30 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -123,7 +123,7 @@ CREATE TABLE `ratingscore` (
 INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (1, 12, 8, 5),
 (2, 12, 9, 4),
-(3, 12, 1, 5),
+(3, 12, 1, 4),
 (4, 12, 10, 4),
 (5, 12, 2, 5),
 (6, 12, 5, 5),
@@ -133,7 +133,7 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (10, 12, 4, 4),
 (11, 13, 8, 4),
 (12, 13, 9, 5),
-(13, 13, 1, 3),
+(13, 13, 1, 5),
 (14, 13, 10, 1),
 (15, 13, 2, 2),
 (16, 13, 5, 4),
@@ -150,7 +150,11 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (27, 14, 7, 4),
 (28, 14, 6, 5),
 (29, 14, 3, 3),
-(30, 14, 4, 4);
+(30, 14, 4, 4),
+(65, 16, 1, 5),
+(66, 16, 3, 2),
+(67, 16, 7, 1),
+(68, 16, 5, 5);
 
 -- --------------------------------------------------------
 
@@ -228,7 +232,7 @@ ALTER TABLE `pornpages`
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
 
 --
 -- AUTO_INCREMENT for table `users`
