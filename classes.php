@@ -2,85 +2,74 @@
 
 class Draw
 {
-    /*  We will use Draw class to draw different elements of
-    //  the page.
-    */
+    //  We will use Draw class to draw different elements of the page.
 
-    /* MISLIM DA OVO NE TREBA
-    public static function drawHeader(){
-        //CODE TO DRAW HEADER
-        $headerCode = <<<header
-        <div class="container-fluid">
-                <div class="row">
-                    
-                    <div class="col-md-2 col-4">
-                        <div>
-                            <img src="Pictures\logo.png" class="float-center img-thumbnail img-fluid"> 
-                        </div>
-                    </div>
-                    
-                    <div class="col-md-6 col-8">
-                        <h2 class="text-center">Porn Review</h2>
-                    </div>
-                    
-                    <div class="col-md-4 col-12">
-                        <button>LOGIN</button><br/>
-                        <button>REGISTER</button>
-                    
-                    </div>
-                </div>
-            </div>
-header;
-        echo $headerCode;
-        
-    }
-    */
+
     public static function drawListUserRecomendedSites(){
-        //CODE TO DRAW LIST
+        //CODE TO DRAW LIST OF ALL SITES (would like to order it by rating)
+
         $conn = PDOConnect::getPDOInstance();
-        $numberOfSites;
-
-        $sql = "SELECT `name` FROM `pornpages`";
-
-                $query = $conn->query($sql);
-                $query->setFetchMode(PDO::FETCH_ASSOC);
-                $selectAll = $query->fetchAll();
+        $sql = "SELECT * FROM `pornpages`";
+        $query = $conn->query($sql);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $pornPages = $query->fetchAll();
 
         echo '
-                <div class="container float col-sm-8">
-                    <ul class="list-group">
+        <div class="container col-sm-8">
+            <ul class="list-group">
             ';
-            //Using for to draw List lines 
-                    for($i=1;$i<=count($selectAll);$i++){
-                        echo self::drawListLine($i);
-                    }
+        foreach ($pornPages as $pornPage){
+            echo "<li class='list-group-item bg-dark'>";
+            //LOGO
+            echo "<div class='col-sm-4 float-left'><a href='pornSite.php?site=".$pornPage['name']."'>"."<img class='float-left img-fluid logo-stretch' src='".$pornPage['logo']."' alt=porn-site-logo'></a></div>";
+            //NAME
+            echo "<div class='col-sm-4 float-left'><a class='float-left link-white' href='pornSite.php?site=".$pornPage['name']."'><h3>".$pornPage['name']."</h3></a></div>";
+            //RATING
+            echo "<div class='col-sm-4 float-left'>";
+            Draw::drawRatingSystem($pornPage['id']);
+            echo "</div>";
+            echo "</li>";
+        }
         echo'    
-                    </ul>
-                </div>
+            </ul>
+        </div>
             ';
     }
 
 
-    public static function ratingSystem($i){//BUG SOMEWHERE
+    public static function drawListFeaturedSites(){
+        //CODE TO DRAW LIST OF FEATURED PAGES
         $conn = PDOConnect::getPDOInstance();
-        $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
-        
-        
-        $query->bindParam(':pornPageID', $i);
-        $query->execute();
+        $sql = "SELECT * FROM `pornpages` WHERE `isFeatured` = 1";
+        $query = $conn->query($sql);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $pornPages = $query->fetchAll();
 
-        $siteAvgRating = $query->fetch();
-        $rating = $siteAvgRating['avgRating'];
-        $starSymbol = "&#9734;";
-
-        // for ($i=1; $i<=$rating; $i++) {
-        //     return $starSymbol;
-        // } ovo ne funkcionira kako sam očekivao, uvijek prikaže samo jednu zvijezdu
-
-        return $rating." ".$starSymbol;
+        echo '
+        <div class="container col-sm-8">
+            <ul class="list-group">
+            ';
+        foreach ($pornPages as $pornPage){
+            echo "<li class='list-group-item bg-info'>";
+            //LOGO
+            echo "<div class='col-sm-4 float-left'><a href='pornSite.php?site=".$pornPage['name']."'>"."<img class='float-left img-fluid logo-stretch' src='".$pornPage['logo']."' alt=porn-site-logo'></a></div>";
+            //NAME
+            echo "<div class='col-sm-4 float-left'><a class='float-left link-white' href='pornSite.php?site=".$pornPage['name']."'><h3>".$pornPage['name']."</h3></a></div>";
+            //RATING
+            echo "<div class='col-sm-4 float-left'>";
+            Draw::drawRatingSystem($pornPage['id']);
+            echo "</div>";
+            echo "</li>";
+        }
+        echo'    
+            </ul>
+        </div>
+            ';
     }
 
-    public static function ratingSystemInSite($i){
+    public static function drawRatingSystem($i){
+        //CODE TO DRAW RATING SYSTEM
+
         $conn = PDOConnect::getPDOInstance();
         $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
         
@@ -92,62 +81,37 @@ header;
         $rating = $siteAvgRating['avgRating'];
         $starSymbol = "&#9734;";
 
+        echo '<p class="ratingSys">';
         for ($i=1; $i<=$rating; $i++) {
             echo $starSymbol;
         }
+        echo '</p>';
     }
 
+    public static function showYourCurrentRating($pageID, $personID) {
+        //SHOW USERS CURRENT RATING OF PORN SITE
 
-    public static function drawListLine($i){
-
-
-
-        //Create a connection to database and fetch data.
         $conn = PDOConnect::getPDOInstance();
-        $query = $conn->prepare("SELECT * from pornpages WHERE id = ?");//? is a placeholder for $i, security reasons
-        $query->execute([$i]);//Pass $i variable
 
-        //This is where the actual query is executed
-        $pornPage = $query->fetch();
+        $query = $conn->prepare("SELECT ratingscore.rating FROM ratingscore WHERE ratingscore.personID = :personID AND ratingscore.PageID = :pornPageID");
 
-        $listLineCode = '
-                            <li class="list-group-item bg-dark">                                
-                                <div class="row">
+        $query->bindParam(':pornPageID', $pageID);
+        $query->bindParam(':personID', $personID);
+        $query->execute();
 
-                                    <div class="col-sm-4">
-                                        <a href="pornSite.php?site='.$pornPage["name"].'"><img class="logo-stretch" src="'.$pornPage["logo"].'" class="img-fluid" alt=""></a>
-                                    </div>
+        $rating = $query->fetch();
 
-                                    <div class="col-sm-8">
+        $starSymbol = "&#9734;";
 
-                                        <div class="row">
+        echo '<p class="ratingSys">';
+        for ($i=1; $i<=$rating['rating']; $i++) {
+            echo $starSymbol;
+        }
+        echo '</p>';
 
-                                            <div class="col-sm-7 float-left">
-                                                <button class="btn btn-link text-light" data-target="#description'.$i.'" data-toggle="collapse">
-                                                <h3>'.$pornPage["name"].'</h3>
-                                                
-                                                </button>
-                                            </div>
-                                            <div class="col-sm-5 float-right">                                            
-                                                <p class="ratingSys">'.self::ratingSystem($i).'</p>
-                                            </div>
-                                            
-                                        </div>
-                                        <div class="collapse text-white" id="description'.$i.'">
-                                            <p>'.$pornPage["description"].'</p>
-                                            <a class="btn btn-danger" href="pornSite.php?site='.$pornPage["name"].'">View '.$pornPage["name"].'</a>
-                                        </div>
-
-                                    </div>
-                                </div>                                
-                            </li>
-                        ';
-
-        return $listLineCode;
-    }
-
-    public static function drawListFeatured(){
-        //CODE TO DRAW LIST OF FEATURED PAGES
+        if ($rating['rating'] == NULL){
+            echo "Please leave a rating.<br>You can change it anytime.";
+        }                
     }
 
     public static function drawLoginForm(){
@@ -157,50 +121,6 @@ header;
     public static function drawRegistrationForm(){
         //CODE TO DRAW REGISTRATION OVERLAY
     }
-
-    public static function drawStars($score){
-        $code = '';
-        for($i=0;$i<$score;$i++){
-            $code .= '<img class="float-right" src="Pictures/star.png" class="img-fluid">';
-        }
-        return $code;
-    }
-
-    /*public function drawSinglePornSiteInfo(){
-        //CODE TO DRAW SINGLE PORN SITE INFO
-        $sitePage = $_GET['site'];
-
-        $pdo = PDOConnect::getPDOInstance();
-
-        $sql = "SELECT * FROM pornpages WHERE name = '$sitePage'";
-        $q = $pdo->query($sql);
-        $q->setFetchMode(PDO::FETCH_ASSOC);
-
-        $siteInfo = $q->fetch();
-
-        function __construct($id, $name, $url, $description, $logo, $images, $dateAdded, $dateCreated) {
-
-            $this->name = $name;
-            $this->url = $url;
-            $this->description = $description;
-            $this->logo = $logo;
-            $this->images = $images;
-            $this->dateAdded = $dateAdded;
-            $this->dateCreated = $dateCreated;
-        $name = $siteInfo['name'];
-        $url = $siteInfo['url'];
-        $description = $siteInfo['description'];
-        $logo = $siteInfo['logo'];
-        $images = $siteInfo['images'];
-        $dateAdded = $siteInfo['dateAdded'];
-        $dateCreated = $siteInfo['dateCreated'];
-        }
-
-        if ($sitePage !== $name){
-            echo "<p>Sorry, site doesn't exist!</p>";
-            die();
-        }
-    }*/
 
 }
 

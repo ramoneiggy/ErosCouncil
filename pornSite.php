@@ -27,7 +27,6 @@ if ($sitePage !== $name){
     die();
 }
 
-$score = 5;
 ?>
 
 <div class="container-fluid text-left">
@@ -53,13 +52,44 @@ $score = 5;
                 <hr>
             </div>
 
-            <!-- RATING SYSTEM -->
+            <!-- AVERAGE RATING -->
             <div class="col-sm-12">
-                <h5>USER RATING:</h5>
-                <p class="ratingSys"><?php Draw::ratingSystemInSite($pageID);//ovo ne funkcionira ?></p><hr>
+                <h5>AVERAGE RATING:</h5>
+                <?php Draw::drawRatingSystem($pageID); ?>
+            </div>
+
+            <!-- ADD RATING SYSTEM -->            
+            <div class="col-sm-12">
+                <h5>YOUR RATING:</h5>
+                <?php 
+                    if (isset($_SESSION['u_id'])){
+                        Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);                                                
+                        ?>
+                        <form action="submitRating.php" method="post">
+                        <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
+                        <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
+                        <label class="ratingSys">1</label>
+                        <input type="radio" name="rating" value="1">
+                        <input type="radio" name="rating" value="2">
+                        <input type="radio" name="rating" value="3">
+                        <input type="radio" name="rating" value="4">
+                        <input type="radio" name="rating" value="5">
+                        <label class="ratingSys">5</label><br>
+                        <button type="submit" class="btn btn-warning" name="submit">RATE <?php echo $name; ?></button>
+                        </form>    
+                        <?php
+                        } else {
+                        echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a rating.";
+                    }
+
+                    
+                ?>
+                <hr>
             </div>
         </div>
+        
 
+        <!-- SITE DESCRIPTION -->
         <div class="col-sm-6">
             <div class="col-sm 12">
                 <h5><?php echo "<b>".$name." description:</b>"; ?><hr></h5>
@@ -76,7 +106,7 @@ $score = 5;
                     echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a review.";
                 } else{
                 ?>
-                <form action="reviews.php" method="post">
+                <form action="submitReview.php" method="post">
                     <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
                     <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
                     <textarea name="review" class="form-control" placeholder="Write your review here" rows="1" required></textarea>             

@@ -5,6 +5,7 @@ include "classes.php";
 
 $conn = PDOConnect::getPDOInstance();
 
+// SUBMIT REVIEW
 if (isset($_POST['submit'])){
 
     $personID = $_SESSION['u_id'];
@@ -25,4 +26,3 @@ if (isset($_POST['submit'])){
     $query->execute();
     header("Location: pornSite.php?site=$pageName");
 }
-

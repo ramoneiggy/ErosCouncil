@@ -13,12 +13,13 @@ include "classes.php";
 </div>
 <hr>
 
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
-            <h5><b>STAFF FAVORITES:</b></h5><hr><!--  treba napraviti klasu za ovo -->
-            <?php
-                Draw::drawListUserRecomendedSites();
+            <h5><b>STAFF FAVORITES:</b></h5><hr>
+            <?php                
+                Draw::drawListFeaturedSites();
             ?>
         </div>
         <div class="col-sm-6">

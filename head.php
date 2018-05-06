@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-//error_reporting(E_ALL & ~E_NOTICE);
+error_reporting(E_ALL & ~E_NOTICE);
 
 ?>
 
@@ -50,8 +50,6 @@ session_start();
         <a class="nav-link" href="#">Contact us</a>
       </li>
     </ul>    
-
-    <!-- ovaj dio će se trebati kod za login-->
 
       <ul class="navbar-nav fixed-left ml-auto">
         <li>
