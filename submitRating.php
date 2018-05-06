@@ -14,18 +14,39 @@ if (isset($_POST['submit'])){
 
     $pageName = $_POST['pageNameID'];
 
-    //NEW USER RATING
-    //$query = $conn->prepare("INSERT INTO ratingscore (personID, PageID, rating)");
-
-    //UPDATE USER RATING
-    $query = $conn->prepare("UPDATE ratingscore SET ratingscore.rating = :rating WHERE personID = :personID AND PageID = :PageID");
-
-    $query->bindParam(':personID', $personID);
-    $query->bindParam(':PageID', $PageID);
-    $query->bindParam(':rating', $rating);
-
+    $query = $conn->prepare("SELECT `personID`, `PageID` FROM `ratingscore`");
     $query->execute();
-    header("Location: pornSite.php?site=$pageName");
+    $result = $query->fetchAll(PDO::FETCH_ASSOC);
+
+        foreach ($result as $singleResult){
+            $resultPersonId = $singleResult["personID"];
+            $resultPageId = $singleResult["PageID"];
+
+            if ($resultPersonId == $personID && $resultPageId == $PageID){
+                echo "<br>isti<br>";
+                //UPDATE USER RATING
+                $query = $conn->prepare("UPDATE ratingscore SET ratingscore.rating = :rating WHERE personID = :personID AND PageID = :PageID ");
+
+                $query->bindParam(':personID', $personID);
+                $query->bindParam(':PageID', $PageID);
+                $query->bindParam(':rating', $rating);
+
+                $query->execute();
+                header("Location: pornSite.php?site=$pageName#ratingUpdated");
+                exit();
+            }else{
+                echo "<br>nisu isti<br>";
+            }            
+        }
+        //NEW USER RATING
+        $query = $conn->prepare("INSERT INTO ratingscore (personID, PageID, rating) VALUES (:personID, :PageID, :rating)");
+
+        $query->bindParam(':personID', $personID);
+        $query->bindParam(':PageID', $PageID);
+        $query->bindParam(':rating', $rating);
+
+        $query->execute();
+        header("Location: pornSite.php?site=$pageName#ratingAdded");
 
 }
 

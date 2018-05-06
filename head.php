@@ -51,8 +51,6 @@ error_reporting(E_ALL & ~E_NOTICE);
       </li>
     </ul>    
 
-    <!-- ovaj dio će se trebati kod za login-->
-
       <ul class="navbar-nav fixed-left ml-auto">
         <li>
           <div class="nav-login">

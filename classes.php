@@ -108,7 +108,10 @@ class Draw
             echo $starSymbol;
         }
         echo '</p>';
-                
+
+        if ($rating['rating'] == NULL){
+            echo "Please leave a rating.<br>You can change it anytime.";
+        }                
     }
 
     public static function drawLoginForm(){

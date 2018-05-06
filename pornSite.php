@@ -63,8 +63,7 @@ if ($sitePage !== $name){
                 <h5>YOUR RATING:</h5>
                 <?php 
                     if (isset($_SESSION['u_id'])){
-                        Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);
-                        
+                        Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);                                                
                         ?>
                         <form action="submitRating.php" method="post">
                         <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
@@ -82,6 +81,8 @@ if ($sitePage !== $name){
                         } else {
                         echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a rating.";
                     }
+
+                    
                 ?>
                 <hr>
             </div>
