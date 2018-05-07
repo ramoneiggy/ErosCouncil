@@ -2,7 +2,6 @@
 include "head.php";
 include "classes.php";
 
-//ovaj dio bi htio prebaciti u klasu, al zasad ne ide. Nalazi se pod drawSinglePornSiteInfo
 $sitePage = $_GET['site'];
 
 $conn = PDOConnect::getPDOInstance();

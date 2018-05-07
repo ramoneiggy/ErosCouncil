@@ -17,15 +17,22 @@ include "classes.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
-            <h5><b>STAFF FAVORITES:</b></h5><hr>
+            <h5 class="text-center"><b>STAFF FAVORITES</b></h5><hr>
             <?php                
                 Draw::drawListFeaturedSites();
             ?>
         </div>
         <div class="col-sm-6">
-            <h5><b>USER RECOMENDED SITES:</b></h5><hr>
+            <h5 class="text-center"><b>USER RECOMENDED SITES</b></h5>
+            <form class="text-center ratingSys" name="sortBy" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">SORT BY:
+                <button type="submit" name="sort" class="btn btn-warning" value="average DESC">BEST</button>
+                <button type="submit" name="sort" class="btn btn-warning" value="average ASC">WORST</button>
+                <button type="submit" name="sort" class="btn btn-warning" value="name ASC">NAME ASC</button>
+                <button type="submit" name="sort" class="btn btn-warning" value="name DESC">NAME DESC</button>
+            </form>
+            <hr>
             <?php
-                Draw::drawListUserRecomendedSites();
+                Draw::drawListUserRecomendedSites($_POST['sort']);
             ?>
         </div>
     </div>

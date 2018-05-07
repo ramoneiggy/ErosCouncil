@@ -5,12 +5,21 @@ class Draw
     //  We will use Draw class to draw different elements of the page.
 
 
-    public static function drawListUserRecomendedSites(){
-        //CODE TO DRAW LIST OF ALL SITES (would like to order it by rating)
+    public static function drawListUserRecomendedSites($sortBy){
+        //CODE TO DRAW LIST OF ALL SITES
 
         $conn = PDOConnect::getPDOInstance();
-        $sql = "SELECT * FROM `pornpages`";
+
+        if ($sortBy == NULL){
+            $sortBy = "average DESC";
+        }
+
+        $sql = "SELECT pornpages.id as id ,pornpages.name as name, pornpages.logo, AVG(`rating`) AS average FROM pornpages
+        JOIN ratingscore ON ratingscore.PageID = pornpages.id
+        GROUP By `PageID` ORDER BY $sortBy";
+        
         $query = $conn->query($sql);
+
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $pornPages = $query->fetchAll();
 
@@ -40,7 +49,9 @@ class Draw
     public static function drawListFeaturedSites(){
         //CODE TO DRAW LIST OF FEATURED PAGES
         $conn = PDOConnect::getPDOInstance();
-        $sql = "SELECT * FROM `pornpages` WHERE `isFeatured` = 1";
+        $sql = "SELECT pornpages.id as id ,pornpages.name as name, pornpages.logo, AVG(`rating`) AS average FROM pornpages
+        JOIN ratingscore ON ratingscore.PageID = pornpages.id WHERE `isFeatured` = 1
+        GROUP By `PageID` ORDER BY AVG(`rating`) DESC ";
         $query = $conn->query($sql);
         $query->setFetchMode(PDO::FETCH_ASSOC);
         $pornPages = $query->fetchAll();
