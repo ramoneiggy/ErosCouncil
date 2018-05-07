@@ -1,3 +1,7 @@
+!!!VAŽNO!!!
+
+ime baze je promijenjeno iz loginsystem u pornreview, OBAVEZNO novu bazu pospremiti u tablicu pod imenom pornreview
+
 + RIJEŠENO
 
 TREBAMO
@@ -15,6 +19,7 @@ TREBAMO
 +KOMENTARI BEZ RELOADA 
 +PROFIL SA POVIJESTI
 +ADMIN, MODERATOR SUSTAV
+DODAVANJE AVATARA
 PRIVATE MESSAGE
 SUPPORT TICKET
 LIKE NA KOMENTARE
