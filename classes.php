@@ -123,6 +123,46 @@ class Draw
         }                
     }
 
+    public static function userPornRatings(){
+        //SHOW USER'S PORN STAR RATINGS
+
+        $conn = PDOConnect::getPDOInstance();
+
+        $query = $conn->prepare("SELECT pornpages.id as id, pornpages.name as name, pornpages.url as url, pornpages.logo as logo, ratingscore.rating as rating FROM pornpages
+        INNER JOIN ratingscore ON pornpages.id = ratingscore.PageID
+        WHERE ratingscore.personID = :personID
+        GROUP BY name ORDER BY rating DESC");
+
+        $query->bindParam(':personID', $_SESSION['u_id']);
+
+        $query->execute();
+
+        $pornPages = $query->fetchAll();
+
+        echo '
+            <ul class="list-group">
+            ';
+        foreach ($pornPages as $pornPage){
+            echo "<li class='list-group-item bg-dark'>";
+            //LOGO
+            echo "<div class='col-sm-4 float-left'><a href='pornSite.php?site=".$pornPage['name']."'>"."<img class='float-left img-fluid logo-stretch' src='".$pornPage['logo']."' alt=porn-site-logo'></a></div>";
+            //NAME
+            echo "<div class='col-sm-4 float-left'><a class='float-left link-white' href='pornSite.php?site=".$pornPage['name']."'><h3>".$pornPage['name']."</h3></a></div>";
+            //RATING
+            echo "<div class='col-sm-4 float-left'>";
+            Draw::showYourCurrentRating($pornPage['id'], $_SESSION['u_id']);
+            echo "</div>";
+            echo "</li>";
+        }
+        echo'    
+            </ul>
+            ';
+
+
+
+
+    }
+
     public static function drawLoginForm(){
         //CODE TO DRAW LOGIN OVERLAY
     }
