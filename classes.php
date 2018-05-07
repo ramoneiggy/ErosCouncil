@@ -139,6 +139,10 @@ class Draw
 
         $pornPages = $query->fetchAll();
 
+        if ($pornPages == NULL){
+            echo "You've not rated anything yet, why don't you go and rate something ;)";
+        }
+
         echo '
             <ul class="list-group">
             ';
@@ -157,10 +161,52 @@ class Draw
         echo'    
             </ul>
             ';
+    }
 
+    public static function showUsersReviews($personID){
+        //CODE TO DRAW USERS REVIEWS
 
+        $conn = PDOConnect::getPDOInstance();
 
+        $sql = "SELECT users.user_id as personID, users.user_uid as personName, pornpages.id as pornpageID, pornpages.name as pornpageName, comments.content as review, comments.datePublished as dateTime FROM `comments`
+        INNER JOIN users on comments.personID = users.user_id
+        INNER JOIN pornpages on comments.PageID = pornpages.id
+        WHERE personID = $personID
+        ORDER BY dateTime DESC";
 
+        $query = $conn->query($sql);
+        $query->setFetchMode(PDO::FETCH_ASSOC);
+        $allComments = $query->fetchAll();
+
+        if (empty($allComments) == true) {
+        echo "<p>No reviews yet, why don't you go and add one.</p>";
+        }
+
+        foreach ($allComments as $singleComment){                    
+        echo 
+        "<li class='list-group-item'>"
+        ."<small>You reviewed "."<a href='pornSite.php?site=".$singleComment['pornpageName']."'>".$singleComment['pornpageName']."</a> on ".$singleComment['dateTime']."</small><br>"
+        .$singleComment["review"].
+        "</li>";                    
+        }
+    }
+
+    public static function userInfo($personID){
+        //CODE TO DRAW USER INFO
+
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT `user_uid` as name, `dateOfBirth` as dob, apps_countries.country_name as location, `user_email` as email FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_id` = :personID");
+        $query->bindParam(':personID', $personID);
+        $query->execute();
+        $userInfo = $query->fetch(); 
+
+        echo "<div class='user-info'>
+            <p><b>Avatar:</b> "."COMING SOON"."</p><hr>
+            <p><b>User name:</b> ".$userInfo['name']."</p><hr>
+            <p><b>E-mail:</b> ".$userInfo['email']."</p><hr>
+            <p><b>Date of birth:</b> ".$userInfo['dob']."</p><hr>
+            <p><b>Location:</b> ".$userInfo['location']."</p><hr>
+            </div>";
     }
 
     public static function drawLoginForm(){
@@ -179,7 +225,7 @@ class PDOConnect
     private static $servername = "localhost"; // 127.0.0.1
     private static $username = "root";
     private static $password = "";
-    private static $database = "loginsystem";
+    private static $database = "pornreview";
     private static $pdoInstance=NULL;
 
 

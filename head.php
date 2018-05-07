@@ -38,16 +38,10 @@ error_reporting(E_ALL & ~E_NOTICE);
         <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Suggested</a>
+        <a class="nav-link disabled" href="#">Categories</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Best Rated</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Categories</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Contact us</a>
+        <a class="nav-link disabled" href="#">Contact us</a>
       </li>
     </ul>    
 
