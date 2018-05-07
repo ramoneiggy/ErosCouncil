@@ -1,12 +1,12 @@
 !!!VAŽNO!!!
 
-ime baze je promijenjeno iz loginsystem u pornreview, OBAVEZNO novu bazu pospremiti u tablicu pod imenom pornreview
+ime baze je promijenjeno iz loginsystem u pornreview, OBAVEZNO novu bazu pospremiti u tablicu pod imenom pornreview //Igor
 
 + RIJEŠENO
 
 TREBAMO
 
-+LOGIN 
++LOGIN/SIGNUP - Podsjetnik: dodati avatara i datum kad je profil napravljen
 +POPIS STRANICA 
 +SUSTAV RANGIRANJA 
 +KOMENTARI 
@@ -17,8 +17,9 @@ TREBAMO
 ŽELIMO
 
 +KOMENTARI BEZ RELOADA 
-+PROFIL SA POVIJESTI
++PROFIL SA POVIJESTI (PORNFOLIO)
 +ADMIN, MODERATOR SUSTAV
+USER ADD PORNSITE TO FAVORITES SUSTAV
 DODAVANJE AVATARA
 PRIVATE MESSAGE
 SUPPORT TICKET
