@@ -14,9 +14,7 @@ class Draw
             $sortBy = "average DESC";
         }
 
-        $sql = "SELECT pornpages.id as id ,pornpages.name as name, pornpages.logo, AVG(`rating`) AS average FROM pornpages
-        JOIN ratingscore ON ratingscore.PageID = pornpages.id
-        GROUP By `PageID` ORDER BY $sortBy";
+        $sql = "SELECT pornpages.id as id ,pornpages.name as name, pornpages.logo, AVG(`rating`) AS average FROM pornpages JOIN ratingscore ON ratingscore.PageID = pornpages.id GROUP By `PageID` ORDER BY $sortBy";
         
         $query = $conn->query($sql);
 

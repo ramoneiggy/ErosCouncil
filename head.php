@@ -57,9 +57,10 @@ error_reporting(E_ALL & ~E_NOTICE);
             <?php
               if (isset($_SESSION['u_id'])){
                 echo "<li class='notif'>".$_SESSION['u_uid'].", you are logged in!&nbsp;&nbsp;&nbsp;"."</li>";
+                echo '<a href="pornfolio.php?profile='.$_SESSION["u_uid"].'"><button type="submit" name="profile" class="btn btn-warning">PORNFOLIO</button></a>';//PROFILE
                 echo '<form action="includes/logout.inc.php" method="POST">
                 <button type="submit" name="submit" class="btn btn-primary">Logout</button>              
-              </form>';
+              </form>';//LOGOUT
               }else{
                 echo '<form action="includes/login.inc.php" method="POST">
                 <input type="text" name="uid" placeholder="Username/e-mail">
