@@ -209,13 +209,15 @@ class Draw
             <div class='user-info col-sm-12'>
                 <div class='row'>
                     <div class='col-sm-4'>
-                        <img class='avatar' src='".$userInfo['avatar']."' alt='Avatar'>
-                    </div>
                     ";
                     if(array_key_exists("avatar", $_GET) && $_GET["avatar"] == "updated"){
                         echo "<p class='text-green'>Avatar updated!</p>";
                     }
+                    
                 echo " 
+                        <img class='avatar' src='".$userInfo['avatar']."' alt='Avatar'>
+                    </div>
+
                     
                     <div class='col-sm-8'>
                         <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
