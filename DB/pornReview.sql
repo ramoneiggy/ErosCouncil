@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 07, 2018 at 07:50 PM
+-- Generation Time: May 09, 2018 at 11:08 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -19,7 +19,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `loginsystem`
+-- Database: `pornreview`
 --
 
 -- --------------------------------------------------------
@@ -336,7 +336,10 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (41, 17, 1, '<?php echo $_SESSION[\'u_id\'] ?>', 1, '2018-05-06 15:35:14'),
 (42, 17, 1, '\'; DROP TABLE \'comments', 1, '2018-05-06 15:40:27'),
 (43, 17, 1, 'komentar); DROP TABLE \'comments\r\n', 1, '2018-05-06 15:41:58'),
-(44, 14, 5, 'fantastic', 1, '2018-05-07 14:07:26');
+(44, 14, 5, 'fantastic', 1, '2018-05-07 14:07:26'),
+(45, 20, 1, 'best site 4eva', 1, '2018-05-07 21:17:42'),
+(46, 24, 1, 'jebenooooooooooo', 1, '2018-05-09 21:22:03'),
+(47, 27, 1, 'I lowe it', 1, '2018-05-09 23:07:51');
 
 -- --------------------------------------------------------
 
@@ -435,7 +438,11 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (77, 17, 9, 1),
 (78, 17, 10, 1),
 (79, 16, 10, 5),
-(80, 18, 2, 1);
+(80, 18, 2, 1),
+(81, 20, 1, 5),
+(82, 20, 4, 3),
+(83, 24, 1, 3),
+(84, 27, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -448,23 +455,35 @@ CREATE TABLE `users` (
   `user_uid` varchar(256) COLLATE utf8_bin NOT NULL,
   `dateOfBirth` date NOT NULL,
   `location` varchar(2) COLLATE utf8_bin NOT NULL,
+  `gender` varchar(10) COLLATE utf8_bin NOT NULL,
   `user_email` varchar(256) COLLATE utf8_bin NOT NULL,
-  `user_pwd` varchar(256) COLLATE utf8_bin NOT NULL
+  `avatar` varchar(100) COLLATE utf8_bin NOT NULL,
+  `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user_pwd` varchar(256) COLLATE utf8_bin NOT NULL,
+  `isAdmin` int(1) NOT NULL DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `user_email`, `user_pwd`) VALUES
-(1, 'adminFaca', '2000-06-15', 'HR', 'solaja.igor@gmail.com', '$2y$10$U4W8booC2Qy/geFx01wCmewpY8agTMecwZY7BcJNGr739.DyCPD5W'),
-(12, 'Igor', '2000-06-15', 'GB', 'ramoneiggy@gmail.com', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.'),
-(13, 'Marko', '2000-06-15', 'FR', 'marko@gmail.com', '$2y$10$295.b5cF/q3NXnAJVLonf.as5R9KRf9x6p8pm6sNCbNtXX.JIJWTi'),
-(14, 'Pero', '2000-06-15', 'US', 'pero@gmail.com', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C'),
-(16, 'Jurica', '2000-06-15', 'HR', 'jurica@gmail.com', '$2y$10$d.1UVyhTS2oNgGB3KyBvRO2UQ6wjNDoDny6u7O56DEtmKz34C8l4a'),
-(17, 'Tihomir', '2000-06-15', 'HR', 'tihomir@mail.com', '$2y$10$p8h9YovSBeab7ALTXv4qs.GI/IxDQQ9cZtlGyR2AJDIm5mBrcqD1q'),
-(18, 'prazni', '2000-06-15', 'HR', 'prazni@mail.com', '$2y$10$d/ISDQxf3uJON4lAMy68Z.cM6TTn7yTO1f1BiUA3VjaV9jZnZhska'),
-(19, 'bigdick', '2000-06-15', 'HR', 'bigdick@email.com', '$2y$10$RGnOwft/wCRPtt/fVbmJuOC5MwQpnSRjde3eMsVvysMKub9cwJp5O');
+INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
+(1, 'adminFaca', '2000-06-15', 'HR', '', 'solaja.igor@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$U4W8booC2Qy/geFx01wCmewpY8agTMecwZY7BcJNGr739.DyCPD5W', 0),
+(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Igor-1228012160-31562327_10155793504664335_7672479867622916096_n.jpg', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
+(13, 'Marko', '2000-06-15', 'FR', '', 'marko@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$295.b5cF/q3NXnAJVLonf.as5R9KRf9x6p8pm6sNCbNtXX.JIJWTi', 0),
+(14, 'Pero', '2000-06-15', 'US', '', 'pero@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C', 0),
+(16, 'Jurica', '2000-06-15', 'HR', '', 'jurica@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d.1UVyhTS2oNgGB3KyBvRO2UQ6wjNDoDny6u7O56DEtmKz34C8l4a', 0),
+(17, 'Tihomir', '2000-06-15', 'HR', '', 'tihomir@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$p8h9YovSBeab7ALTXv4qs.GI/IxDQQ9cZtlGyR2AJDIm5mBrcqD1q', 0),
+(18, 'prazni', '2000-06-15', 'HR', '', 'prazni@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d/ISDQxf3uJON4lAMy68Z.cM6TTn7yTO1f1BiUA3VjaV9jZnZhska', 0),
+(19, 'bigdick', '2000-06-15', 'HR', '', 'bigdick@email.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$RGnOwft/wCRPtt/fVbmJuOC5MwQpnSRjde3eMsVvysMKub9cwJp5O', 0),
+(20, 'jovan', '0006-06-06', 'AF', '', 'jovan@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$56V2ObmVv8m4grF1cariReCLLLxW6pioyxPlhwv47vaWL288ziMYG', 0),
+(21, 'john', '2012-12-12', 'AF', '', 'john@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$6TzSXmiBFWxOz/EzCUk8N.YTpGskyBtappcWYvyah207liRPqdEuy', 0),
+(22, 'Newguy', '2010-12-12', 'AF', '', 'newguy@gmial.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$2lzfwkZIeaqDQBcXEomY9eY/dp05zMd3Jwpb7QZZYK9PYC0GzIM1S', 0),
+(23, 'faca', '2012-12-12', 'BD', 'gender', 'faca@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$Ya2nZ9lnzOtyclgLr7x3.OAVIDPMsLBOuPlu00qkvW8eLiBnIQfAG', 0),
+(24, 'seksi', '1985-12-12', 'BH', 'other', 'seksi@mail.com', 'uploads/profilePics/seksi-2129163226-index.jpg', '0000-00-00 00:00:00', '$2y$10$vA/wl9RrfWT2b3ihS2gIYukixB7GO66Hs2MOH4XIxDnLp31P5QsQO', 0),
+(25, 'fak', '2000-05-07', 'DS', 'female', 'fak@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$W/9fbl1jmHGNTP4mZ0jFNO0aH0PL3mxxp2PreP04GnsqOcGLIWzWG', 0),
+(26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/user-default.png', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
+(27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0);
 
 --
 -- Indexes for dumped tables
@@ -518,7 +537,7 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
@@ -530,13 +549,13 @@ ALTER TABLE `pornpages`
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables

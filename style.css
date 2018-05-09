@@ -21,8 +21,18 @@ footer {
     background-color: whitesmoke;
     border-radius: 5px;
     padding: 20px 20px 0 20px;
-    
-
+}
+.avatar{
+    vertical-align: middle;
+    width: 100px;
+    height: 100px;
+    border-radius: 15%;
+}
+.avatarInReview{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 15%;
 }
 /* TEXT DECORATION */
 .link-white{

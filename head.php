@@ -1,8 +1,6 @@
 <?php
-
 session_start();
 error_reporting(E_ALL & ~E_NOTICE);
-
 ?>
 
 <!DOCTYPE html>
@@ -48,7 +46,7 @@ error_reporting(E_ALL & ~E_NOTICE);
       <ul class="navbar-nav fixed-left ml-auto">
         <li>
           <div class="nav-login">
-            <?php
+            <?php                      
               if (isset($_SESSION['u_id'])){
                 echo "<li class='notif'>".$_SESSION['u_uid'].", you are logged in!&nbsp;&nbsp;&nbsp;"."</li>";
                 echo '<a href="pornfolio.php?profile='.$_SESSION["u_uid"].'"><button type="submit" name="profile" class="btn btn-warning">PORNFOLIO</button></a>';//PROFILE
@@ -66,7 +64,7 @@ error_reporting(E_ALL & ~E_NOTICE);
           <li class="nav-item">
             <a class="nav-link" href="signup.php">Sign up</a>
           </li>';
-              }
+              }     
             ?>
 
 
@@ -80,9 +78,3 @@ error_reporting(E_ALL & ~E_NOTICE);
   <h1 class="display-4">PORN REVIEW</h1>
   <p class="lead">Review porn sites</p>  
 </div>
-
-<?php 
-if ($_SESSION['u_uid'] == "adminFaca") {
-  echo "<a href='administration.php'><button type='submit' class='btn btn-warning' name='admin'>ADMINISTRATION</button></a>";
-}
-?>

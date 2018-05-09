@@ -1,9 +1,11 @@
 <?php
 
+error_reporting(E_ALL & ~E_NOTICE);
+
 if (isset($_POST['submit'])){
 
     include_once 'dbh.inc.php';
-
+    
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $dateOfBirth = mysqli_real_escape_string($conn, $_POST['dateOfBirth']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -11,6 +13,16 @@ if (isset($_POST['submit'])){
     $pwd = mysqli_real_escape_string($conn, $_POST['pwd']);
     $pwdAgain = mysqli_real_escape_string($conn, $_POST['pwdAgain']);
     $location = mysqli_real_escape_string($conn, $_POST['location']);
+    $avatar = "uploads/profilePics/user-default.png";
+    $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+
+    //check if user is underage
+    $now = date('Y-m-d');    
+    $userAge = $now-$dateOfBirth;
+    if ($userAge < 18){
+        die('YOU ARE UNDERAGE, GO AWAY!!!');
+    }
+
 
     //Error handlers
     //Check for empty fields
@@ -45,7 +57,7 @@ if (isset($_POST['submit'])){
                     //Hashing the password
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Insert the user into the database
-                    $sql = "INSERT INTO users (user_email, user_uid, dateOfBirth, location, user_pwd) VALUES ('$email', '$uid', '$dateOfBirth', '$location', '$hashedPwd');";
+                    $sql = "INSERT INTO users (user_email, user_uid, dateOfBirth, avatar, gender, location, user_pwd) VALUES ('$email', '$uid', '$dateOfBirth', '$avatar', '$gender', '$location', '$hashedPwd');";
                     mysqli_query($conn, $sql);
                     header("Location: ../index.php?signup=success");
                     exit();
