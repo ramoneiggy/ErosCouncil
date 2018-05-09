@@ -195,18 +195,59 @@ class Draw
         //CODE TO DRAW USER INFO
 
         $conn = PDOConnect::getPDOInstance();
-        $query = $conn->prepare("SELECT `user_uid` as name, `dateOfBirth` as dob, apps_countries.country_name as location, `user_email` as email FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_id` = :personID");
+
+        $query = $conn->prepare("SELECT `user_uid` as name, joined, `dateOfBirth` as dob, apps_countries.country_name as location, avatar, gender, `user_email` as email FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_id` = :personID");
         $query->bindParam(':personID', $personID);
         $query->execute();
         $userInfo = $query->fetch(); 
 
-        echo "<div class='user-info'>
-            <p><b>Avatar:</b> "."COMING SOON"."</p><hr>
-            <p><b>User name:</b> ".$userInfo['name']."</p><hr>
-            <p><b>E-mail:</b> ".$userInfo['email']."</p><hr>
-            <p><b>Date of birth:</b> ".$userInfo['dob']."</p><hr>
-            <p><b>Location:</b> ".$userInfo['location']."</p><hr>
-            </div>";
+        $now = date("Y-m-d H:i:s");
+
+        $userInfoAge = ($now-$userInfo['dob']);
+
+        echo "
+            <div class='user-info col-sm-12'>
+                <div class='row'>
+                    <div class='col-sm-6'>
+                        <img class='avatar' src='".$userInfo['avatar']."' alt='Avatar'>
+                    </div>
+                    ";
+                    if(array_key_exists("avatar", $_GET) && $_GET["avatar"] == "updated"){
+                        echo "<p class='text-green'>Avatar updated!</p>";
+                    }
+                echo " 
+                    
+                    <div class='col-sm-6'>
+                        <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
+                        <b>Change avatar:</b>
+                            <input class='btn' type='file' name='avatar' id='avatar'>
+                            <input class='btn btn-warning' type='submit' value='Upload Avatar' name='submit'>
+                        </form>
+                    </div>
+                </div>    
+                <hr>
+                <p><b>User name:</b> ".$userInfo['name']."</p><hr>
+                <p><b>Gender:</b> ".$userInfo['gender']."</p><hr>
+                <p><b>E-mail:</b> ".$userInfo['email']."</p><hr>
+                <p><b>Date of birth:</b> ".$userInfo['dob']."&nbsp;&nbsp;&nbsp;<b>Age:</b> ".$userInfoAge."</p><hr>
+                <p><b>Location:</b> ".$userInfo['location']."</p><hr>
+                <p><b>Joined:</b> ".$userInfo['joined']."</p><hr>
+            </div>
+            ";
+
+    }
+
+    public static function listCountries(){
+        //CODE TO DRAW A LIST OF COUNTRIES
+
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT * FROM `apps_countries`");
+        $query->execute();
+        $listOfCountries = $query->fetchAll();
+
+        foreach ($listOfCountries as $country) {
+            echo "<option value='".$country['country_code']."'>".$country['country_name']."</option>";
+        }
     }
 
     public static function drawLoginForm(){
@@ -215,6 +256,24 @@ class Draw
 
     public static function drawRegistrationForm(){
         //CODE TO DRAW REGISTRATION OVERLAY
+    }
+
+}
+
+class Check
+{
+    
+    public static function ifAdmin($personID){
+        //CHECK IF USER IS ADMIN
+
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT isAdmin FROM users where user_id = :personID");
+        $query->bindParam(':personID', $personID);
+        $query->execute();
+        $isAdmin = $query->fetch('0');
+
+        return $isAdmin[0];
+
     }
 
 }

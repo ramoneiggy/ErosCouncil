@@ -38,6 +38,11 @@ if ($sitePage !== $name){
         }
         ?>
     </h4>
+    <?php 
+    if (Check::ifAdmin($_SESSION['u_id']) == 1){
+        echo "<a href='administration.php'><button type='submit' class='btn btn-success' name='admin'>ADMINISTRATION</button></a>";
+    }
+    ?>
     <hr>
 
 <!--CONTENT-->
@@ -120,7 +125,7 @@ if ($sitePage !== $name){
                 <ul class="list-group">
 
                 <?php
-                $sql = "SELECT users.user_uid, comments.content, comments.PageID, comments.datePublished FROM comments INNER JOIN users ON comments.personID = users.user_id WHERE comments.PageID = $pageID ORDER BY datePublished DESC";
+                $sql = "SELECT users.user_uid, users.avatar as avatar, comments.content, comments.PageID, comments.datePublished FROM comments INNER JOIN users ON comments.personID = users.user_id WHERE comments.PageID = $pageID ORDER BY datePublished DESC";
 
                 $query = $conn->query($sql);
                 $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -133,9 +138,10 @@ if ($sitePage !== $name){
                 foreach ($allComments as $singleComment){                    
                     echo 
                     "<li class='list-group-item'>"
+                    ."<img class='avatarInReview' src='".$singleComment["avatar"]."' alt='user-avatar'> "
                     ."<small>".$singleComment["user_uid"]." said on ".$singleComment['datePublished']."</small><br>"
                     .$singleComment["content"].
-                    "</li>";                    
+                    "</li>";            
                 }         
                 ?>
 

@@ -1,6 +1,7 @@
 <?php 
 include "head.php";
 include "classes.php";
+
 ?>
 
 <div class="container-fluid text-left">
@@ -10,6 +11,11 @@ include "classes.php";
             echo "<p>Congratulations, you have successfully signed up, now please login.</p>";
         }
     ?>
+    <?php 
+    if (Check::ifAdmin($_SESSION['u_id']) == 1){
+        echo "<a href='administration.php'><button type='submit' class='btn btn-success' name='admin'>ADMINISTRATION</button></a>";
+    }
+    ?>    
 </div>
 <hr>
 
