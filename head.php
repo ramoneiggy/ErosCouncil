@@ -46,7 +46,8 @@ error_reporting(E_ALL & ~E_NOTICE);
       <ul class="navbar-nav fixed-left ml-auto">
         <li>
           <div class="nav-login">
-            <?php                      
+  
+              <?php                      
               if (isset($_SESSION['u_id'])){
                 echo "<li class='notif'>".$_SESSION['u_uid'].", you are logged in!&nbsp;&nbsp;&nbsp;"."</li>";
                 echo '<a href="pornfolio.php?profile='.$_SESSION["u_uid"].'"><button type="submit" name="profile" class="btn btn-warning">PORNFOLIO</button></a>';//PROFILE
@@ -66,11 +67,11 @@ error_reporting(E_ALL & ~E_NOTICE);
           </li>';
               }     
             ?>
-
-
+          <form class="form-inline my-2 my-lg-0" action="search.php" method="post">
+            <input class="form-control mr-sm-2" type="text" name="search" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit" name="submit">Search</button>
+          </form>
       </ul>
-
-
   </div>
 </nav>
 

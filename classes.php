@@ -208,7 +208,7 @@ class Draw
         echo "
             <div class='user-info col-sm-12'>
                 <div class='row'>
-                    <div class='col-sm-4'>
+                    <div class='col-sm-5'>
                     ";
                     if(array_key_exists("avatar", $_GET) && $_GET["avatar"] == "updated"){
                         echo "<p class='text-green'>Avatar updated!</p>";
@@ -219,7 +219,7 @@ class Draw
                     </div>
 
                     
-                    <div class='col-sm-8'>
+                    <div class='col-sm-7'>
                         <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
                         <b>Change avatar:</b>
                             <input class='btn' type='file' name='avatar' id='avatar'>

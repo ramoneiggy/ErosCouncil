@@ -24,8 +24,9 @@ footer {
 }
 .avatar{
     vertical-align: middle;
-    width: 100px;
-    height: 100px;
+    width: auto;
+    max-width: 200px;
+    height: auto;
     border-radius: 15%;
 }
 .avatarInReview{
@@ -34,6 +35,7 @@ footer {
     height: 20px;
     border-radius: 15%;
 }
+
 /* TEXT DECORATION */
 .link-white{
     color:white;
@@ -44,6 +46,10 @@ footer {
 }
 .link-black{
     color:black;
+    text-decoration-line: underline;
+}
+.link-black:hover{
+    color: red;
     text-decoration-line: underline;
 }
 .text-red{
