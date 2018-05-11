@@ -1,15 +1,16 @@
 <?php 
 include "head.php";
-include "classes.php";
-
-
-if (Check::ifAdmin($_SESSION['u_id']) == 1){
-    echo "<br>WELCOME MR. ADMINISTRATOR!<hr><br>";    
-}else{
-    die("<p class='text-red'>RESTRICTED, GO AWAY!!!</p>");
-}
 ?>
 
+<div class="container-fluid text-left">
+    <?php
+        if (Check::ifAdmin($_SESSION['u_id']) == 1){
+            echo "<h3>WELCOME MR. ADMINISTRATOR!<hr></h3>";    
+        }else{
+            die("<h3 class='text-red'>RESTRICTED, GO AWAY!!!<hr></h3>");
+        }
+    ?>    
+</div>
 
 <div class="container-fluid">
     <div class="row">
@@ -18,47 +19,50 @@ if (Check::ifAdmin($_SESSION['u_id']) == 1){
             
             <h4 class="text-center">ADD PORN SITE TO DATABASE</h4><hr>
 
-            <form class="form-control" action="addSiteToDB.php" method="post">
+            <form class="form-control" action="submitSiteToDB.php" method="post">
                 <?php
                     if (array_key_exists("site", $_GET) && $_GET["site"] == "alreadyExists"){
                         echo "<p class='text-center text-red'>ERROR: Site already exists in DB.</p>";
-                    }
-
-                    if (array_key_exists("site", $_GET) && $_GET["site"] == "added"){
-                        echo "<p class='text-center text-green'>Site added successfully to DB.</p>";
-                    }                    
+                    }if (array_key_exists("site", $_GET) && $_GET["site"] == "added"){
+                        echo "<p class='text-center text-green'>Site added successfully to DB.<br><a href='pornSite.php?site=".$_GET['name']."'>Click HERE to give the site a rating so that it can be seen on the homepage.</a></p>";
+                    }if (array_key_exists("site", $_GET) && $_GET["site"] == "nameError"){
+                        echo "<p class='text-center text-red'>ERROR: Please read guidelines about proper name input.</p>";     
+                    }          
                 ?>
+                <br>
 
-                <label for="name">Porn site name</label><br>
-                <input class="form-control" type="text" name="name"><br>
+                <label for="name">Porn site name*</label><br>
+                <input class="form-control" type="text" name="name" required>
+                <small class="form-text text-muted">Make sure site name doesn't have links, dots... Write just the name of the site.</small><br>
 
-                <label for="url">Porn site url</label><br>
+                <label for="url">Porn site url*</label><br>
                 <input class="form-control" type="url" name="url" required>            
-                <small class="form-text text-muted">Url must be like https://www.example.com</small><br>
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
-                <label for="description">Porn site description</label><br>
-                <textarea class="form-control" type="text" name="description" row="3"></textarea><br>
+                <label for="description">Porn site description*</label><br>
+                <textarea class="form-control" type="text" name="description" row="3" required></textarea><br>
 
-                <label for="logo">Porn site logo</label><br>
+                <label for="logo">Porn site logo*</label><br>
                 <input class="form-control" type="url" name="logo" required>
-                <small class="form-text text-muted">Url must be like https://www.example.com</small><br>
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
                 <label for="images">Porn site image</label><br>
-                <input class="form-control" type="url" name="images" required>
-                <small class="form-text text-muted">Url must be like https://www.example.com</small><br>
+                <input class="form-control" type="url" name="images">
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
-                <label for="dateAdded">Date when the site was added to our DB</label><br>
-                <input class="form-control" type="date" name="dateAdded" required><br>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" name="isFeatured">
+                    <label class="form-check-label" for="defaultCheck1">Is porn site "STAFF FAVORITE"?</label>
+                </div>           
 
-                <label for="dateCreated">Date when porn site was created</label><br>
-                <input class="form-control" type="date" name="dateCreated" required><br>
-                <button type="submit" class="btn btn-warning" name="submit">Add site</button>
+                <br>
+                <p class="lead">When you submit the porn site you <b>MUST</b> give the site a rating for it to show on the home page.</p>            
 
-                <small class="form-text text-muted text-right">*All fields are. Make sure you entered everything correctly!</small>            
+                <button type="submit" class="btn btn-dark-purple" name="submit">Add site</button>
+
+                <small class="form-text text-muted text-right">* fields are required. Make sure you entered everything correctly!</small>
 
             </form>
-
-
 
         </div>
 

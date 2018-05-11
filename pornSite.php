@@ -1,6 +1,5 @@
 <?php 
 include "head.php";
-include "classes.php";
 
 $sitePage = $_GET['site'];
 
@@ -19,7 +18,6 @@ $description = $siteInfo['description'];
 $logo = $siteInfo['logo'];
 $images = $siteInfo['images'];
 $dateAdded = $siteInfo['dateAdded'];
-$dateCreated = $siteInfo['dateCreated'];
 
 if ($sitePage !== $name){
     echo "<p>Sorry, site doesn't exist!</p>";
@@ -38,11 +36,6 @@ if ($sitePage !== $name){
         }
         ?>
     </h4>
-    <?php 
-    if (Check::ifAdmin($_SESSION['u_id']) == 1){
-        echo "<a href='administration.php'><button type='submit' class='btn btn-success' name='admin'>ADMINISTRATION</button></a>";
-    }
-    ?>
     <hr>
 
 <!--CONTENT-->
@@ -52,7 +45,7 @@ if ($sitePage !== $name){
             <div class="col-sm-12">
                 <a target="_blank" href="<?php echo $url; ?>"><img class="logo-stretch" src="<?php echo $logo; ?>" alt="site-logo"></a>
                 <br>
-                <p><a target="_blank" class="btn btn-warning" href="<?php echo $url; ?>">VISIT <?php echo $name; ?></a></p>
+                <p><a target="_blank" class="btn btn-dark-purple" href="<?php echo $url; ?>">VISIT <?php echo $name; ?></a></p>
                 <hr>
             </div>
 
@@ -68,19 +61,20 @@ if ($sitePage !== $name){
                 <?php 
                     if (isset($_SESSION['u_id'])){
                         Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);                                                
-                        ?>
-                        <form action="submitRating.php" method="post">
-                        <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
-                        <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
-                        <label class="ratingSys">1</label>
-                        <input type="radio" name="rating" value="1">
-                        <input type="radio" name="rating" value="2">
-                        <input type="radio" name="rating" value="3">
-                        <input type="radio" name="rating" value="4">
-                        <input type="radio" name="rating" value="5">
-                        <label class="ratingSys">5</label><br>
-                        <button type="submit" class="btn btn-warning" name="submit">RATE <?php echo $name; ?></button>
+                        ?>                        
+                        <form action="submitRating.php" method="post">                            
+                            <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
+                            <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
+                            <label class="ratingSys">1</label>
+                            <input type="radio" name="rating" value="1">
+                            <input type="radio" name="rating" value="2">
+                            <input type="radio" name="rating" value="3">
+                            <input type="radio" name="rating" value="4">
+                            <input type="radio" name="rating" value="5">
+                            <label class="ratingSys">5</label><br>                                   
+                            <button type="submit" class="btn btn-dark-purple" name="submit">RATE <?php echo $name; ?></button>
                         </form>    
+                        
                         <?php
                         } else {
                         echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a rating.";
@@ -114,7 +108,7 @@ if ($sitePage !== $name){
                     <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
                     <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
                     <textarea name="review" class="form-control" placeholder="Write your review here" rows="1" required></textarea>             
-                    <button type="submit" class="btn btn-warning float-right" name="submit">Add review</button>
+                    <button type="submit" class="btn btn-dark-purple float-right" name="submit">Add review</button>
                     <br>
                 </form>
                 <?php } ?>
@@ -138,8 +132,9 @@ if ($sitePage !== $name){
                 foreach ($allComments as $singleComment){                    
                     echo 
                     "<li class='list-group-item'>"
-                    ."<img class='avatarInReview' src='".$singleComment["avatar"]."' alt='user-avatar'> "
-                    ."<small>".$singleComment["user_uid"]." said on ".$singleComment['datePublished']."</small><br>"
+                    ."<a href='profile.php?user=".$singleComment["user_uid"]."'>"
+                    ."<img class='avatarInReview' src='".$singleComment["avatar"]."' alt='user-avatar'> "."</a>"
+                    ."<small>"."<a class='link-black' href='profile.php?user=".$singleComment["user_uid"]."'>".$singleComment["user_uid"]."</a>"." said on ".$singleComment['datePublished']."</small><br>"
                     .$singleComment["content"].
                     "</li>";            
                 }         

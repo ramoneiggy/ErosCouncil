@@ -38,7 +38,7 @@ if (isset($_POST['submit'])){
     }else{
         //Check if input chars are valid
         if (!preg_match("/^[a-zA-Z]*$/", $uid)){
-            header("Location: ../signup.php?signup=invalid");
+            header("Location: ../signup.php?signup=invalidCharacters");
             exit();
         }else{
             //Check if email is valid

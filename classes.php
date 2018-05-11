@@ -59,7 +59,7 @@ class Draw
             <ul class="list-group">
             ';
         foreach ($pornPages as $pornPage){
-            echo "<li class='list-group-item bg-info'>";
+            echo "<li class='list-group-item bg-featured'>";
             //LOGO
             echo "<div class='col-sm-4 float-left'><a href='pornSite.php?site=".$pornPage['name']."'>"."<img class='float-left img-fluid logo-stretch' src='".$pornPage['logo']."' alt=porn-site-logo'></a></div>";
             //NAME
@@ -208,7 +208,7 @@ class Draw
         echo "
             <div class='user-info col-sm-12'>
                 <div class='row'>
-                    <div class='col-sm-4'>
+                    <div class='col-sm-5'>
                     ";
                     if(array_key_exists("avatar", $_GET) && $_GET["avatar"] == "updated"){
                         echo "<p class='text-green'>Avatar updated!</p>";
@@ -216,14 +216,12 @@ class Draw
                     
                 echo " 
                         <img class='avatar' src='".$userInfo['avatar']."' alt='Avatar'>
-                    </div>
-
-                    
-                    <div class='col-sm-8'>
+                    </div>                    
+                    <div class='col-sm-7'>
                         <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
                         <b>Change avatar:</b>
                             <input class='btn' type='file' name='avatar' id='avatar'>
-                            <input class='btn btn-warning' type='submit' value='Upload Avatar' name='submit'>
+                            <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
                         </form>
                     </div>
                 </div>    
@@ -250,6 +248,15 @@ class Draw
         foreach ($listOfCountries as $country) {
             echo "<option value='".$country['country_code']."'>".$country['country_name']."</option>";
         }
+    }
+
+    public static function echoActiveClassIfRequestMatches($requestUri){
+        //GIVE CLASS "ACTIVE" TO NAV LINK
+    
+        $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
+
+        if ($current_file_name == $requestUri)
+            echo "active";
     }
 
     public static function drawLoginForm(){
