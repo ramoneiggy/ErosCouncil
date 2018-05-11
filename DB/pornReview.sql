@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2018 at 11:08 PM
+-- Generation Time: May 12, 2018 at 12:07 AM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -339,7 +339,10 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (44, 14, 5, 'fantastic', 1, '2018-05-07 14:07:26'),
 (45, 20, 1, 'best site 4eva', 1, '2018-05-07 21:17:42'),
 (46, 24, 1, 'jebenooooooooooo', 1, '2018-05-09 21:22:03'),
-(47, 27, 1, 'I lowe it', 1, '2018-05-09 23:07:51');
+(47, 27, 1, 'I lowe it', 1, '2018-05-09 23:07:51'),
+(48, 14, 7, 'Nice tits', 1, '2018-05-11 21:47:46'),
+(49, 12, 1, 'JoÅ¡ radi', 1, '2018-05-11 22:28:33'),
+(50, 28, 11, 'this site sucks!!!', 1, '2018-05-11 23:08:58');
 
 -- --------------------------------------------------------
 
@@ -354,26 +357,29 @@ CREATE TABLE `pornpages` (
   `description` text NOT NULL,
   `logo` varchar(512) NOT NULL COMMENT 'Address',
   `images` varchar(512) NOT NULL COMMENT 'Address',
-  `dateAdded` date NOT NULL COMMENT 'When we added it to our base',
-  `dateCreated` date NOT NULL COMMENT 'When it was created',
-  `isFeatured` int(1) NOT NULL
+  `dateAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT 'When we added it to our base',
+  `isFeatured` int(1) NOT NULL,
+  `addedByUser` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pornpages`
 --
 
-INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `dateAdded`, `dateCreated`, `isFeatured`) VALUES
-(1, 'Pornhub', 'https://www.Pornhub.com', 'Pornhub is a pornographic video sharing website and the largest pornography site on the Internet.[5][6] Pornhub was launched in Montreal, providing professional and amateur photography since 2007.[7] Pornhub also has offices and servers in San Francisco, Houston, New Orleans and London. In March 2010, Pornhub was bought by Manwin (now known as MindGeek), which owns numerous other pornographic websites.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', '2018-04-22', '2007-03-25', 1),
-(2, 'TubeGalore', 'https://www.tubegalore.com', 'If you search a large database of many millions of the best porn tubes. Then I have to tell you about Tube Galore. This website has almost all videos available out there floating around on the internet. Awesome right? I think so. The website has existed since 2007 and has done a lot of work to be among the top. And that is Tube Galore definitely succeeded. As the webmaster says himself, Tube Galore is a vortex! And I agree. I think if you are a porn lover, you definitely need to know this site. Because this is truly one of the best porn site whichcan be found on the Internet.', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', '2018-04-22', '2007-01-15', 0),
-(3, 'YouJizz', 'https://www.youjizz.com', 'Youjizz Porn Tube! Free porn movies and sex videos on your desktop or mobile phone.', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', '2018-04-22', '2010-05-15', 0),
-(4, 'YouPorn', 'https://www.youporn.com/', 'YouPorn is a free pornographic video sharing website and one of the 100 most accessed websites in the world. Since launching in August 2006, it grew to become the most popular pornographic website on the internet, and, in November 2007, it was reported to be the largest free pornographic website as well. As of February 2013, it was the 83rd most popular website overall and the fifth most popular pornographic website. In the category of pornographic websites, it was surpassed in the rankings by competitor sites xHamster, XVideos, and Pornhub, as well as the adult webcam site LiveJasmin.\r\n\r\nThis Web 2.0 (or Porn 2.0) site differs from many other pornographic websites in that it is completely free and ad-supported. One journalist reported that in May 2007 it generated a monthly ad revenue of $120,000 and that it was owned by Stephen Paul Jones.', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', '2018-05-04', '2006-08-26', 0),
-(5, 'xHamster', 'https://xhamster.com/', 'xHamster is a pornographic media and social networking site headquartered in Limassol, Cyprus.[1] xHamster serves user-submitted pornographic videos, webcam models, pornographic photographs, and erotic literature, and incorporates social networking features. xHamster was founded in 2007. With more than 10 million members, it is the third most popular pornography website on the Internet after XVideos and Pornhub.\r\n\r\nThe site produces The Sex Factor, a reality series in which men and women compete to become porn stars. The site has been targeted as part of malvertising campaigns, and various governments have blocked xHamster as part of larger initiatives against Internet pornography.', 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/XHamster_logo_2016.svg/512px-XHamster_logo_2016.svg.png', 'https://en.wikipedia.org/wiki/XHamster#/media/File:XHamster_logo_2016.svg', '2018-04-22', '2007-04-02', 1),
-(6, 'xVideos', 'https://www.xvideos.com/', 'XVideos serves as a pornographic media aggregator, a type of website which gives access to adult content in a similar manner as YouTube does for general content.[6][7] Video clips from professional videos (sometimes pirated) are mixed with amateur and other types of content.[6][7] By 2012, XVideos was the largest adult website in the world, with over 4.4 billion page views per month.[8] Fabian Thylmann, the owner of MindGeek, attempted to purchase XVideos in 2012 in order to create a monopoly of pornographic tube sites. The French owner of XVideos turned down a reported offer of more than $120 million by saying, \"Sorry, I have to go and play Diablo II.\"[7] In 2014, XVideos controversially attempted to force content providers to either pledge to renounce the right to delete videos from their accounts or to shut down their accounts immediately.[9]', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', '2018-05-04', '2007-03-01', 0),
-(7, 'XNXX', 'https://www.xnxx.com/', '100% Free Porn Movies and Sex Content', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', '2018-05-04', '2018-05-04', 1),
-(8, 'HClips', 'https://www.hclips.com/', 'Magnificent porn tube website showing a wide array of HUD movies.', 'https://www.hclips.com/images/logo.png', 'https://www.hclips.com/images/logo.png', '2018-05-04', '2018-05-04', 0),
-(9, 'Porn', 'https://www.porn.com/', 'Top porn tube site sharing an incredible amount of top notch hardcore videos ranging among all the most popular porn niches.', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', '2018-05-04', '2018-05-04', 0),
-(10, 'TNAFlix', 'https://www.tnaflix.com', 'Amazing porn tube website showing thousand of hot porn videos.', 'https://www.tnaflix.com/images/mx.png', 'https://www.tnaflix.com/images/mx.png', '2018-05-04', '2018-05-04', 0);
+INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `dateAdded`, `isFeatured`, `addedByUser`) VALUES
+(1, 'Pornhub', 'https://www.Pornhub.com', 'Pornhub is a pornographic video sharing website and the largest pornography site on the Internet.[5][6] Pornhub was launched in Montreal, providing professional and amateur photography since 2007.[7] Pornhub also has offices and servers in San Francisco, Houston, New Orleans and London. In March 2010, Pornhub was bought by Manwin (now known as MindGeek), which owns numerous other pornographic websites.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', '2018-04-22 00:00:00', 1, 1),
+(2, 'TubeGalore', 'https://www.tubegalore.com', 'If you search a large database of many millions of the best porn tubes. Then I have to tell you about Tube Galore. This website has almost all videos available out there floating around on the internet. Awesome right? I think so. The website has existed since 2007 and has done a lot of work to be among the top. And that is Tube Galore definitely succeeded. As the webmaster says himself, Tube Galore is a vortex! And I agree. I think if you are a porn lover, you definitely need to know this site. Because this is truly one of the best porn site whichcan be found on the Internet.', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', '2018-04-22 00:00:00', 0, 2),
+(3, 'YouJizz', 'https://www.youjizz.com', 'Youjizz Porn Tube! Free porn movies and sex videos on your desktop or mobile phone.', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', '2018-04-22 00:00:00', 0, 0),
+(4, 'YouPorn', 'https://www.youporn.com/', 'YouPorn is a free pornographic video sharing website and one of the 100 most accessed websites in the world. Since launching in August 2006, it grew to become the most popular pornographic website on the internet, and, in November 2007, it was reported to be the largest free pornographic website as well. As of February 2013, it was the 83rd most popular website overall and the fifth most popular pornographic website. In the category of pornographic websites, it was surpassed in the rankings by competitor sites xHamster, XVideos, and Pornhub, as well as the adult webcam site LiveJasmin.\r\n\r\nThis Web 2.0 (or Porn 2.0) site differs from many other pornographic websites in that it is completely free and ad-supported. One journalist reported that in May 2007 it generated a monthly ad revenue of $120,000 and that it was owned by Stephen Paul Jones.', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', '2018-05-04 00:00:00', 0, 0),
+(5, 'xHamster', 'https://xhamster.com/', 'xHamster is a pornographic media and social networking site headquartered in Limassol, Cyprus.[1] xHamster serves user-submitted pornographic videos, webcam models, pornographic photographs, and erotic literature, and incorporates social networking features. xHamster was founded in 2007. With more than 10 million members, it is the third most popular pornography website on the Internet after XVideos and Pornhub.\r\n\r\nThe site produces The Sex Factor, a reality series in which men and women compete to become porn stars. The site has been targeted as part of malvertising campaigns, and various governments have blocked xHamster as part of larger initiatives against Internet pornography.', 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/XHamster_logo_2016.svg/512px-XHamster_logo_2016.svg.png', 'https://en.wikipedia.org/wiki/XHamster#/media/File:XHamster_logo_2016.svg', '2018-04-22 00:00:00', 1, 0),
+(6, 'xVideos', 'https://www.xvideos.com/', 'XVideos serves as a pornographic media aggregator, a type of website which gives access to adult content in a similar manner as YouTube does for general content.[6][7] Video clips from professional videos (sometimes pirated) are mixed with amateur and other types of content.[6][7] By 2012, XVideos was the largest adult website in the world, with over 4.4 billion page views per month.[8] Fabian Thylmann, the owner of MindGeek, attempted to purchase XVideos in 2012 in order to create a monopoly of pornographic tube sites. The French owner of XVideos turned down a reported offer of more than $120 million by saying, \"Sorry, I have to go and play Diablo II.\"[7] In 2014, XVideos controversially attempted to force content providers to either pledge to renounce the right to delete videos from their accounts or to shut down their accounts immediately.[9]', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', 'https://upload.wikimedia.org/wikipedia/commons/0/05/Xvideos.gif', '2018-05-04 00:00:00', 0, 0),
+(7, 'XNXX', 'https://www.xnxx.com/', '100% Free Porn Movies and Sex Content', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', 'https://static-hw.xvideos.com/v3/img/skins/xnxx/logo-xnxx.png', '2018-05-04 00:00:00', 1, 0),
+(8, 'HClips', 'https://www.hclips.com/', 'Magnificent porn tube website showing a wide array of HUD movies.', 'https://www.hclips.com/images/logo.png', 'https://www.hclips.com/images/logo.png', '2018-05-04 00:00:00', 0, 0),
+(9, 'Porn', 'https://www.porn.com/', 'Top porn tube site sharing an incredible amount of top notch hardcore videos ranging among all the most popular porn niches.', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', '2018-05-04 00:00:00', 0, 0),
+(10, 'TNAFlix', 'https://www.tnaflix.com', 'Amazing porn tube website showing thousand of hot porn videos.', 'https://www.tnaflix.com/images/mx.png', 'https://www.tnaflix.com/images/mx.png', '2018-05-04 00:00:00', 0, 0),
+(11, 'Scoreland', 'http://www.scoreland.com', 'Score has launched the careers of some of the best known big-boobed beauties in the biz and it doesn\'t look as though they\'re slowing down the jugg parade any time soon. Watch these busty babes do their thing in HD downloads and steams. They add new content to their already impressive collection every day and everything they give you is exclusive and hot.', 'http://cdn.scoreuniverse.com/scoreland/images/free/new/logo_678x60.png', '', '2018-05-11 22:38:45', 1, 0),
+(12, 'Nubiles', 'http://nubiles.net/', 'This great site stars hot babes who are very excited about being able to show you how they play with themselves - and some take the time to learn how to please a man. The sheer size of the library is mind-blowing and the quality does these sexy girls justice with Full HD footage. If you\'re looking for the ultimate teen porn experience, then jump right in! ', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', '2018-05-11 23:34:06', 1, 12),
+(13, 'Brazzers', 'https://www.brazzersnetwork.com/', 'Busty teens, sexy MILFs, gorgeous pornstars... All of them get in on hardcore, with interracial sex, blowjobs, threesomes, orgies and so much more in thousands of high-quality videos. Everything you could ever want from an XXX network is here, so come and enjoy all the action from one of our favorite porn makers - and the production values are sky-high!', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', '2018-05-11 23:45:03', 1, 12);
 
 -- --------------------------------------------------------
 
@@ -395,7 +401,7 @@ CREATE TABLE `ratingscore` (
 INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (1, 12, 8, 5),
 (2, 12, 9, 4),
-(3, 12, 1, 4),
+(3, 12, 1, 5),
 (4, 12, 10, 5),
 (5, 12, 2, 5),
 (6, 12, 5, 5),
@@ -419,7 +425,7 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (24, 14, 10, 5),
 (25, 14, 2, 5),
 (26, 14, 5, 3),
-(27, 14, 7, 4),
+(27, 14, 7, 5),
 (28, 14, 6, 5),
 (29, 14, 3, 3),
 (30, 14, 4, 4),
@@ -439,10 +445,15 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (78, 17, 10, 1),
 (79, 16, 10, 5),
 (80, 18, 2, 1),
-(81, 20, 1, 5),
+(81, 20, 1, 4),
 (82, 20, 4, 3),
 (83, 24, 1, 3),
-(84, 27, 1, 5);
+(84, 27, 1, 5),
+(85, 20, 9, 4),
+(86, 12, 11, 3),
+(87, 28, 11, 1),
+(88, 12, 12, 4),
+(89, 12, 13, 4);
 
 -- --------------------------------------------------------
 
@@ -468,22 +479,22 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
-(1, 'adminFaca', '2000-06-15', 'HR', '', 'solaja.igor@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$U4W8booC2Qy/geFx01wCmewpY8agTMecwZY7BcJNGr739.DyCPD5W', 0),
-(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Igor-1228012160-31562327_10155793504664335_7672479867622916096_n.jpg', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
+(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-735411190-31562327_10155793504664335_7672479867622916096_n.jpg', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
 (13, 'Marko', '2000-06-15', 'FR', '', 'marko@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$295.b5cF/q3NXnAJVLonf.as5R9KRf9x6p8pm6sNCbNtXX.JIJWTi', 0),
-(14, 'Pero', '2000-06-15', 'US', '', 'pero@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C', 0),
+(14, 'Pero', '2000-06-15', 'US', '', 'pero@gmail.com', 'uploads/profilePics/Pero-984410454-punisaurus.jpg', '0000-00-00 00:00:00', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C', 0),
 (16, 'Jurica', '2000-06-15', 'HR', '', 'jurica@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d.1UVyhTS2oNgGB3KyBvRO2UQ6wjNDoDny6u7O56DEtmKz34C8l4a', 0),
 (17, 'Tihomir', '2000-06-15', 'HR', '', 'tihomir@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$p8h9YovSBeab7ALTXv4qs.GI/IxDQQ9cZtlGyR2AJDIm5mBrcqD1q', 0),
 (18, 'prazni', '2000-06-15', 'HR', '', 'prazni@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d/ISDQxf3uJON4lAMy68Z.cM6TTn7yTO1f1BiUA3VjaV9jZnZhska', 0),
 (19, 'bigdick', '2000-06-15', 'HR', '', 'bigdick@email.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$RGnOwft/wCRPtt/fVbmJuOC5MwQpnSRjde3eMsVvysMKub9cwJp5O', 0),
-(20, 'jovan', '0006-06-06', 'AF', '', 'jovan@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$56V2ObmVv8m4grF1cariReCLLLxW6pioyxPlhwv47vaWL288ziMYG', 0),
+(20, 'jovan', '0006-06-06', 'AF', '', 'jovan@mail.com', 'uploads/profilePics/jovan-1026137256-Bugs_bunny-487807.jpg', '0000-00-00 00:00:00', '$2y$10$56V2ObmVv8m4grF1cariReCLLLxW6pioyxPlhwv47vaWL288ziMYG', 0),
 (21, 'john', '2012-12-12', 'AF', '', 'john@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$6TzSXmiBFWxOz/EzCUk8N.YTpGskyBtappcWYvyah207liRPqdEuy', 0),
 (22, 'Newguy', '2010-12-12', 'AF', '', 'newguy@gmial.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$2lzfwkZIeaqDQBcXEomY9eY/dp05zMd3Jwpb7QZZYK9PYC0GzIM1S', 0),
 (23, 'faca', '2012-12-12', 'BD', 'gender', 'faca@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$Ya2nZ9lnzOtyclgLr7x3.OAVIDPMsLBOuPlu00qkvW8eLiBnIQfAG', 0),
 (24, 'seksi', '1985-12-12', 'BH', 'other', 'seksi@mail.com', 'uploads/profilePics/seksi-2129163226-index.jpg', '0000-00-00 00:00:00', '$2y$10$vA/wl9RrfWT2b3ihS2gIYukixB7GO66Hs2MOH4XIxDnLp31P5QsQO', 0),
 (25, 'fak', '2000-05-07', 'DS', 'female', 'fak@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$W/9fbl1jmHGNTP4mZ0jFNO0aH0PL3mxxp2PreP04GnsqOcGLIWzWG', 0),
 (26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/user-default.png', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
-(27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0);
+(27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0),
+(28, 'archer', '1955-12-12', 'US', 'male', 'archer@mail.com', 'uploads/profilePics/archer-966123229-archer.jpg', '2018-05-11 23:06:37', '$2y$10$KZWHtvESYvS4npe00Lx3ceIxuE2olL96N2msxu/DcU7.GusZmaoGW', 0);
 
 --
 -- Indexes for dumped tables
@@ -537,25 +548,25 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
 --
 ALTER TABLE `pornpages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- Constraints for dumped tables
