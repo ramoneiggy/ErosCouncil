@@ -1,0 +1,136 @@
+body{
+    background-color: grey;
+}
+.bg-dark-nav {
+    background-color: black !important;
+}
+.jumbotron{
+    border-radius: 0;
+    background: url("../img/sexy-lady.png")no-repeat left center;
+    
+    background-color: black;
+    width: 100%;
+    padding: 95px 30px;
+}
+.logo-nav{
+    width: 50px;
+}
+footer {
+    background-color: black;
+    color: white;
+}
+.logo-stretch{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+.logo-inline-stretch{
+    max-width: 100px;
+    height: auto;
+}
+.user-info{
+    background-color: whitesmoke;
+    border-radius: 5px;
+    padding: 20px 20px 0 20px;
+}
+.avatar{
+    vertical-align: middle;
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    border-radius: 15%;
+}
+.avatarInReview{
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    border-radius: 15%;
+}
+.isFeatured{
+    border: 1px solid black;
+    border-radius: .25rem;
+}
+
+/* TEXT DECORATION */
+.font-effect-neon{
+    font-family: Lato;
+    font-weight: bold;
+    font-style: italic;
+}
+.link-white{
+    color:white;
+}
+.link-white:hover{
+    color: red;
+    text-decoration-line: none;
+}.header-link-white{
+    color:white;
+}
+.header-link-white:hover{
+    color: white;
+    text-decoration-line: none;
+}
+.link-black{
+    color:black;
+    text-decoration-line: underline;
+}
+.link-black:hover{
+    color: red;
+    text-decoration-line: underline;
+}
+.text-red{
+    color: red;
+}
+.text-green{
+    color: green;
+}
+.ratingSys{
+    color:gold;
+    font-weight: bold;
+    font-size: 30px
+}
+.notif{
+    color: white;
+}
+.bg-featured{
+    background-color: rgb(109, 26, 102);
+}
+.text-dark-purple{
+    color: purple;
+    font-weight: bold;
+    font-size: 15px
+}
+.btn-dark-purple{
+    color: white;
+    background-color: purple;
+    border-color: purple;
+}
+.btn-outline-purple{
+    color: white;
+    background-color: transparent;
+    background-image: none;
+    border-color: purple;
+}
+.navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
+    color: white;
+    text-shadow: 1px 1px purple;
+}
+.navbar-dark .navbar-nav .nav-link {
+    color: white;
+}
+.navbar-dark .navbar-nav .nav-link:hover {
+    color: white;
+    text-shadow: 1px 1px purple;    
+}
+
+@media only screen and (max-width: 1000px){
+    
+    .jumbotron{
+        border-radius: 0;
+        background: url("img/sexy-lady.png") no-repeat center center;
+        background-color: black;
+        width: 100%;
+        padding: 95px 30px;
+    }
+    
+}

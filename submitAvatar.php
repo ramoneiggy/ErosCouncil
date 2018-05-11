@@ -29,8 +29,8 @@ if (file_exists($target_file)) {
     $uploadOk = 0;
 }
 // Check file size
-if ($_FILES["avatar"]["size"] > 200000) {
-    echo "Sorry, your file is too large. Max 200KB.";
+if ($_FILES["avatar"]["size"] > 300000) {
+    echo "Sorry, your file is too large. Max 300KB.";
     $uploadOk = 0;
 }
 // Allow certain file formats

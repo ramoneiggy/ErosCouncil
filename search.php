@@ -1,15 +1,17 @@
 <?php
 include "head.php";
-include "classes.php";
 $conn = PDOConnect::getPDOInstance();
 ?>
 
-<div class="container-fluid col-12 user-info">
+<div class="container-fluid col-11 user-info">
     <h3>SEARCH RESULTS FOR "<?php echo $_POST['search']; ?>":</h3><hr>
     <h4>SITES</h4><hr>
     <div>
     <?php
         if (isset($_POST['submit'])){
+            if(strlen($_POST['search']) < 3){
+                echo "Search query too short.";
+            }else{
 
             //give variables
         
@@ -30,6 +32,7 @@ $conn = PDOConnect::getPDOInstance();
                 <a class ="link-black" href="pornSite.php?site=<?php echo $pornSite['name']; ?>"><?php echo $pornSite['name']; ?></a><br>
                 <?php
             }
+            }
         }
     ?>
     </div>
@@ -38,6 +41,9 @@ $conn = PDOConnect::getPDOInstance();
     <div>
     <?php
         if (isset($_POST['submit'])){
+            if(strlen($_POST['search']) < 3){
+                echo "Search query too short.";
+            }else{
 
             //give variables
         
@@ -55,11 +61,15 @@ $conn = PDOConnect::getPDOInstance();
         
             foreach($result as $user){
                 ?>                
-                <a class ="link-black" href="user-pornfolio.php?site=<?php echo $user['user_uid']; ?>"><?php echo $user['user_uid']; ?></a><br>
+                <a class ="link-black" href="profile.php?site=<?php echo $user['user_uid']; ?>"><?php echo $user['user_uid']; ?></a><br>
                 <?php
             }
         }
+        }
     ?>
+    <br><br>
     </div>
-
 </div>
+<?php 
+include "footer.php";
+?>

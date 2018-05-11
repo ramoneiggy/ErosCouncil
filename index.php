@@ -1,7 +1,5 @@
 <?php 
 include "head.php";
-include "classes.php";
-
 ?>
 
 <div class="container-fluid text-left">
@@ -10,12 +8,7 @@ include "classes.php";
         if (array_key_exists("signup", $_GET) && $_GET["signup"] == "success"){
             echo "<p>Congratulations, you have successfully signed up, now please login.</p>";
         }
-    ?>
-    <?php 
-    if (Check::ifAdmin($_SESSION['u_id']) == 1){
-        echo "<a href='administration.php'><button type='submit' class='btn btn-success' name='admin'>ADMINISTRATION</button></a>";
-    }
-    ?>    
+    ?>   
 </div>
 <hr>
 
@@ -23,18 +16,18 @@ include "classes.php";
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-6">
-            <h5 class="text-center"><b>STAFF FAVORITES</b></h5><hr>
+            <h3 class="text-center"><b>STAFF FAVORITES</b></h3><hr>
             <?php                
                 Draw::drawListFeaturedSites();
             ?>
         </div>
         <div class="col-sm-6">
-            <h5 class="text-center"><b>USER RECOMENDED SITES</b></h5>
-            <form class="text-center ratingSys" name="sortBy" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">SORT BY:
-                <button type="submit" name="sort" class="btn btn-warning" value="average DESC">BEST</button>
-                <button type="submit" name="sort" class="btn btn-warning" value="average ASC">WORST</button>
-                <button type="submit" name="sort" class="btn btn-warning" value="name ASC">NAME ASC</button>
-                <button type="submit" name="sort" class="btn btn-warning" value="name DESC">NAME DESC</button>
+            <h3 class="text-center"><b>USER RECOMENDED SITES</b></h3><hr>
+            <form class="text-center text-dark-purple" name="sortBy" method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">SORT BY<br>
+                <button type="submit" name="sort" class="btn btn-dark-purple" value="average DESC">BEST</button>
+                <button type="submit" name="sort" class="btn btn-dark-purple" value="average ASC">WORST</button>
+                <button type="submit" name="sort" class="btn btn-dark-purple" value="name ASC">ASC</button>
+                <button type="submit" name="sort" class="btn btn-dark-purple" value="name DESC">DESC</button>
             </form>
             <hr>
             <?php
@@ -43,10 +36,6 @@ include "classes.php";
         </div>
     </div>
 </div>
-
-
-
-
 <?php 
 include "footer.php";
 ?>

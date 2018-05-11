@@ -1,6 +1,5 @@
 <?php 
 include "head.php";
-include "classes.php";
 ?>
 <?php
 if (!isset($_SESSION['u_id'])) {
@@ -9,11 +8,6 @@ if (!isset($_SESSION['u_id'])) {
 ?>
 <div class="container-fluid text-left">
     <h4>Welcome to your <b>PORNFOLIO</b> <?php echo $_SESSION['u_uid']; ?>!</h4>
-    <?php 
-    if (Check::ifAdmin($_SESSION['u_id']) == 1){
-        echo "<a href='administration.php'><button type='submit' class='btn btn-success' name='admin'>ADMINISTRATION</button></a>";
-    }
-    ?>
 </div>
 <hr>
 <div class="container-fluid col-sm-12 text-left">

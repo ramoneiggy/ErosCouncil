@@ -20,8 +20,13 @@ if (isset($_POST['submit'])){
     $description = $_POST['description'];
     $logo = $_POST['logo'];
     $images = $_POST['images'];
-    $dateAdded = $_POST['dateAdded'];
-    $dateCreated = $_POST['dateCreated'];
+    $isFeatured = $_POST['isFeatured'];
+    $addedByUser = $_SESSION['u_id'];
+
+    if (!preg_match("/^[a-zA-Z]*$/", $name)){
+        header("Location: administration.php?site=nameError");
+        exit();
+    }
 
     //check if porn site exists in DB
 
@@ -37,19 +42,21 @@ if (isset($_POST['submit'])){
 
     //add site to DB
 
-    $query = $conn->prepare("INSERT INTO pornpages (name, url, description, logo, images, dateAdded, dateCreated) VALUES (:name, :url, :description, :logo, :images, :dateAdded, :dateCreated)");
+    $query = $conn->prepare("INSERT INTO pornpages (name, url, description, logo, images, isFeatured, addedByUser) VALUES (:name, :url, :description, :logo, :images, :isFeatured, :addedByUser)");
     
     $query->bindParam(':name', $name);
     $query->bindParam(':url', $url);
     $query->bindParam(':description', $description);
     $query->bindParam(':logo', $logo);
     $query->bindParam(':images', $images);
-    $query->bindParam(':dateAdded', $dateAdded);
-    $query->bindParam(':dateCreated', $dateCreated);
+    $query->bindParam(':isFeatured', $isFeatured);
+    $query->bindParam(':addedByUser', $addedByUser);
+
+    
 
     $query->execute();
 
 
-    header("Location: administration.php?site=added");
+    header("Location: administration.php?site=added&name=$name");
 
 }

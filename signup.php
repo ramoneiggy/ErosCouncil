@@ -1,6 +1,5 @@
 <?php
 include "head.php"; 
-include "classes.php";
 ?>        
 
 <!--LOG IN-->
@@ -11,11 +10,17 @@ include "classes.php";
             <h2>SIGN UP</h2>
 
             <form action="includes/signup.inc.php" method="POST" enctype="multipart/form-data" autocomplete="off">
-
+                <!-- ERROR REPORTS -->
                 <?php
                 if (array_key_exists("signup", $_GET) && $_GET["signup"] == "emailOrPasswordNotSame"){
                 echo "<p class='text-red'>Email or password error. Please try again.</p>";
-                }
+                }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "invalidCharacters"){
+                    echo "<p class='text-red'>Invalid characters in your choosen user name. Please choose another name and try again.</p>";
+                    }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "email"){
+                        echo "<p class='text-red'>Invalid e-mail. Please try again.</p>";
+                        }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "usertaken"){
+                            echo "<p class='text-red'>User name is taken. Please choose another name and try again.</p>";
+                            }
                 ?>             
 
                 <div class="form-group">
