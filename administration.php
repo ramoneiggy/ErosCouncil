@@ -5,9 +5,9 @@ include "head.php";
 <div class="container-fluid text-left">
     <?php
         if (Check::ifAdmin($_SESSION['u_id']) == 1){
-            echo "<h3>WELCOME MR. ADMINISTRATOR!<hr></h3>";    
+            echo "<h3 class='font-effect-neon'>WELCOME MR. ADMINISTRATOR!<hr></h3>";    
         }else{
-            die("<h3 class='text-red'>RESTRICTED, GO AWAY!!!<hr></h3>");
+            die("<h3 class='font-effect-neon'>RESTRICTED, GO AWAY!!!<hr></h3>");
         }
     ?>    
 </div>
@@ -17,7 +17,7 @@ include "head.php";
          <!-- ADD PORN SITE TO DB -->
         <div class="col-sm-3">
             
-            <h4 class="text-center">ADD PORN SITE TO DATABASE</h4><hr>
+            <h4 class="text-center font-effect-neon">ADD PORN SITE TO DATABASE</h4><hr>
 
             <form class="form-control" action="submitSiteToDB.php" method="post">
                 <?php
@@ -66,9 +66,9 @@ include "head.php";
 
         </div>
 
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-3"><h4 class="text-center font-effect-neon">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-3"><h4 class="text-center font-effect-neon">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-3"><h4 class="text-center font-effect-neon">EMPTY FOR NOW</h4><hr></div>
     </div>
 </div>
 

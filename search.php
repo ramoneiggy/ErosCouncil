@@ -4,8 +4,8 @@ $conn = PDOConnect::getPDOInstance();
 ?>
 
 <div class="container-fluid col-11 user-info">
-    <h3>SEARCH RESULTS FOR "<?php echo $_POST['search']; ?>":</h3><hr>
-    <h4>SITES</h4><hr>
+    <h3 class="font-effect-neon">SEARCH RESULTS FOR "<?php echo $_POST['search']; ?>":</h3><hr>
+    <h4 class="font-effect-neon">SITES</h4><hr>
     <div>
     <?php
         if (isset($_POST['submit'])){
@@ -37,7 +37,7 @@ $conn = PDOConnect::getPDOInstance();
     ?>
     </div>
     <br><br>
-    <h4>USERS</h4><hr>
+    <h4 class="font-effect-neon">USERS</h4><hr>
     <div>
     <?php
         if (isset($_POST['submit'])){

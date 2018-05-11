@@ -7,7 +7,7 @@ include "head.php";
     <div class="row">  
     <div class="col-sm-12"></div>
         <div class="col-sm-6 user-info">
-            <h2>SIGN UP</h2>
+            <h2 class="font-effect-neon">SIGN UP</h2>
 
             <form action="includes/signup.inc.php" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <!-- ERROR REPORTS -->
@@ -76,7 +76,7 @@ include "head.php";
                 <hr>
                 <small class="text-muted">*All fields are required. We will never share your data with anyone.</small>
                 <br>
-                <button type="submit" name="submit" class="float-right btn btn-primary" value="Upload Image">Submit</button>
+                <button type="submit" name="submit" class="float-right btn btn-dark-purple" value="Upload Image">Submit</button>
                 <br><br>
             </form>
         </div>
