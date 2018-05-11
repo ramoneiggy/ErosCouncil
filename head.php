@@ -33,13 +33,13 @@ include_once "classes.php";
   <div class="collapse navbar-collapse" id="navbarNav">
 
     <ul class="navbar-nav">
-      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("index") ?>">
+      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("index"); ?>">
         <a class="nav-link" href="index.php">Home</a>
       </li>
-      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("categories") ?>">
+      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("categories"); ?>">
         <a class="nav-link" href="categories.php">Categories</a>
       </li>
-      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("contact") ?>">
+      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("contact"); ?>">
         <a class="nav-link" href="contact.php">Contact us</a>
       </li>
     </ul>    

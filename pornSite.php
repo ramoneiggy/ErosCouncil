@@ -27,12 +27,12 @@ if ($sitePage !== $name){
 ?>
 
 <div class="container-fluid text-left">
-    <h4 class="font-effect-neon">
+    <h4>
         <?php 
         if (isset($_SESSION['u_id'])){
             echo $_SESSION['u_uid']."! Welcome to - <b>".$name."</b> - profile page.";
         } else {
-        echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a class='font-effect-neon' href='signup.php'>sign up</a>.";
+        echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a class='link-black' href='signup.php'>sign up</a>.";
         }
         ?>
     </h4>
@@ -51,13 +51,13 @@ if ($sitePage !== $name){
 
             <!-- AVERAGE RATING -->
             <div class="col-sm-12">
-                <h5 class="font-effect-neon">AVERAGE RATING:</h5>
+                <h5>AVERAGE RATING:</h5>
                 <?php Draw::drawRatingSystem($pageID); ?>
             </div>
 
             <!-- ADD RATING SYSTEM -->            
             <div class="col-sm-12">
-                <h5 class="font-effect-neon">YOUR RATING:</h5>
+                <h5>YOUR RATING:</h5>
                 <?php 
                     if (isset($_SESSION['u_id'])){
                         Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);                                                
@@ -90,13 +90,13 @@ if ($sitePage !== $name){
         <!-- SITE DESCRIPTION -->
         <div class="col-sm-6">
             <div class="col-sm 12">
-                <h5 class="font-effect-neon"><?php echo "<b>".$name." description:</b>"; ?><hr></h5>
+                <h5><?php echo "<b>".$name." description:</b>"; ?><hr></h5>
                 <p><?php echo $description; ?></p>
             </div>
 
             <!-- REVIEWS -->
             <div class="col-sm 12">
-                <h6 class="font-effect-neon"><?php echo "<b>".$name." reviews:</b>"; ?><hr></h6>
+                <h6><?php echo "<b>".$name." reviews:</b>"; ?><hr></h6>
 
                 <!-- ADD REVIEW -->
                 <?php

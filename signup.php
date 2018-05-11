@@ -7,7 +7,7 @@ include "head.php";
     <div class="row">  
     <div class="col-sm-12"></div>
         <div class="col-sm-6 user-info">
-            <h2 class="font-effect-neon">SIGN UP</h2>
+            <h2>SIGN UP</h2>
 
             <form action="includes/signup.inc.php" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <!-- ERROR REPORTS -->
