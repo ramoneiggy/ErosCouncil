@@ -66,9 +66,27 @@ include "head.php";
 
         </div>
 
+        <div class="col-sm-1">
+            <h4 class="text-center">ALL USERS</h4><hr>
+            <div class="user-info">            
+                <?php
+
+                $conn = PDOConnect::getPDOInstance();
+                $check = $conn->prepare("SELECT `user_uid` FROM users ORDER BY LOWER(user_uid)");
+                $check->execute(array());
+                $result = $check->fetchAll(PDO::FETCH_ASSOC);
+                    
+                foreach($result as $user){
+                    ?>                
+                    <a class ="link-black" href="profile.php?user=<?php echo $user['user_uid']; ?>"><?php echo $user['user_uid']; ?></a><br>
+            <?php } ?>     
+            <br>           
+            </div>
+        </div>
+
         <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
         <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-2"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
     </div>
 </div>
 

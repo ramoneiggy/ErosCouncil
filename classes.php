@@ -1,9 +1,7 @@
 <?php
 
-class Draw
-{
+class Draw{
     //  We will use Draw class to draw different elements of the page.
-
 
     public static function drawListUserRecomendedSites($sortBy){
         //CODE TO DRAW LIST OF ALL SITES
@@ -42,7 +40,6 @@ class Draw
         </div>
             ';
     }
-
 
     public static function drawListFeaturedSites(){
         //CODE TO DRAW LIST OF FEATURED PAGES
@@ -123,26 +120,76 @@ class Draw
         }                
     }
 
-    public static function userPornRatings(){
+    // USER INFO
+    public static function userInfo($userName){
+        //CODE TO DRAW USER INFO
+
+        $conn = PDOConnect::getPDOInstance();
+
+        $query = $conn->prepare("SELECT `user_uid` as name, joined, `dateOfBirth` as dob, apps_countries.country_name as location, avatar, gender FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_uid` = :userName");
+        $query->bindParam(':userName', $userName);
+        $query->execute();
+        $userInfo = $query->fetch(); 
+
+        if($userInfo['name'] == NULL){
+            die("User doesn't exist.");
+        }
+
+        $now = date("Y-m-d H:i:s");
+
+        $userInfoAge = ($now-$userInfo['dob']);
+
+        ?>
+        <div class='user-info col-sm-12'>
+            <div class='row'>
+                <div class='col-sm-5'>
+                <img class='avatar' src='<?php echo $userInfo['avatar']; ?>' alt='Avatar'>                
+                </div>
+                <!-- CHANGE AVATAR -->
+                <?php
+                if ($userName == $_SESSION['u_uid']){
+                    ?>
+                    <div class='col-sm-7'>
+                        <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
+                        <b>Change avatar:</b>
+                            <input class='btn' type='file' name='avatar' id='avatar'>
+                            <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
+                        </form>
+                    </div>  
+                    <?php
+                }
+                ?>   
+            <!-- USER INFO -->
+            </div>    
+            <hr>
+            <p><b>User name:</b> <?php echo $userInfo['name']; ?></p><hr>
+            <p><b>Gender:</b> <?php echo $userInfo['gender']; ?></p><hr>
+            <p><b>Age:</b> <?php echo $userInfoAge; ?></p><hr>
+            <p><b>Location:</b> <?php echo $userInfo['location']; ?></p><hr>
+            <p><b>Joined:</b> <?php echo $userInfo['joined']; ?></p><hr>
+        </div>
+        <?php
+    }
+
+    public static function userPornRatings($userName){
         //SHOW USER'S PORN STAR RATINGS
 
         $conn = PDOConnect::getPDOInstance();
 
-        $query = $conn->prepare("SELECT pornpages.id as id, pornpages.name as name, pornpages.url as url, pornpages.logo as logo, ratingscore.rating as rating FROM pornpages
-        INNER JOIN ratingscore ON pornpages.id = ratingscore.PageID
-        WHERE ratingscore.personID = :personID
-        GROUP BY name ORDER BY rating DESC");
+        $id = $conn->prepare("SELECT `user_id` FROM `users` WHERE `user_uid` = :userName");
+        $id->bindParam(':userName', $userName);
+        $id->execute();
+        $id = $id->fetch();
+        $personID = $id['user_id'];
 
-        $query->bindParam(':personID', $_SESSION['u_id']);
-
+        $query = $conn->prepare("SELECT pornpages.id as id, pornpages.name as name, pornpages.url as url, pornpages.logo as logo, ratingscore.rating as rating FROM pornpages INNER JOIN ratingscore ON pornpages.id = ratingscore.PageID WHERE ratingscore.personID = :personID GROUP BY name ORDER BY rating DESC ");
+        $query->bindParam(':personID', $personID);
         $query->execute();
-
         $pornPages = $query->fetchAll();
 
         if ($pornPages == NULL){
-            echo "You've not rated anything yet, why don't you go and rate something ;)";
+            echo "No ratings yet";
         }
-
         echo '
             <ul class="list-group">
             ';
@@ -154,19 +201,26 @@ class Draw
             echo "<div class='col-sm-4 float-left'><a class='float-left link-white' href='pornSite.php?site=".$pornPage['name']."'><h3>".$pornPage['name']."</h3></a></div>";
             //RATING
             echo "<div class='col-sm-4 float-left'>";
-            Draw::showYourCurrentRating($pornPage['id'], $_SESSION['u_id']);
+            Draw::showYourCurrentRating($pornPage['id'], $personID);
             echo "</div>";
             echo "</li>";
         }
         echo'    
             </ul>
+            <br>
             ';
     }
 
-    public static function showUsersReviews($personID){
+    public static function showUsersReviews($userName){
         //CODE TO DRAW USERS REVIEWS
 
         $conn = PDOConnect::getPDOInstance();
+
+        $id = $conn->prepare("SELECT `user_id` FROM `users` WHERE `user_uid` = :userName");
+        $id->bindParam(':userName', $userName);
+        $id->execute();
+        $id = $id->fetch();
+        $personID = $id['user_id'];
 
         $sql = "SELECT users.user_id as personID, users.user_uid as personName, pornpages.id as pornpageID, pornpages.name as pornpageName, comments.content as review, comments.datePublished as dateTime FROM `comments`
         INNER JOIN users on comments.personID = users.user_id
@@ -179,64 +233,19 @@ class Draw
         $allComments = $query->fetchAll();
 
         if (empty($allComments) == true) {
-        echo "<p>No reviews yet, why don't you go and add one.</p>";
+        echo "<p>No reviews yet.</p>";
         }
 
         foreach ($allComments as $singleComment){                    
         echo 
         "<li class='list-group-item'>"
-        ."<small>You reviewed "."<a href='pornSite.php?site=".$singleComment['pornpageName']."'>".$singleComment['pornpageName']."</a> on ".$singleComment['dateTime']."</small><br>"
+        ."<small>Reviewed "."<a href='pornSite.php?site=".$singleComment['pornpageName']."'>".$singleComment['pornpageName']."</a> on ".$singleComment['dateTime']."</small><br>"
         .$singleComment["review"].
         "</li>";                    
         }
     }
 
-    public static function userInfo($personID){
-        //CODE TO DRAW USER INFO
-
-        $conn = PDOConnect::getPDOInstance();
-
-        $query = $conn->prepare("SELECT `user_uid` as name, joined, `dateOfBirth` as dob, apps_countries.country_name as location, avatar, gender, `user_email` as email FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_id` = :personID");
-        $query->bindParam(':personID', $personID);
-        $query->execute();
-        $userInfo = $query->fetch(); 
-
-        $now = date("Y-m-d H:i:s");
-
-        $userInfoAge = ($now-$userInfo['dob']);
-
-        echo "
-            <div class='user-info col-sm-12'>
-                <div class='row'>
-                    <div class='col-sm-5'>
-                    ";
-                    if(array_key_exists("avatar", $_GET) && $_GET["avatar"] == "updated"){
-                        echo "<p class='text-green'>Avatar updated!</p>";
-                    }
-                    
-                echo " 
-                        <img class='avatar' src='".$userInfo['avatar']."' alt='Avatar'>
-                    </div>                    
-                    <div class='col-sm-7'>
-                        <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
-                        <b>Change avatar:</b>
-                            <input class='btn' type='file' name='avatar' id='avatar'>
-                            <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
-                        </form>
-                    </div>
-                </div>    
-                <hr>
-                <p><b>User name:</b> ".$userInfo['name']."</p><hr>
-                <p><b>Gender:</b> ".$userInfo['gender']."</p><hr>
-                <p><b>E-mail:</b> ".$userInfo['email']."</p><hr>
-                <p><b>Date of birth:</b> ".$userInfo['dob']."&nbsp;&nbsp;&nbsp;<b>Age:</b> ".$userInfoAge."</p><hr>
-                <p><b>Location:</b> ".$userInfo['location']."</p><hr>
-                <p><b>Joined:</b> ".$userInfo['joined']."</p><hr>
-            </div>
-            ";
-
-    }
-
+    // COUNTRIES DB
     public static function listCountries(){
         //CODE TO DRAW A LIST OF COUNTRIES
 
@@ -250,6 +259,7 @@ class Draw
         }
     }
 
+    // ACTIVE NAV CLASS
     public static function echoActiveClassIfRequestMatches($requestUri){
         //GIVE CLASS "ACTIVE" TO NAV LINK
     
@@ -259,19 +269,9 @@ class Draw
             echo "active font-effect-neon";
         }
     }
-
-    public static function drawLoginForm(){
-        //CODE TO DRAW LOGIN OVERLAY
-    }
-
-    public static function drawRegistrationForm(){
-        //CODE TO DRAW REGISTRATION OVERLAY
-    }
-
 }
 
-class Check
-{
+class Check{
     
     public static function ifAdmin($personID){
         //CHECK IF USER IS ADMIN
@@ -288,8 +288,7 @@ class Check
 
 }
 
-class PDOConnect
-{   
+class PDOConnect{   
 
     private static $servername = "localhost"; // 127.0.0.1
     private static $username = "root";

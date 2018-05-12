@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 12:07 AM
+-- Generation Time: May 12, 2018 at 04:45 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -342,7 +342,10 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (47, 27, 1, 'I lowe it', 1, '2018-05-09 23:07:51'),
 (48, 14, 7, 'Nice tits', 1, '2018-05-11 21:47:46'),
 (49, 12, 1, 'JoÅ¡ radi', 1, '2018-05-11 22:28:33'),
-(50, 28, 11, 'this site sucks!!!', 1, '2018-05-11 23:08:58');
+(50, 28, 11, 'this site sucks!!!', 1, '2018-05-11 23:08:58'),
+(51, 12, 12, 'Great!!!', 1, '2018-05-12 00:10:45'),
+(52, 20, 13, 'expensive', 1, '2018-05-12 01:21:51'),
+(53, 26, 12, 'very nice!!1!', 1, '2018-05-12 16:33:58');
 
 -- --------------------------------------------------------
 
@@ -403,7 +406,7 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (2, 12, 9, 4),
 (3, 12, 1, 5),
 (4, 12, 10, 5),
-(5, 12, 2, 5),
+(5, 12, 2, 3),
 (6, 12, 5, 5),
 (7, 12, 7, 4),
 (8, 12, 6, 2),
@@ -453,7 +456,9 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (86, 12, 11, 3),
 (87, 28, 11, 1),
 (88, 12, 12, 4),
-(89, 12, 13, 4);
+(89, 12, 13, 4),
+(90, 20, 13, 4),
+(91, 26, 12, 4);
 
 -- --------------------------------------------------------
 
@@ -479,7 +484,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
-(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-735411190-31562327_10155793504664335_7672479867622916096_n.jpg', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
+(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-1507894045-a73.png', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
 (13, 'Marko', '2000-06-15', 'FR', '', 'marko@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$295.b5cF/q3NXnAJVLonf.as5R9KRf9x6p8pm6sNCbNtXX.JIJWTi', 0),
 (14, 'Pero', '2000-06-15', 'US', '', 'pero@gmail.com', 'uploads/profilePics/Pero-984410454-punisaurus.jpg', '0000-00-00 00:00:00', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C', 0),
 (16, 'Jurica', '2000-06-15', 'HR', '', 'jurica@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d.1UVyhTS2oNgGB3KyBvRO2UQ6wjNDoDny6u7O56DEtmKz34C8l4a', 0),
@@ -492,7 +497,7 @@ INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`,
 (23, 'faca', '2012-12-12', 'BD', 'gender', 'faca@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$Ya2nZ9lnzOtyclgLr7x3.OAVIDPMsLBOuPlu00qkvW8eLiBnIQfAG', 0),
 (24, 'seksi', '1985-12-12', 'BH', 'other', 'seksi@mail.com', 'uploads/profilePics/seksi-2129163226-index.jpg', '0000-00-00 00:00:00', '$2y$10$vA/wl9RrfWT2b3ihS2gIYukixB7GO66Hs2MOH4XIxDnLp31P5QsQO', 0),
 (25, 'fak', '2000-05-07', 'DS', 'female', 'fak@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$W/9fbl1jmHGNTP4mZ0jFNO0aH0PL3mxxp2PreP04GnsqOcGLIWzWG', 0),
-(26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/user-default.png', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
+(26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/borat-476648404-borat-swimsuit-beach-body-abs-251x300.jpg', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
 (27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0),
 (28, 'archer', '1955-12-12', 'US', 'male', 'archer@mail.com', 'uploads/profilePics/archer-966123229-archer.jpg', '2018-05-11 23:06:37', '$2y$10$KZWHtvESYvS4npe00Lx3ceIxuE2olL96N2msxu/DcU7.GusZmaoGW', 0);
 
@@ -548,7 +553,7 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
@@ -560,7 +565,7 @@ ALTER TABLE `pornpages`
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=90;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
 
 --
 -- AUTO_INCREMENT for table `users`

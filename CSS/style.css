@@ -50,6 +50,7 @@ footer {
     border-radius: .25rem;
 }
 
+
 /* TEXT DECORATION */
 .font-effect-neon{
     font-family: Lato;
@@ -65,7 +66,7 @@ h1.font-effect-neon{
     color:white;
 }
 .link-white:hover{
-    color: red;
+    color: purple;
     text-decoration-line: none;
 }.header-link-white{
     color:white;
@@ -79,7 +80,7 @@ h1.font-effect-neon{
     text-decoration-line: underline;
 }
 .link-black:hover{
-    color: red;
+    color: purple;
     text-decoration-line: underline;
 }
 .text-red{

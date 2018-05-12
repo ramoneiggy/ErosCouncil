@@ -33,6 +33,7 @@ include_once "classes.php";
   <div class="collapse navbar-collapse" id="navbarNav">
 
     <ul class="navbar-nav">
+
       <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("index"); ?>">
         <a class="nav-link" href="index.php">Home</a>
       </li>
@@ -42,6 +43,7 @@ include_once "classes.php";
       <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("contact"); ?>">
         <a class="nav-link" href="contact.php">Contact us</a>
       </li>
+      
     </ul>    
 
       <ul class="navbar-nav fixed-left ml-auto">

@@ -6,8 +6,7 @@
       <?php
       $fromYear = 2018; 
       $thisYear = (int)date('Y'); 
-      echo $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');?> - <a class="link-white" href="index.php"> Ivan</a>, <a class="link-white" href="index.php">Leon</a>, <a class="link-white" href="https://www.isolaja.com"
-      >Igor</a> @ <a class="link-white" href="index.php">PornReview.com</a>.
+      echo $fromYear . (($fromYear != $thisYear) ? '-' . $thisYear : '');?> @ <a class="link-white" href="index.php">pornReview.com</a>
     </p>
 </footer>
 
