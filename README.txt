@@ -6,7 +6,7 @@ ime baze je promijenjeno iz loginsystem u pornreview, OBAVEZNO novu bazu posprem
 
 TREBAMO
 
-+LOGIN/SIGNUP
++LOGIN/SIGNUP - treba srediti da user dobije obavijest na svoj email da je obavio uspješan SIGNUP
 +POPIS STRANICA 
 +SUSTAV RANGIRANJA 
 +KOMENTARI 
@@ -15,12 +15,13 @@ TREBAMO
 ŽELIMO
 
 +KOMENTARI BEZ RELOADA 
-+PROFIL SA POVIJESTI (PORNFOLIO)
-+ADMIN, MODERATOR SUSTAV
++PROFIL SA POVIJESTI (PORNFOLIO) - treba dodati da USER može mijenjati podatke poput email, lokacija, spol i password
++ADMIN, MODERATOR SUSTAV - treba dodati mogučnost da admini mogu druge usere pretvarati u admine & provjera za "USER ADD PORN SITE TO DB"
 +DODAVANJE AVATARA
 +SEARCH BAR
 +PROVJERI PROFIL DRUGOG KORISNIKA
 USER ADD PORNSITE TO FAVORITES SUSTAV
+USER ADD PORN SITE TO DB
 PRIVATE MESSAGE
 SUPPORT TICKET
 LIKE NA KOMENTARE
