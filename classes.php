@@ -269,6 +269,18 @@ class Draw{
             echo "active font-effect-neon";
         }
     }
+
+    // ADD SITE TO FAVORITE
+    public static function addRemoveFavSite($pageID, $pageName, $logo){
+
+        $conn = PDOConnect::getPDOInstance();
+
+        ?>
+            <div class="d-inline-block col-sm-2 text-left">
+                <button class="btn btn-dark-purple">ADD TO FAVORITES</button>
+            </div>
+        <?php
+    }
 }
 
 class Check{
