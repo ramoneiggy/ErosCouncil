@@ -16,7 +16,7 @@ TREBAMO
 
 +KOMENTARI BEZ RELOADA 
 +PROFIL SA POVIJESTI (PORNFOLIO) - treba dodati da USER može mijenjati podatke poput email, lokacija, spol i password
-+ADMIN, MODERATOR SUSTAV - treba dodati mogučnost da admini mogu druge usere pretvarati u admine & provjera za "USER ADD PORN SITE TO DB"
++ADMIN SUSTAV - treba dodati mogučnost da admini mogu druge usere pretvarati u admine & provjera za "USER ADD PORN SITE TO DB"
 +DODAVANJE AVATARA
 +SEARCH BAR
 +PROVJERI PROFIL DRUGOG KORISNIKA
