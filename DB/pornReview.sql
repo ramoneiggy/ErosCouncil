@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 12, 2018 at 04:45 PM
+-- Generation Time: May 14, 2018 at 11:42 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -296,8 +296,8 @@ CREATE TABLE `comments` (
   `personID` int(11) NOT NULL,
   `PageID` int(11) NOT NULL,
   `content` varchar(1024) NOT NULL,
-  `isVisible` tinyint(1) NOT NULL,
-  `datePublished` datetime NOT NULL
+  `isVisible` int(1) NOT NULL DEFAULT '1',
+  `datePublished` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -345,7 +345,11 @@ INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `dat
 (50, 28, 11, 'this site sucks!!!', 1, '2018-05-11 23:08:58'),
 (51, 12, 12, 'Great!!!', 1, '2018-05-12 00:10:45'),
 (52, 20, 13, 'expensive', 1, '2018-05-12 01:21:51'),
-(53, 26, 12, 'very nice!!1!', 1, '2018-05-12 16:33:58');
+(53, 26, 12, 'very nice!!1!', 1, '2018-05-12 16:33:58'),
+(54, 12, 8, 'what a nice site', 1, '2018-05-14 22:42:21'),
+(55, 29, 1, 'WOW', 1, '2018-05-14 23:05:56'),
+(56, 29, 5, 'fuck hamsters XOXOXO', 1, '2018-05-14 23:13:02'),
+(57, 12, 14, 'OK', 1, '2018-05-14 23:36:03');
 
 -- --------------------------------------------------------
 
@@ -382,7 +386,8 @@ INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `
 (10, 'TNAFlix', 'https://www.tnaflix.com', 'Amazing porn tube website showing thousand of hot porn videos.', 'https://www.tnaflix.com/images/mx.png', 'https://www.tnaflix.com/images/mx.png', '2018-05-04 00:00:00', 0, 0),
 (11, 'Scoreland', 'http://www.scoreland.com', 'Score has launched the careers of some of the best known big-boobed beauties in the biz and it doesn\'t look as though they\'re slowing down the jugg parade any time soon. Watch these busty babes do their thing in HD downloads and steams. They add new content to their already impressive collection every day and everything they give you is exclusive and hot.', 'http://cdn.scoreuniverse.com/scoreland/images/free/new/logo_678x60.png', '', '2018-05-11 22:38:45', 1, 0),
 (12, 'Nubiles', 'http://nubiles.net/', 'This great site stars hot babes who are very excited about being able to show you how they play with themselves - and some take the time to learn how to please a man. The sheer size of the library is mind-blowing and the quality does these sexy girls justice with Full HD footage. If you\'re looking for the ultimate teen porn experience, then jump right in! ', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', '2018-05-11 23:34:06', 1, 12),
-(13, 'Brazzers', 'https://www.brazzersnetwork.com/', 'Busty teens, sexy MILFs, gorgeous pornstars... All of them get in on hardcore, with interracial sex, blowjobs, threesomes, orgies and so much more in thousands of high-quality videos. Everything you could ever want from an XXX network is here, so come and enjoy all the action from one of our favorite porn makers - and the production values are sky-high!', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', '2018-05-11 23:45:03', 1, 12);
+(13, 'Brazzers', 'https://www.brazzersnetwork.com/', 'Busty teens, sexy MILFs, gorgeous pornstars... All of them get in on hardcore, with interracial sex, blowjobs, threesomes, orgies and so much more in thousands of high-quality videos. Everything you could ever want from an XXX network is here, so come and enjoy all the action from one of our favorite porn makers - and the production values are sky-high!', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', '2018-05-11 23:45:03', 1, 12),
+(14, 'Watch My GF', 'https://www.watchmygf.me/', 'Various ex girlfriend videos', 'https://www.watchmygf.me/images/logo.png', 'https://www.watchmygf.me/images/logo.png', '2018-05-14 23:35:20', 0, 12);
 
 -- --------------------------------------------------------
 
@@ -402,15 +407,15 @@ CREATE TABLE `ratingscore` (
 --
 
 INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
-(1, 12, 8, 5),
+(1, 12, 8, 3),
 (2, 12, 9, 4),
 (3, 12, 1, 5),
-(4, 12, 10, 5),
+(4, 12, 10, 3),
 (5, 12, 2, 3),
 (6, 12, 5, 5),
 (7, 12, 7, 4),
 (8, 12, 6, 2),
-(9, 12, 3, 5),
+(9, 12, 3, 4),
 (10, 12, 4, 4),
 (11, 13, 8, 4),
 (12, 13, 9, 5),
@@ -455,10 +460,48 @@ INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
 (85, 20, 9, 4),
 (86, 12, 11, 3),
 (87, 28, 11, 1),
-(88, 12, 12, 4),
+(88, 12, 12, 3),
 (89, 12, 13, 4),
 (90, 20, 13, 4),
-(91, 26, 12, 4);
+(91, 26, 12, 4),
+(92, 29, 1, 5),
+(93, 29, 5, 5),
+(94, 29, 2, 5),
+(95, 12, 14, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `userfavorites`
+--
+
+CREATE TABLE `userfavorites` (
+  `id` int(11) NOT NULL,
+  `userID` int(11) NOT NULL,
+  `pornPageID` int(11) NOT NULL,
+  `dateTimeAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `userfavorites`
+--
+
+INSERT INTO `userfavorites` (`id`, `userID`, `pornPageID`, `dateTimeAdded`) VALUES
+(11, 12, 1, '2018-05-14 21:01:41'),
+(12, 12, 5, '2018-05-14 21:01:56'),
+(14, 12, 4, '2018-05-14 21:02:00'),
+(15, 12, 7, '2018-05-14 21:02:01'),
+(18, 12, 8, '2018-05-14 21:23:35'),
+(19, 12, 3, '2018-05-14 21:23:55'),
+(20, 12, 6, '2018-05-14 21:24:14'),
+(21, 12, 12, '2018-05-14 21:46:53'),
+(22, 20, 1, '2018-05-14 21:59:45'),
+(26, 20, 13, '2018-05-14 22:19:14'),
+(27, 20, 5, '2018-05-14 22:19:25'),
+(28, 26, 13, '2018-05-14 22:55:44'),
+(29, 29, 1, '2018-05-14 23:06:00'),
+(30, 29, 5, '2018-05-14 23:13:16'),
+(31, 29, 2, '2018-05-14 23:13:26');
 
 -- --------------------------------------------------------
 
@@ -499,7 +542,9 @@ INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`,
 (25, 'fak', '2000-05-07', 'DS', 'female', 'fak@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$W/9fbl1jmHGNTP4mZ0jFNO0aH0PL3mxxp2PreP04GnsqOcGLIWzWG', 0),
 (26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/borat-476648404-borat-swimsuit-beach-body-abs-251x300.jpg', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
 (27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0),
-(28, 'archer', '1955-12-12', 'US', 'male', 'archer@mail.com', 'uploads/profilePics/archer-966123229-archer.jpg', '2018-05-11 23:06:37', '$2y$10$KZWHtvESYvS4npe00Lx3ceIxuE2olL96N2msxu/DcU7.GusZmaoGW', 0);
+(28, 'archer', '1955-12-12', 'US', 'male', 'archer@mail.com', 'uploads/profilePics/archer-966123229-archer.jpg', '2018-05-11 23:06:37', '$2y$10$KZWHtvESYvS4npe00Lx3ceIxuE2olL96N2msxu/DcU7.GusZmaoGW', 0),
+(29, 'chacha', '1994-01-01', 'ER', 'female', 'chacha@gmail.com', 'uploads/profilePics/chacha-582072069-images.jpg', '2018-05-14 23:03:54', '$2y$10$ZeonmsvNE3OEIpIYq6Eh3.LbylY.4AhP82ywGnDKNHSDO/.zxpl.S', 0),
+(30, 'njofra', '1988-01-01', 'AF', 'other', 'nofra@mail.com', 'uploads/profilePics/user-default.png', '2018-05-14 23:40:55', '$2y$10$PI015b2xyzYa890sS9J/We/2fm61Mvuyr8rLe3ZIwWpuT6kQd99Na', 0);
 
 --
 -- Indexes for dumped tables
@@ -534,6 +579,14 @@ ALTER TABLE `ratingscore`
   ADD KEY `personID` (`personID`);
 
 --
+-- Indexes for table `userfavorites`
+--
+ALTER TABLE `userfavorites`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `pornPageID` (`pornPageID`),
+  ADD KEY `userID` (`userID`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -553,25 +606,31 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=54;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
 --
 ALTER TABLE `pornpages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=92;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+
+--
+-- AUTO_INCREMENT for table `userfavorites`
+--
+ALTER TABLE `userfavorites`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- Constraints for dumped tables
@@ -590,6 +649,13 @@ ALTER TABLE `comments`
 ALTER TABLE `ratingscore`
   ADD CONSTRAINT `ratingscore_ibfk_1` FOREIGN KEY (`PageID`) REFERENCES `pornpages` (`id`),
   ADD CONSTRAINT `ratingscore_ibfk_2` FOREIGN KEY (`personID`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `userfavorites`
+--
+ALTER TABLE `userfavorites`
+  ADD CONSTRAINT `userfavorites_ibfk_1` FOREIGN KEY (`pornPageID`) REFERENCES `pornpages` (`id`),
+  ADD CONSTRAINT `userfavorites_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`user_id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

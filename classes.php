@@ -20,7 +20,7 @@ class Draw{
         $pornPages = $query->fetchAll();
 
         echo '
-        <div class="container col-sm-8">
+        <div class="container col-lg-8">
             <ul class="list-group">
             ';
         foreach ($pornPages as $pornPage){
@@ -52,7 +52,7 @@ class Draw{
         $pornPages = $query->fetchAll();
 
         echo '
-        <div class="container col-sm-8">
+        <div class="container col-lg-8">
             <ul class="list-group">
             ';
         foreach ($pornPages as $pornPage){
@@ -180,7 +180,7 @@ class Draw{
         $id->bindParam(':userName', $userName);
         $id->execute();
         $id = $id->fetch();
-        $personID = $id['user_id'];
+        $personID = htmlspecialchars($id['user_id']);
 
         $query = $conn->prepare("SELECT pornpages.id as id, pornpages.name as name, pornpages.url as url, pornpages.logo as logo, ratingscore.rating as rating FROM pornpages INNER JOIN ratingscore ON pornpages.id = ratingscore.PageID WHERE ratingscore.personID = :personID GROUP BY name ORDER BY rating DESC ");
         $query->bindParam(':personID', $personID);
@@ -262,24 +262,83 @@ class Draw{
     // ACTIVE NAV CLASS
     public static function echoActiveClassIfRequestMatches($requestUri){
         //GIVE CLASS "ACTIVE" TO NAV LINK
-    
         $current_file_name = basename($_SERVER['REQUEST_URI'], ".php");
-
         if ($current_file_name == $requestUri){
             echo "active font-effect-neon";
         }
     }
 
+    public static function emptyActiveClass(){
+        //NEED TO FIND A BETTER WAY FOR echoActiveClassIfRequestMatches & emptyActiveClass
+        if($_SERVER['REQUEST_URI'] == '/PornReview/'){
+            echo "active font-effect-neon";
+        }
+    }
+
     // ADD SITE TO FAVORITE
-    public static function addRemoveFavSite($pageID, $pageName, $logo){
+    public static function addRemoveFavSite($personID, $pageID){
 
         $conn = PDOConnect::getPDOInstance();
 
-        ?>
+        $query = $conn->prepare("SELECT * FROM userfavorites WHERE userID = :personID AND pornPageID = :pageID");
+        $query->bindParam(':personID', $personID);
+        $query->bindParam(':pageID', $pageID);
+        $query->execute();
+        $favorites = $query->fetch();
+
+        ?><form action="" method="post"><?php
+        if($favorites == NULL){
+            ?>
             <div class="d-inline-block col-sm-2 text-left">
-                <button class="btn btn-dark-purple">ADD TO FAVORITES</button>
+                <button value="add" type="submit" name="submit" class="btn btn-dark-purple-fav" >&#9734; ADD TO FAVORITES</button>
             </div>
-        <?php
+            <?php
+        }else{
+            ?>
+            <div class="d-inline-block col-sm-2 text-left">
+                <button value="remove" type="submit" name="submit" class="btn btn-dark-purple-fav" >&#9734; REMOVE FROM FAVORITES</button>
+            </div>
+            <?php
+        }
+        ?></form><?php
+
+        if (isset($_POST['submit'])){
+
+            $addRemove = $_POST['submit'];
+        
+            if($addRemove == 'add'){
+                $addRemove = $conn->prepare("INSERT INTO `userfavorites`(`userID`, `pornPageID`) VALUES (:personID, :pageID)");
+                $addRemove->bindParam(':personID', $personID);
+                $addRemove->bindParam(':pageID', $pageID);
+                $addRemove->execute();
+            }elseif($addRemove == 'remove'){
+                $addRemove = $conn->prepare("DELETE FROM `userfavorites` WHERE `userID` = :personID AND `pornPageID` = :pageID");
+                $addRemove->bindParam(':personID', $personID);
+                $addRemove->bindParam(':pageID', $pageID);
+                $addRemove->execute();
+            }
+            header("Refresh:0");
+        }
+    }
+
+    // LIST USER FAVORITES
+    public static function listFavorites($userName){
+
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT userfavorites.userID as personID, pornpages.name as pornSite, pornpages.logo as pornLogo FROM `userfavorites` INNER JOIN pornpages ON userfavorites.pornPageID = pornpages.id WHERE `userID` = (SELECT users.user_id FROM users WHERE users.user_uid = :userName)");
+        $query->bindParam(':userName', $userName);
+        $query->execute();
+        $favorites = $query->fetchAll();
+
+        ?><ul class="list-inline"><?php
+        if($favorites == NULL){
+            echo "<p><b>No favorites yet...</b></p>";
+        }
+        foreach($favorites as $favorite){
+        ?><li class="list-inline-item"><a href="pornSite.php?site=<?php echo $favorite['pornSite'] ?>"><img class="user-favorite-site-logo" src="<?php echo $favorite['pornLogo']; ?>" alt="porn-site-logo"></a></li><?php
+        }
+        ?></ul><?php
+
     }
 }
 

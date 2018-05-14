@@ -15,18 +15,26 @@ if (isset($_POST['submit'])){
 
     //give variables
 
-    $name = $_POST['name'];
+    $name = htmlspecialchars($_POST['name']);
     $url = $_POST['url'];
-    $description = $_POST['description'];
+    $description = htmlspecialchars($_POST['description']);
     $logo = $_POST['logo'];
     $images = $_POST['images'];
-    $isFeatured = $_POST['isFeatured'];
-    $addedByUser = $_SESSION['u_id'];
+    $isFeatured = htmlspecialchars($_POST['isFeatured']);
+    $addedByUser = htmlspecialchars($_SESSION['u_id']);    
 
-    if (!preg_match("/^[a-zA-Z]*$/", $name)){
-        header("Location: administration.php?site=nameError");
+    //$name = str_replace(' ', '_', $name); možda da ovo koristimo?
+
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$url)) {
+        header("Location: administration.php?site=urlError");
         exit();
-    }
+      }if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$logo)) {
+        header("Location: administration.php?site=logoError");
+        exit();
+      }if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$images)) {
+        header("Location: administration.php?site=imagesError");
+        exit();
+      }
 
     //check if porn site exists in DB
 
