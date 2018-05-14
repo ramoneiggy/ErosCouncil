@@ -2,7 +2,7 @@
 
 ime baze je promijenjeno iz loginsystem u pornreview, OBAVEZNO novu bazu pospremiti u tablicu pod imenom pornreview //Igor
 
-HOME PAGE - tri liste, vertikalna na kojoj se nalaze favoriti od usera, jedna horizontalna na kojoj se nalazi popis svih stranica sa njihovim prosječnim ocjenama i da se sortirati po želji, a druga lista je ista kao prva ali se vide samo "odabrane stranice" 
+HOME PAGE - tri liste, horizontalna na kojoj se nalaze favoriti od usera, jedna vertikalna na kojoj se nalazi popis svih stranica sa njihovim prosječnim ocjenama i da se sortirati po želji, a druga vertikalna lista je ista kao prva, ali se vide samo "odabrane stranice" 
 PORNPAGE - stranica na kojoj se vide informacije o pojedinoj porno stranici i User može dodavati i mijenjati ocjene, stavljati komentare te staviti stranicu u svoje favorite
 PORNFOLIO - profilna stranica korisnika gdje korisnik vidi svoje informacije, ocjene, favorite i komentare te može mijenjati svog avatara
 ADMINISTRATION - user koji je označen kao administrator može dodavati nove porno stranice i vidjeti popis svih korisnika
