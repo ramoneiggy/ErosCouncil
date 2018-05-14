@@ -4,7 +4,7 @@ include "head.php";
 
 <div class="container-fluid text-left">
     <?php
-        if (Check::ifAdmin($_SESSION['u_id']) == 1){
+        if (Check::ifAdmin(htmlspecialchars($_SESSION['u_id'])) == 1){
             echo "<h3>WELCOME MR. ADMINISTRATOR!<hr></h3>";    
         }else{
             die("<h3>RESTRICTED, GO AWAY!!!<hr></h3>");

@@ -11,6 +11,13 @@ if (!isset($_SESSION['u_id'])) {
 <hr>
 <div class="container-fluid col-sm-12 text-left">
     <div class="row">
+        <div class="col-sm-12 text-center">
+            <h6><b>YOUR FAVORITES</b></h6>
+            <?php Draw::listFavorites($_SESSION['u_uid']) ?>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-4">
             <h5 class="text-center"><b>YOUR INFO</b></h5><hr>
             <?php Draw::userInfo($_SESSION['u_uid']) ?>

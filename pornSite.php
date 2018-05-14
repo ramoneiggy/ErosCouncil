@@ -20,23 +20,31 @@ $images = $siteInfo['images'];
 $dateAdded = $siteInfo['dateAdded'];
 
 if ($sitePage !== $name){
-    echo "<p>Sorry, site doesn't exist!</p>";
-    die();
+    die("Site doesn't exist.");
+}if($sitePage == NULL){
+    die("Site doesn't exist.");
 }
 
 ?>
 
-<div class="container-fluid text-left">
-    <h4>
-        <?php 
-        if (isset($_SESSION['u_id'])){
-            echo $_SESSION['u_uid']."! Welcome to - <b>".$name."</b> - profile page.";
-        } else {
-        echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a class='link-black' href='signup.php'>sign up</a>.";
-        }
-        ?>
-    </h4>
+<div class="container-fluid col-sm-12 text-left">
+    <div class="row">
+        <div class="d-inline-block col-sm-10">
+            <h4>
+                <?php 
+                if (isset($_SESSION['u_id'])){
+                    echo $_SESSION['u_uid']."! Welcome to - <b>".$name."</b> - profile page.";
+                } else {
+                echo "Welcome to - <b>".$name."</b> - profile page.<br>Please login or <a class='link-black' href='signup.php'>sign up</a>.";
+                }
+                ?>
+            </h4>
+        </div>
+        <!-- FAVORITES SYSTEM -->
+        <?php Draw::addRemoveFavSite($_SESSION['u_id'], $pageID); ?>
+    </div>
     <hr>
+    
 
 <!--CONTENT-->
 
@@ -73,14 +81,11 @@ if ($sitePage !== $name){
                             <input type="radio" name="rating" value="5">
                             <label class="ratingSys">5</label><br>                                   
                             <button type="submit" class="btn btn-dark-purple" name="submit">RATE <?php echo $name; ?></button>
-                        </form>    
-                        
+                        </form>  
                         <?php
                         } else {
                         echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a rating.";
                     }
-
-                    
                 ?>
                 <hr>
             </div>

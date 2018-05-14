@@ -7,17 +7,24 @@ if (!isset($_SESSION['u_id'])) {
 ?>
 <div class="container-fluid col-sm-12 text-left">
     <div class="row">
+        <div class="col-sm-12 text-center">
+            <h6><b><?php echo htmlspecialchars($_GET['user']); ?> FAVORITES</b></h6>
+            <?php Draw::listFavorites(htmlspecialchars($_GET['user'])) ?>
+            <hr>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-4">
         <h5 class="text-center"><b>USER INFO</b></h5><hr>
-            <?php Draw::userInfo($_GET['user']) ?>
+            <?php Draw::userInfo(htmlspecialchars($_GET['user'])) ?>
         </div>
         <div class="col-sm-4">
         <h5 class="text-center"><b>USER PORN SITE RATINGS</b></h5><hr>
-            <?php Draw::userPornRatings($_GET['user']) ?>
+            <?php Draw::userPornRatings(htmlspecialchars($_GET['user'])) ?>
         </div>
         <div class="col-sm-4">
         <h5 class="text-center"><b>USER PORN SITE REVIEWS</b></h5><hr>
-            <?php Draw::showUsersReviews($_GET['user']); ?>
+            <?php Draw::showUsersReviews(htmlspecialchars($_GET['user'])); ?>
         </div>
     </div>
 </div>

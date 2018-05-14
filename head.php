@@ -34,7 +34,7 @@ include_once "classes.php";
 
     <ul class="navbar-nav">
 
-      <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("index"); ?>">
+      <li class="nav-item <?php Draw::emptyActiveClass(); Draw::echoActiveClassIfRequestMatches("index"); ?>">
         <a class="nav-link" href="index.php">Home</a>
       </li>
       <li class="nav-item <?php Draw::echoActiveClassIfRequestMatches("categories"); ?>">
@@ -86,5 +86,6 @@ include_once "classes.php";
 </nav>
 
 <div class="jumbotron">
-  <h1 class="font-effect-neon display-4"><b><a class="header-link-white" href="index.php">PORN REVIEW</a></b></h1>
+  <h1 class="font-effect-neon display-4 blink_me"><b><a class="header-link-white" href="index.php">EROS COUNCIL</a></b></h1>
+  <p class="font-effect-neon lead">We are the council of EROTIKA, join us...</p>
 </div>
