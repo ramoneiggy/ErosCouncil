@@ -41,7 +41,7 @@ if ($sitePage !== $name){
             </h4>
         </div>
         <!-- FAVORITES SYSTEM -->
-        <?php Draw::addRemoveFavSite($_SESSION['u_id'], $pageID); ?>
+        <?php if(isset($_SESSION['u_id'])){Draw::addRemoveFavSite($_SESSION['u_id'], $pageID);} ?>
     </div>
     <hr>
     
