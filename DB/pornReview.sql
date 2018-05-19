@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 14, 2018 at 11:42 PM
+-- Generation Time: May 19, 2018 at 06:52 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -305,51 +305,7 @@ CREATE TABLE `comments` (
 --
 
 INSERT INTO `comments` (`id`, `personID`, `PageID`, `content`, `isVisible`, `datePublished`) VALUES
-(1, 12, 1, 'Elegant! I admire the use of layout and navigation! ', 1, '2018-05-01 00:01:00'),
-(2, 13, 1, 'This style blew my mind.', 1, '2018-05-01 00:02:00'),
-(3, 14, 1, 'These are sleek and strong mate', 1, '2018-05-01 00:03:00'),
-(4, 12, 2, 'Truly simple type mate', 1, '2018-05-02 00:04:00'),
-(5, 13, 2, 'Wow love it!', 1, '2018-05-01 00:05:00'),
-(6, 14, 2, 'Amazing icons :-)', 1, '2018-05-02 00:06:00'),
-(7, 12, 3, 'Let me take a nap... great shot, anyway.', 1, '2018-05-01 00:07:00'),
-(8, 13, 3, 'Flat design is going to die.', 1, '2018-05-01 00:08:00'),
-(9, 14, 3, 'Fresh. So alluring.', 1, '2018-05-02 00:09:00'),
-(22, 12, 5, 'Guess I\'ll add a comment here <DR>', 1, '2018-05-04 14:35:19'),
-(23, 13, 4, 'Let\'s add  something here', 1, '2018-05-04 14:40:03'),
-(24, 13, 4, 'This really works', 1, '2018-05-04 14:40:19'),
-(25, 13, 4, '; <DROP THE DATABASE>', 1, '2018-05-04 14:40:43'),
-(26, 13, 4, 'still works', 1, '2018-05-04 14:41:00'),
-(27, 13, 4, 'mama ti je partizan', 1, '2018-05-04 14:41:12'),
-(28, 13, 1, 'kaeeee', 1, '2018-05-04 14:47:13'),
-(29, 13, 1, 'vidi\r\n', 1, '2018-05-04 15:25:19'),
-(30, 12, 10, 'Jebenica pajdo', 1, '2018-05-04 21:44:27'),
-(31, 12, 10, 'moÅ¡ pisat kolko oÅ¡', 1, '2018-05-04 21:44:50'),
-(32, 12, 2, 'hvala', 1, '2018-05-04 21:54:41'),
-(33, 13, 9, 'bullshit sit', 1, '2018-05-05 21:28:33'),
-(34, 14, 1, 'Works like a charm', 1, '2018-05-05 22:10:03'),
-(35, 12, 1, 'jel ovo radi', 1, '2018-05-05 22:54:50'),
-(36, 12, 1, 'awdawd', 1, '2018-05-05 22:54:59'),
-(37, 12, 1, 'dsg32', 1, '2018-05-05 22:55:04'),
-(38, 12, 1, 'da li joÅ¡ radi', 1, '2018-05-05 23:00:31'),
-(39, 17, 1, '<p><b>THIS</b> shit works</p>', 1, '2018-05-06 15:32:46'),
-(40, 17, 1, '</body>', 1, '2018-05-06 15:33:33'),
-(41, 17, 1, '<?php echo $_SESSION[\'u_id\'] ?>', 1, '2018-05-06 15:35:14'),
-(42, 17, 1, '\'; DROP TABLE \'comments', 1, '2018-05-06 15:40:27'),
-(43, 17, 1, 'komentar); DROP TABLE \'comments\r\n', 1, '2018-05-06 15:41:58'),
-(44, 14, 5, 'fantastic', 1, '2018-05-07 14:07:26'),
-(45, 20, 1, 'best site 4eva', 1, '2018-05-07 21:17:42'),
-(46, 24, 1, 'jebenooooooooooo', 1, '2018-05-09 21:22:03'),
-(47, 27, 1, 'I lowe it', 1, '2018-05-09 23:07:51'),
-(48, 14, 7, 'Nice tits', 1, '2018-05-11 21:47:46'),
-(49, 12, 1, 'JoÅ¡ radi', 1, '2018-05-11 22:28:33'),
-(50, 28, 11, 'this site sucks!!!', 1, '2018-05-11 23:08:58'),
-(51, 12, 12, 'Great!!!', 1, '2018-05-12 00:10:45'),
-(52, 20, 13, 'expensive', 1, '2018-05-12 01:21:51'),
-(53, 26, 12, 'very nice!!1!', 1, '2018-05-12 16:33:58'),
-(54, 12, 8, 'what a nice site', 1, '2018-05-14 22:42:21'),
-(55, 29, 1, 'WOW', 1, '2018-05-14 23:05:56'),
-(56, 29, 5, 'fuck hamsters XOXOXO', 1, '2018-05-14 23:13:02'),
-(57, 12, 14, 'OK', 1, '2018-05-14 23:36:03');
+(1, 1, 5, 'best site 4eva!!1!', 1, '2018-05-19 18:45:23');
 
 -- --------------------------------------------------------
 
@@ -374,8 +330,8 @@ CREATE TABLE `pornpages` (
 --
 
 INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `dateAdded`, `isFeatured`, `addedByUser`) VALUES
-(1, 'Pornhub', 'https://www.Pornhub.com', 'Pornhub is a pornographic video sharing website and the largest pornography site on the Internet.[5][6] Pornhub was launched in Montreal, providing professional and amateur photography since 2007.[7] Pornhub also has offices and servers in San Francisco, Houston, New Orleans and London. In March 2010, Pornhub was bought by Manwin (now known as MindGeek), which owns numerous other pornographic websites.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', '2018-04-22 00:00:00', 1, 1),
-(2, 'TubeGalore', 'https://www.tubegalore.com', 'If you search a large database of many millions of the best porn tubes. Then I have to tell you about Tube Galore. This website has almost all videos available out there floating around on the internet. Awesome right? I think so. The website has existed since 2007 and has done a lot of work to be among the top. And that is Tube Galore definitely succeeded. As the webmaster says himself, Tube Galore is a vortex! And I agree. I think if you are a porn lover, you definitely need to know this site. Because this is truly one of the best porn site whichcan be found on the Internet.', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', '2018-04-22 00:00:00', 0, 2),
+(1, 'Pornhub', 'https://www.Pornhub.com', 'Pornhub is a pornographic video sharing website and the largest pornography site on the Internet.[5][6] Pornhub was launched in Montreal, providing professional and amateur photography since 2007.[7] Pornhub also has offices and servers in San Francisco, Houston, New Orleans and London. In March 2010, Pornhub was bought by Manwin (now known as MindGeek), which owns numerous other pornographic websites.', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Pornhub-logo.svg/150px-Pornhub-logo.svg.png', '2018-04-22 00:00:00', 1, 0),
+(2, 'TubeGalore', 'https://www.tubegalore.com', 'If you search a large database of many millions of the best porn tubes. Then I have to tell you about Tube Galore. This website has almost all videos available out there floating around on the internet. Awesome right? I think so. The website has existed since 2007 and has done a lot of work to be among the top. And that is Tube Galore definitely succeeded. As the webmaster says himself, Tube Galore is a vortex! And I agree. I think if you are a porn lover, you definitely need to know this site. Because this is truly one of the best porn site whichcan be found on the Internet.', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', 'https://www.tubegalore.com/templates/tubegalore/images/logo.png?v1523258459', '2018-04-22 00:00:00', 0, 0),
 (3, 'YouJizz', 'https://www.youjizz.com', 'Youjizz Porn Tube! Free porn movies and sex videos on your desktop or mobile phone.', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', 'https://cdne-static.yjcontentdelivery.com/app/1/images/youjizz-logo.png', '2018-04-22 00:00:00', 0, 0),
 (4, 'YouPorn', 'https://www.youporn.com/', 'YouPorn is a free pornographic video sharing website and one of the 100 most accessed websites in the world. Since launching in August 2006, it grew to become the most popular pornographic website on the internet, and, in November 2007, it was reported to be the largest free pornographic website as well. As of February 2013, it was the 83rd most popular website overall and the fifth most popular pornographic website. In the category of pornographic websites, it was surpassed in the rankings by competitor sites xHamster, XVideos, and Pornhub, as well as the adult webcam site LiveJasmin.\r\n\r\nThis Web 2.0 (or Porn 2.0) site differs from many other pornographic websites in that it is completely free and ad-supported. One journalist reported that in May 2007 it generated a monthly ad revenue of $120,000 and that it was owned by Stephen Paul Jones.', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', 'https://fs.ypncdn.com/cb/bundles/youpornwebfront/images/l_youporn_black.png?v=95cad8c89d10f1b53a4b098ccd2effa2c45bd4db', '2018-05-04 00:00:00', 0, 0),
 (5, 'xHamster', 'https://xhamster.com/', 'xHamster is a pornographic media and social networking site headquartered in Limassol, Cyprus.[1] xHamster serves user-submitted pornographic videos, webcam models, pornographic photographs, and erotic literature, and incorporates social networking features. xHamster was founded in 2007. With more than 10 million members, it is the third most popular pornography website on the Internet after XVideos and Pornhub.\r\n\r\nThe site produces The Sex Factor, a reality series in which men and women compete to become porn stars. The site has been targeted as part of malvertising campaigns, and various governments have blocked xHamster as part of larger initiatives against Internet pornography.', 'https://upload.wikimedia.org/wikipedia/en/thumb/1/1f/XHamster_logo_2016.svg/512px-XHamster_logo_2016.svg.png', 'https://en.wikipedia.org/wiki/XHamster#/media/File:XHamster_logo_2016.svg', '2018-04-22 00:00:00', 1, 0),
@@ -385,9 +341,10 @@ INSERT INTO `pornpages` (`id`, `name`, `url`, `description`, `logo`, `images`, `
 (9, 'Porn', 'https://www.porn.com/', 'Top porn tube site sharing an incredible amount of top notch hardcore videos ranging among all the most popular porn niches.', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', 'https://upload.wikimedia.org/wikipedia/commons/c/c6/Porn.com_logo.svg', '2018-05-04 00:00:00', 0, 0),
 (10, 'TNAFlix', 'https://www.tnaflix.com', 'Amazing porn tube website showing thousand of hot porn videos.', 'https://www.tnaflix.com/images/mx.png', 'https://www.tnaflix.com/images/mx.png', '2018-05-04 00:00:00', 0, 0),
 (11, 'Scoreland', 'http://www.scoreland.com', 'Score has launched the careers of some of the best known big-boobed beauties in the biz and it doesn\'t look as though they\'re slowing down the jugg parade any time soon. Watch these busty babes do their thing in HD downloads and steams. They add new content to their already impressive collection every day and everything they give you is exclusive and hot.', 'http://cdn.scoreuniverse.com/scoreland/images/free/new/logo_678x60.png', '', '2018-05-11 22:38:45', 1, 0),
-(12, 'Nubiles', 'http://nubiles.net/', 'This great site stars hot babes who are very excited about being able to show you how they play with themselves - and some take the time to learn how to please a man. The sheer size of the library is mind-blowing and the quality does these sexy girls justice with Full HD footage. If you\'re looking for the ultimate teen porn experience, then jump right in! ', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', '2018-05-11 23:34:06', 1, 12),
-(13, 'Brazzers', 'https://www.brazzersnetwork.com/', 'Busty teens, sexy MILFs, gorgeous pornstars... All of them get in on hardcore, with interracial sex, blowjobs, threesomes, orgies and so much more in thousands of high-quality videos. Everything you could ever want from an XXX network is here, so come and enjoy all the action from one of our favorite porn makers - and the production values are sky-high!', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', '2018-05-11 23:45:03', 1, 12),
-(14, 'Watch My GF', 'https://www.watchmygf.me/', 'Various ex girlfriend videos', 'https://www.watchmygf.me/images/logo.png', 'https://www.watchmygf.me/images/logo.png', '2018-05-14 23:35:20', 0, 12);
+(12, 'Nubiles', 'http://nubiles.net/', 'This great site stars hot babes who are very excited about being able to show you how they play with themselves - and some take the time to learn how to please a man. The sheer size of the library is mind-blowing and the quality does these sexy girls justice with Full HD footage. If you\'re looking for the ultimate teen porn experience, then jump right in! ', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', 'http://static.nubiles.net/assets/nubilesNet/images/logos_small_black/nubiles_small_logo_black.png', '2018-05-11 23:34:06', 1, 0),
+(13, 'Brazzers', 'https://www.brazzersnetwork.com/', 'Busty teens, sexy MILFs, gorgeous pornstars... All of them get in on hardcore, with interracial sex, blowjobs, threesomes, orgies and so much more in thousands of high-quality videos. Everything you could ever want from an XXX network is here, so come and enjoy all the action from one of our favorite porn makers - and the production values are sky-high!', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', 'https://static-vz.brazzerscontent.com/bzv2/brazzerscom/tour/assets/common/img/logo/brazzers_network_logo.png', '2018-05-11 23:45:03', 1, 0),
+(14, 'Watch My GF', 'https://www.watchmygf.me/', 'Various ex girlfriend videos', 'https://www.watchmygf.me/images/logo.png', 'https://www.watchmygf.me/images/logo.png', '2018-05-14 23:35:20', 0, 0),
+(15, 'SpankBang', 'https://spankbang.com/', 'Good porn tube website featuring a wide array of hot videos', 'https://static.spankbang.com/static_desktop/Images/logo_desktop@2x.png?rev=4', 'https://static.spankbang.com/static_desktop/Images/logo_desktop@2x.png?rev=4', '2018-05-19 17:36:25', 1, 0);
 
 -- --------------------------------------------------------
 
@@ -407,67 +364,42 @@ CREATE TABLE `ratingscore` (
 --
 
 INSERT INTO `ratingscore` (`id`, `personID`, `PageID`, `rating`) VALUES
-(1, 12, 8, 3),
-(2, 12, 9, 4),
-(3, 12, 1, 5),
-(4, 12, 10, 3),
-(5, 12, 2, 3),
-(6, 12, 5, 5),
-(7, 12, 7, 4),
-(8, 12, 6, 2),
-(9, 12, 3, 4),
-(10, 12, 4, 4),
-(11, 13, 8, 4),
-(12, 13, 9, 5),
-(13, 13, 1, 5),
-(14, 13, 10, 1),
-(15, 13, 2, 2),
-(16, 13, 5, 4),
-(17, 13, 7, 4),
-(18, 13, 6, 5),
-(19, 13, 3, 3),
-(20, 13, 4, 4),
-(21, 14, 8, 5),
-(22, 14, 9, 3),
-(23, 14, 1, 5),
-(24, 14, 10, 5),
-(25, 14, 2, 5),
-(26, 14, 5, 3),
-(27, 14, 7, 5),
-(28, 14, 6, 5),
-(29, 14, 3, 3),
-(30, 14, 4, 4),
-(65, 16, 1, 5),
-(66, 16, 3, 4),
-(67, 16, 7, 4),
-(68, 16, 5, 5),
-(69, 17, 1, 5),
-(70, 17, 2, 3),
-(71, 17, 3, 2),
-(72, 17, 4, 5),
-(73, 17, 5, 5),
-(74, 17, 6, 3),
-(75, 17, 7, 3),
-(76, 17, 8, 2),
-(77, 17, 9, 1),
-(78, 17, 10, 1),
-(79, 16, 10, 5),
-(80, 18, 2, 1),
-(81, 20, 1, 4),
-(82, 20, 4, 3),
-(83, 24, 1, 3),
-(84, 27, 1, 5),
-(85, 20, 9, 4),
-(86, 12, 11, 3),
-(87, 28, 11, 1),
-(88, 12, 12, 3),
-(89, 12, 13, 4),
-(90, 20, 13, 4),
-(91, 26, 12, 4),
-(92, 29, 1, 5),
-(93, 29, 5, 5),
-(94, 29, 2, 5),
-(95, 12, 14, 3);
+(1, 1, 13, 3),
+(2, 1, 8, 3),
+(3, 1, 12, 2),
+(4, 1, 9, 2),
+(5, 1, 1, 4),
+(6, 1, 11, 1),
+(7, 1, 15, 3),
+(8, 1, 10, 2),
+(9, 1, 2, 3),
+(10, 1, 14, 3),
+(11, 1, 5, 5),
+(12, 1, 7, 4),
+(13, 1, 6, 4),
+(14, 1, 3, 3),
+(15, 1, 4, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sexual_orientation`
+--
+
+CREATE TABLE `sexual_orientation` (
+  `ID` int(11) NOT NULL,
+  `TITLE` varchar(50) COLLATE utf8_croatian_ci NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
+
+--
+-- Dumping data for table `sexual_orientation`
+--
+
+INSERT INTO `sexual_orientation` (`ID`, `TITLE`) VALUES
+(1, 'heterosexual'),
+(2, 'homosexual'),
+(3, 'bisexual'),
+(4, 'undefined');
 
 -- --------------------------------------------------------
 
@@ -482,27 +414,6 @@ CREATE TABLE `userfavorites` (
   `dateTimeAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
---
--- Dumping data for table `userfavorites`
---
-
-INSERT INTO `userfavorites` (`id`, `userID`, `pornPageID`, `dateTimeAdded`) VALUES
-(11, 12, 1, '2018-05-14 21:01:41'),
-(12, 12, 5, '2018-05-14 21:01:56'),
-(14, 12, 4, '2018-05-14 21:02:00'),
-(15, 12, 7, '2018-05-14 21:02:01'),
-(18, 12, 8, '2018-05-14 21:23:35'),
-(19, 12, 3, '2018-05-14 21:23:55'),
-(20, 12, 6, '2018-05-14 21:24:14'),
-(21, 12, 12, '2018-05-14 21:46:53'),
-(22, 20, 1, '2018-05-14 21:59:45'),
-(26, 20, 13, '2018-05-14 22:19:14'),
-(27, 20, 5, '2018-05-14 22:19:25'),
-(28, 26, 13, '2018-05-14 22:55:44'),
-(29, 29, 1, '2018-05-14 23:06:00'),
-(30, 29, 5, '2018-05-14 23:13:16'),
-(31, 29, 2, '2018-05-14 23:13:26');
-
 -- --------------------------------------------------------
 
 --
@@ -515,6 +426,7 @@ CREATE TABLE `users` (
   `dateOfBirth` date NOT NULL,
   `location` varchar(2) COLLATE utf8_bin NOT NULL,
   `gender` varchar(10) COLLATE utf8_bin NOT NULL,
+  `sexOrientation` int(11) NOT NULL DEFAULT '4',
   `user_email` varchar(256) COLLATE utf8_bin NOT NULL,
   `avatar` varchar(100) COLLATE utf8_bin NOT NULL,
   `joined` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -526,25 +438,9 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
-(12, 'Iggy', '1985-02-06', 'HR', 'male', 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-1507894045-a73.png', '2018-05-01 16:45:00', '$2y$10$gEciGMJ22HbqGHrUPdjJNu36G8Fa8S7uGI7rFyTochOgroVgrEfr.', 1),
-(13, 'Marko', '2000-06-15', 'FR', '', 'marko@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$295.b5cF/q3NXnAJVLonf.as5R9KRf9x6p8pm6sNCbNtXX.JIJWTi', 0),
-(14, 'Pero', '2000-06-15', 'US', '', 'pero@gmail.com', 'uploads/profilePics/Pero-984410454-punisaurus.jpg', '0000-00-00 00:00:00', '$2y$10$yx4CqNQiu25ZxfdYuATmi.e8EC7I90xYKsWTvwrWMGhQ5RjFdc02C', 0),
-(16, 'Jurica', '2000-06-15', 'HR', '', 'jurica@gmail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d.1UVyhTS2oNgGB3KyBvRO2UQ6wjNDoDny6u7O56DEtmKz34C8l4a', 0),
-(17, 'Tihomir', '2000-06-15', 'HR', '', 'tihomir@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$p8h9YovSBeab7ALTXv4qs.GI/IxDQQ9cZtlGyR2AJDIm5mBrcqD1q', 0),
-(18, 'prazni', '2000-06-15', 'HR', '', 'prazni@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$d/ISDQxf3uJON4lAMy68Z.cM6TTn7yTO1f1BiUA3VjaV9jZnZhska', 0),
-(19, 'bigdick', '2000-06-15', 'HR', '', 'bigdick@email.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$RGnOwft/wCRPtt/fVbmJuOC5MwQpnSRjde3eMsVvysMKub9cwJp5O', 0),
-(20, 'jovan', '0006-06-06', 'AF', '', 'jovan@mail.com', 'uploads/profilePics/jovan-1026137256-Bugs_bunny-487807.jpg', '0000-00-00 00:00:00', '$2y$10$56V2ObmVv8m4grF1cariReCLLLxW6pioyxPlhwv47vaWL288ziMYG', 0),
-(21, 'john', '2012-12-12', 'AF', '', 'john@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$6TzSXmiBFWxOz/EzCUk8N.YTpGskyBtappcWYvyah207liRPqdEuy', 0),
-(22, 'Newguy', '2010-12-12', 'AF', '', 'newguy@gmial.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$2lzfwkZIeaqDQBcXEomY9eY/dp05zMd3Jwpb7QZZYK9PYC0GzIM1S', 0),
-(23, 'faca', '2012-12-12', 'BD', 'gender', 'faca@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$Ya2nZ9lnzOtyclgLr7x3.OAVIDPMsLBOuPlu00qkvW8eLiBnIQfAG', 0),
-(24, 'seksi', '1985-12-12', 'BH', 'other', 'seksi@mail.com', 'uploads/profilePics/seksi-2129163226-index.jpg', '0000-00-00 00:00:00', '$2y$10$vA/wl9RrfWT2b3ihS2gIYukixB7GO66Hs2MOH4XIxDnLp31P5QsQO', 0),
-(25, 'fak', '2000-05-07', 'DS', 'female', 'fak@mail.com', 'uploads/profilePics/user-default.png', '0000-00-00 00:00:00', '$2y$10$W/9fbl1jmHGNTP4mZ0jFNO0aH0PL3mxxp2PreP04GnsqOcGLIWzWG', 0),
-(26, 'borat', '1998-01-01', 'KZ', 'male', 'borat@mail.com', 'uploads/profilePics/borat-476648404-borat-swimsuit-beach-body-abs-251x300.jpg', '2018-05-09 21:48:55', '$2y$10$tu4NuEuobvFOA7xcRo6/wO29XLAHOGtfUzz0TotXAAxhw.5QadDR2', 0),
-(27, 'punoljetnik', '1999-06-02', 'AF', 'female', 'puno@mail.com', 'uploads/profilePics/punoljetnik-240250241-inflatable-penis-costume-w.jpg', '2018-05-09 23:05:55', '$2y$10$N5Ktb0K4QATPo5aYR0G8xeam7sKEd7FABcNAnewYtjb1iJz4LpFzq', 0),
-(28, 'archer', '1955-12-12', 'US', 'male', 'archer@mail.com', 'uploads/profilePics/archer-966123229-archer.jpg', '2018-05-11 23:06:37', '$2y$10$KZWHtvESYvS4npe00Lx3ceIxuE2olL96N2msxu/DcU7.GusZmaoGW', 0),
-(29, 'chacha', '1994-01-01', 'ER', 'female', 'chacha@gmail.com', 'uploads/profilePics/chacha-582072069-images.jpg', '2018-05-14 23:03:54', '$2y$10$ZeonmsvNE3OEIpIYq6Eh3.LbylY.4AhP82ywGnDKNHSDO/.zxpl.S', 0),
-(30, 'njofra', '1988-01-01', 'AF', 'other', 'nofra@mail.com', 'uploads/profilePics/user-default.png', '2018-05-14 23:40:55', '$2y$10$PI015b2xyzYa890sS9J/We/2fm61Mvuyr8rLe3ZIwWpuT6kQd99Na', 0);
+INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `sexOrientation`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
+(1, 'Iggy', '1985-02-06', 'HR', 'male', 1, 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-1445597018-mikimaus.png', '2018-05-19 18:40:53', '$2y$10$1YU6tCn8JAyaGpi/VIL5je3idrhQBGwQr0/uAidGZ/jR3ss8Z3Qg.', 1),
+(2, 'test', '1855-01-01', 'AL', 'other', 3, 'test@mail.com', 'uploads/profilePics/user-default.png', '2018-05-19 18:48:01', '$2y$10$NcBVtLTiO0bhnAgYYYm6SOx2NcASmQkX5tuDCFdxaFOmOszxXIu36', 0);
 
 --
 -- Indexes for dumped tables
@@ -579,6 +475,12 @@ ALTER TABLE `ratingscore`
   ADD KEY `personID` (`personID`);
 
 --
+-- Indexes for table `sexual_orientation`
+--
+ALTER TABLE `sexual_orientation`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `userfavorites`
 --
 ALTER TABLE `userfavorites`
@@ -590,7 +492,8 @@ ALTER TABLE `userfavorites`
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`user_id`),
+  ADD KEY `sexOrientation` (`sexOrientation`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -606,31 +509,37 @@ ALTER TABLE `apps_countries`
 -- AUTO_INCREMENT for table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `pornpages`
 --
 ALTER TABLE `pornpages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `ratingscore`
 --
 ALTER TABLE `ratingscore`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+
+--
+-- AUTO_INCREMENT for table `sexual_orientation`
+--
+ALTER TABLE `sexual_orientation`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `userfavorites`
 --
 ALTER TABLE `userfavorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- Constraints for dumped tables
@@ -640,8 +549,7 @@ ALTER TABLE `users`
 -- Constraints for table `comments`
 --
 ALTER TABLE `comments`
-  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`PageID`) REFERENCES `pornpages` (`id`),
-  ADD CONSTRAINT `comments_ibfk_2` FOREIGN KEY (`personID`) REFERENCES `users` (`user_id`);
+  ADD CONSTRAINT `comments_ibfk_1` FOREIGN KEY (`PageID`) REFERENCES `pornpages` (`id`);
 
 --
 -- Constraints for table `ratingscore`
@@ -656,6 +564,12 @@ ALTER TABLE `ratingscore`
 ALTER TABLE `userfavorites`
   ADD CONSTRAINT `userfavorites_ibfk_1` FOREIGN KEY (`pornPageID`) REFERENCES `pornpages` (`id`),
   ADD CONSTRAINT `userfavorites_ibfk_2` FOREIGN KEY (`userID`) REFERENCES `users` (`user_id`);
+
+--
+-- Constraints for table `users`
+--
+ALTER TABLE `users`
+  ADD CONSTRAINT `users_ibfk_1` FOREIGN KEY (`sexOrientation`) REFERENCES `sexual_orientation` (`ID`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
