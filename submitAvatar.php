@@ -47,8 +47,8 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["avatar"]["tmp_name"], $target_file)) {
 
         // connect to DB
-        $conn = PDOConnect::getPDOInstance();        
-        
+        $conn = PDOConnect::getPDOInstance();
+
         $defaultAvatar = "uploads/profilePics/user-default.png";
 
         // delete previous avatar image file if it is not default
@@ -61,10 +61,10 @@ if ($uploadOk == 0) {
             unlink($resultPreviousAvatar['avatar']);
         }
 
-        // insert new avatar into DB        
+        // insert new avatar into DB
         $query = $conn->prepare("UPDATE users SET avatar = :target_file WHERE user_id = :personID");
         $query->bindParam(':target_file', $target_file);
-        $query->bindParam(':personID', $personID);        
+        $query->bindParam(':personID', $personID);
         $query->execute();
 
         echo "The file ". basename( $_FILES["avatar"]["name"]). " has been uploaded.";

@@ -36,7 +36,7 @@ if (isset($_POST['submit'])){
                 exit();
             }else{
                 echo "<br>nisu isti<br>";
-            }            
+            }
         }
         //NEW USER RATING
         $query = $conn->prepare("INSERT INTO ratingscore (personID, PageID, rating) VALUES (:personID, :PageID, :rating)");

@@ -1,7 +1,7 @@
-<?php 
+<?php
 include "head.php";
 ?>
 IN DEVELOPMENT
-<?php 
+<?php
 include "footer.php";
 ?>

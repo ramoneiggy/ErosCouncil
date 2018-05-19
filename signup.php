@@ -1,10 +1,10 @@
 <?php
-include "head.php"; 
-?>        
+include "head.php";
+?>
 
 <!--LOG IN-->
 <div class="container">
-    <div class="row">  
+    <div class="row">
     <div class="col-sm-12"></div>
         <div class="col-sm-6 user-info">
             <h2>SIGN UP</h2>
@@ -21,7 +21,7 @@ include "head.php";
                         }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "usertaken"){
                             echo "<p class='text-red'>User name is taken. Please choose another name and try again.</p>";
                             }
-                ?>             
+                ?>
 
                 <div class="form-group">
                     <label>User Name</label>
@@ -51,7 +51,7 @@ include "head.php";
                         <label for="other">Other</label>
                     </div>
                 </div>
-                <!--Radio group--> 
+                <!--Radio group-->
                 <hr>
                 <div class="form-group">
                     <label>Your location</label>
@@ -65,7 +65,7 @@ include "head.php";
                     <input type="email" class="form-control" name="email" placeholder="Enter email" required>
                     <label>Email address again</label>
                     <input type="email" class="form-control" name="emailAgain" placeholder="Enter email again" required>
-                </div>  
+                </div>
                 <hr>
                 <div class="form-group">
                     <label>Password</label>
@@ -80,10 +80,10 @@ include "head.php";
                 <br><br>
             </form>
         </div>
-        <div class="col-6"></div>  
+        <div class="col-6"></div>
     </div>
 </div>
 
-<?php 
+<?php
 include "footer.php";
 ?>

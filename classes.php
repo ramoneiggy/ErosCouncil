@@ -3,7 +3,7 @@
 class Draw{
     //  We will use Draw class to draw different elements of the page.
 
-    public static function drawListUserRecomendedSites($sortBy){
+    public static function drawListUserRecommendedSites($sortBy){
         //CODE TO DRAW LIST OF ALL SITES
 
         $conn = PDOConnect::getPDOInstance();
@@ -13,7 +13,7 @@ class Draw{
         }
 
         $sql = "SELECT pornpages.id as id ,pornpages.name as name, pornpages.logo, AVG(`rating`) AS average FROM pornpages JOIN ratingscore ON ratingscore.PageID = pornpages.id GROUP By `PageID` ORDER BY $sortBy";
-        
+
         $query = $conn->query($sql);
 
         $query->setFetchMode(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ class Draw{
             echo "</div>";
             echo "</li>";
         }
-        echo'    
+        echo'
             </ul>
         </div>
             ';
@@ -67,7 +67,7 @@ class Draw{
             echo "</div>";
             echo "</li>";
         }
-        echo'    
+        echo'
             </ul>
         </div>
             ';
@@ -78,8 +78,8 @@ class Draw{
 
         $conn = PDOConnect::getPDOInstance();
         $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
-        
-        
+
+
         $query->bindParam(':pornPageID', $i);
         $query->execute();
 
@@ -117,7 +117,7 @@ class Draw{
 
         if ($rating['rating'] == NULL){
             echo "Please leave a rating.<br>You can change it anytime.";
-        }                
+        }
     }
 
     // USER INFO
@@ -129,7 +129,7 @@ class Draw{
         $query = $conn->prepare("SELECT `user_uid` as name, joined, `dateOfBirth` as dob, apps_countries.country_name as location, avatar, gender FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_uid` = :userName");
         $query->bindParam(':userName', $userName);
         $query->execute();
-        $userInfo = $query->fetch(); 
+        $userInfo = $query->fetch();
 
         if($userInfo['name'] == NULL){
             die("User doesn't exist.");
@@ -143,7 +143,7 @@ class Draw{
         <div class='user-info col-sm-12'>
             <div class='row'>
                 <div class='col-sm-5'>
-                <img class='avatar' src='<?php echo $userInfo['avatar']; ?>' alt='Avatar'>                
+                <img class='avatar' src='<?php echo $userInfo['avatar']; ?>' alt='Avatar'>
                 </div>
                 <!-- CHANGE AVATAR -->
                 <?php
@@ -155,12 +155,12 @@ class Draw{
                             <input class='btn' type='file' name='avatar' id='avatar'>
                             <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
                         </form>
-                    </div>  
+                    </div>
                     <?php
                 }
-                ?>   
+                ?>
             <!-- USER INFO -->
-            </div>    
+            </div>
             <hr>
             <p><b>User name:</b> <?php echo $userInfo['name']; ?></p><hr>
             <p><b>Gender:</b> <?php echo $userInfo['gender']; ?></p><hr>
@@ -205,7 +205,7 @@ class Draw{
             echo "</div>";
             echo "</li>";
         }
-        echo'    
+        echo'
             </ul>
             <br>
             ';
@@ -236,12 +236,12 @@ class Draw{
         echo "<p>No reviews yet.</p>";
         }
 
-        foreach ($allComments as $singleComment){                    
-        echo 
+        foreach ($allComments as $singleComment){
+        echo
         "<li class='list-group-item'>"
         ."<small>Reviewed "."<a href='pornSite.php?site=".$singleComment['pornpageName']."'>".$singleComment['pornpageName']."</a> on ".$singleComment['dateTime']."</small><br>"
         .$singleComment["review"].
-        "</li>";                    
+        "</li>";
         }
     }
 
@@ -305,7 +305,7 @@ class Draw{
         if (isset($_POST['submit'])){
 
             $addRemove = $_POST['submit'];
-        
+
             if($addRemove == 'add'){
                 $addRemove = $conn->prepare("INSERT INTO `userfavorites`(`userID`, `pornPageID`) VALUES (:personID, :pageID)");
                 $addRemove->bindParam(':personID', $personID);
@@ -343,7 +343,7 @@ class Draw{
 }
 
 class Check{
-    
+
     public static function ifAdmin($personID){
         //CHECK IF USER IS ADMIN
 
@@ -359,7 +359,7 @@ class Check{
 
 }
 
-class PDOConnect{   
+class PDOConnect{
 
     private static $servername = "localhost"; // 127.0.0.1
     private static $username = "root";

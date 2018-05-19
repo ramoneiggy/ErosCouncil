@@ -6,7 +6,7 @@ body{
 }
 .jumbotron{
     border-radius: 0;
-    background: url("../img/sexy-lady.png")no-repeat left center;    
+    background: url("../img/sexy-lady.png")no-repeat left center;
     background-color: black;
     width: 100%;
     padding: 80px 30px;
@@ -146,18 +146,18 @@ h1.font-effect-neon{
             animation: blinker 0.5s;
     -webkit-animation-delay: 5s;
             animation-delay: 5s;
-  }  
+  }
   @-webkit-keyframes blinker {
     50% {
       opacity: 0;
     }
-  }  
+  }
   @keyframes blinker {
     50% {
       opacity: 0;
     }
   }
-/* 
+/*
 NEED TESTING
 .navbar-dark .navbar-nav .active > .nav-link, .navbar-dark .navbar-nav .nav-link.active, .navbar-dark .navbar-nav .nav-link.show, .navbar-dark .navbar-nav .show > .nav-link {
     color: white;
@@ -168,18 +168,18 @@ NEED TESTING
 }
 .navbar-dark .navbar-nav .nav-link:hover {
     color: white;
-    text-shadow: 1px 1px purple;    
+    text-shadow: 1px 1px purple;
 }
  */
 
 @media only screen and (max-width: 1000px){
-    
+
     .jumbotron{
         border-radius: 0;
-        background: url("../img/sexy-lady.png")no-repeat center center;    
+        background: url("../img/sexy-lady.png")no-repeat center center;
         background-color: black;
         width: 100%;
         padding: 95px 30px;
     }
-    
+
 }

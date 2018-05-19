@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "head.php";
 
 if (!isset($_SESSION['u_id'])) {
@@ -28,6 +28,6 @@ if (!isset($_SESSION['u_id'])) {
         </div>
     </div>
 </div>
-<?php 
+<?php
 include "footer.php";
 ?>

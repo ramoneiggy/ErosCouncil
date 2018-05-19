@@ -1,4 +1,4 @@
-<?php 
+<?php
 include "head.php";
 
 $sitePage = $_GET['site'];
@@ -31,7 +31,7 @@ if ($sitePage !== $name){
     <div class="row">
         <div class="d-inline-block col-sm-10">
             <h4>
-                <?php 
+                <?php
                 if (isset($_SESSION['u_id'])){
                     echo $_SESSION['u_uid']."! Welcome to - <b>".$name."</b> - profile page.";
                 } else {
@@ -44,7 +44,7 @@ if ($sitePage !== $name){
         <?php if(isset($_SESSION['u_id'])){Draw::addRemoveFavSite($_SESSION['u_id'], $pageID);} ?>
     </div>
     <hr>
-    
+
 
 <!--CONTENT-->
 
@@ -63,14 +63,14 @@ if ($sitePage !== $name){
                 <?php Draw::drawRatingSystem($pageID); ?>
             </div>
 
-            <!-- ADD RATING SYSTEM -->            
+            <!-- ADD RATING SYSTEM -->
             <div class="col-sm-12">
                 <h5>YOUR RATING:</h5>
-                <?php 
+                <?php
                     if (isset($_SESSION['u_id'])){
-                        Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);                                                
-                        ?>                        
-                        <form action="submitRating.php" method="post">                            
+                        Draw::showYourCurrentRating($pageID, $_SESSION['u_id']);
+                        ?>
+                        <form action="submitRating.php" method="post">
                             <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
                             <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
                             <label class="ratingSys">1</label>
@@ -79,9 +79,9 @@ if ($sitePage !== $name){
                             <input type="radio" name="rating" value="3">
                             <input type="radio" name="rating" value="4">
                             <input type="radio" name="rating" value="5">
-                            <label class="ratingSys">5</label><br>                                   
+                            <label class="ratingSys">5</label><br>
                             <button type="submit" class="btn btn-dark-purple" name="submit">RATE <?php echo $name; ?></button>
-                        </form>  
+                        </form>
                         <?php
                         } else {
                         echo "Please login or <a class='link-black' href='signup.php'>sign up</a> to leave a rating.";
@@ -90,7 +90,7 @@ if ($sitePage !== $name){
                 <hr>
             </div>
         </div>
-        
+
 
         <!-- SITE DESCRIPTION -->
         <div class="col-sm-6">
@@ -112,7 +112,7 @@ if ($sitePage !== $name){
                 <form action="submitReview.php" method="post">
                     <input type="hidden" name="pageID" value="<?php echo $pageID; ?>">
                     <input type="hidden" name="pageNameID" value="<?php echo $name; ?>">
-                    <textarea name="review" class="form-control" placeholder="Write your review here" rows="1" required></textarea>             
+                    <textarea name="review" class="form-control" placeholder="Write your review here" rows="1" required></textarea>
                     <button type="submit" class="btn btn-dark-purple float-right" name="submit">Add review</button>
                     <br>
                 </form>
@@ -129,20 +129,20 @@ if ($sitePage !== $name){
                 $query = $conn->query($sql);
                 $query->setFetchMode(PDO::FETCH_ASSOC);
                 $allComments = $query->fetchAll();
-            
+
                 if (empty($allComments) == true) {
                     echo "<p>No reviews yet, why don't you add one.</p>";
                 }
 
-                foreach ($allComments as $singleComment){                    
-                    echo 
+                foreach ($allComments as $singleComment){
+                    echo
                     "<li class='list-group-item'>"
                     ."<a href='profile.php?user=".$singleComment["user_uid"]."'>"
                     ."<img class='avatarInReview' src='".$singleComment["avatar"]."' alt='user-avatar'> "."</a>"
                     ."<small>"."<a class='link-black' href='profile.php?user=".$singleComment["user_uid"]."'>".$singleComment["user_uid"]."</a>"." said on ".$singleComment['datePublished']."</small><br>"
                     .$singleComment["content"].
-                    "</li>";            
-                }         
+                    "</li>";
+                }
                 ?>
 
                 </ul>
@@ -152,6 +152,6 @@ if ($sitePage !== $name){
 </div>
 
 <!--FOOTER-->
-<?php 
+<?php
 include "footer.php";
 ?>

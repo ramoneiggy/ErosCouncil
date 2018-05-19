@@ -5,7 +5,7 @@ error_reporting(E_ALL & ~E_NOTICE);
 if (isset($_POST['submit'])){
 
     include_once 'dbh.inc.php';
-    
+
     $uid = mysqli_real_escape_string($conn, $_POST['uid']);
     $dateOfBirth = mysqli_real_escape_string($conn, $_POST['dateOfBirth']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
@@ -17,7 +17,7 @@ if (isset($_POST['submit'])){
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
 
     //check if user is underage
-    $now = date('Y-m-d');    
+    $now = date('Y-m-d');
     $userAge = $now-$dateOfBirth;
     if ($userAge < 18){
         die('YOU ARE UNDERAGE, GO AWAY!!!');
@@ -26,7 +26,7 @@ if (isset($_POST['submit'])){
 
     //Error handlers
     //Check for empty fields
-    
+
     if($email !== $emailAgain || $pwd !== $pwdAgain){
         header("Location: ../signup.php?signup=emailOrPasswordNotSame");
         exit();
@@ -44,7 +44,7 @@ if (isset($_POST['submit'])){
             //Check if email is valid
             if (!filter_var($email, FILTER_VALIDATE_EMAIL)){
                 header("Location: ../signup.php?signup=email");
-                exit();                
+                exit();
             }else{
                 $sql = "SELECT * FROM users WHERE user_uid='$uid'";
                 $result = mysqli_query($conn, $sql);
