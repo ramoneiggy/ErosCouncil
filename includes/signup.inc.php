@@ -15,6 +15,7 @@ if (isset($_POST['submit'])){
     $location = mysqli_real_escape_string($conn, $_POST['location']);
     $avatar = "uploads/profilePics/user-default.png";
     $gender = mysqli_real_escape_string($conn, $_POST['gender']);
+    $sexOrientation = mysqli_real_escape_string($conn, $_POST['sexOrientation']);
 
     //check if user is underage
     $now = date('Y-m-d');
@@ -57,7 +58,7 @@ if (isset($_POST['submit'])){
                     //Hashing the password
                     $hashedPwd = password_hash($pwd, PASSWORD_DEFAULT);
                     //Insert the user into the database
-                    $sql = "INSERT INTO users (user_email, user_uid, dateOfBirth, avatar, gender, location, user_pwd) VALUES ('$email', '$uid', '$dateOfBirth', '$avatar', '$gender', '$location', '$hashedPwd');";
+                    $sql = "INSERT INTO users (user_email, user_uid, dateOfBirth, avatar, gender, sexOrientation, location, user_pwd) VALUES ('$email', '$uid', '$dateOfBirth', '$avatar', '$gender', '$sexOrientation', '$location', '$hashedPwd');";
                     mysqli_query($conn, $sql);
 
                     //Send success email

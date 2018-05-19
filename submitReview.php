@@ -8,9 +8,9 @@ $conn = PDOConnect::getPDOInstance();
 // SUBMIT REVIEW
 if (isset($_POST['submit'])){
 
-    $personID = htmlspecialchars($_SESSION['u_id']);
-    $PageID = htmlspecialchars($_POST['pageID']);
-    $content = htmlspecialchars($_POST['review']);
+    $personID = test::input($_SESSION['u_id']);
+    $PageID = test::input($_POST['pageID']);
+    $content = test::input($_POST['review']);
 
     $pageName = $_POST['pageNameID'];
 

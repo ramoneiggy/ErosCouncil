@@ -9,21 +9,23 @@ $conn = PDOConnect::getPDOInstance();
 if (isset($_POST['submit'])){
     //give variables
 
-    $name = htmlspecialchars($_POST['name']);
+    $name = test::input($_POST['name']);
     $url = $_POST['url'];
-    $description = htmlspecialchars($_POST['description']);
+    $description = test::input($_POST['description']);
     $logo = $_POST['logo'];
     $images = $_POST['images'];
-    $isFeatured = htmlspecialchars($_POST['isFeatured']);
-    $addedByUser = htmlspecialchars($_SESSION['u_id']);
+    $isFeatured = test::input($_POST['isFeatured']);
+    $addedByUser = test::input($_SESSION['u_id']);
 
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$url)) {
         header("Location: administration.php?site=urlError");
         exit();
-      }if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$logo)) {
+      }
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$logo)) {
         header("Location: administration.php?site=logoError");
         exit();
-      }if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$images)) {
+      }
+    if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$images)) {
         header("Location: administration.php?site=imagesError");
         exit();
       }
@@ -43,7 +45,6 @@ if (isset($_POST['submit'])){
     //add site to DB
 
     $query = $conn->prepare("INSERT INTO pornpages (name, url, description, logo, images, isFeatured, addedByUser) VALUES (:name, :url, :description, :logo, :images, :isFeatured, :addedByUser)");
-
     $query->bindParam(':name', $name);
     $query->bindParam(':url', $url);
     $query->bindParam(':description', $description);
@@ -51,12 +52,6 @@ if (isset($_POST['submit'])){
     $query->bindParam(':images', $images);
     $query->bindParam(':isFeatured', $isFeatured);
     $query->bindParam(':addedByUser', $addedByUser);
-
-
-
     $query->execute();
-
-
     header("Location: administration.php?site=added&name=$name");
-
 }

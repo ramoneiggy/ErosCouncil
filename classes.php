@@ -108,8 +108,6 @@ class Draw{
 
         $conn = PDOConnect::getPDOInstance();
         $query = $conn->prepare("SELECT `PageID`, ROUND(avg(`rating`)) as avgRating FROM `ratingscore` WHERE PageID = :pornPageID");
-
-
         $query->bindParam(':pornPageID', $i);
         $query->execute();
 
@@ -156,7 +154,7 @@ class Draw{
 
         $conn = PDOConnect::getPDOInstance();
 
-        $query = $conn->prepare("SELECT `user_uid` as name, joined, `dateOfBirth` as dob, apps_countries.country_name as location, avatar, gender FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code WHERE `user_uid` = :userName");
+        $query = $conn->prepare("SELECT `user_uid` as name, joined, sexual_orientation.TITLE as sexOrientation, `dateOfBirth` as dob, user_email, apps_countries.country_name as location, avatar, gender FROM `users` INNER JOIN apps_countries ON users.location = apps_countries.country_code INNER JOIN sexual_orientation ON sexOrientation = sexual_orientation.ID WHERE `user_uid` = :userName");
         $query->bindParam(':userName', $userName);
         $query->execute();
         $userInfo = $query->fetch();
@@ -194,6 +192,23 @@ class Draw{
             <hr>
             <p><b>User name:</b> <?php echo $userInfo['name']; ?></p><hr>
             <p><b>Gender:</b> <?php echo $userInfo['gender']; ?></p><hr>
+            <p><b>Sexual orientation:</b> <?php echo $userInfo['sexOrientation']; ?></p><hr>
+            <?php
+            if ($userName == $_SESSION['u_uid']){
+                ?>
+                <p><b>CHANGE YOUR DATA</b> <small class="text-red">- doesn't work yet</small></p>
+                <button class='btn btn-dark-purple'>E-mail</button>
+                <button class='btn btn-dark-purple'>Password</button>
+                <button class='btn btn-dark-purple'>Gender</button>
+                <button class='btn btn-dark-purple'>Sexual orientation</button>
+                <button class='btn btn-dark-purple'>Location</button>
+                <form action="" method="post">
+                    
+                </form>
+                <hr>
+                <p><b>E-mail:</b> <?php echo $userInfo['user_email']; ?></p><hr>
+                <p><b>Date of birth:</b> <?php echo $userInfo['dob']; ?></p><hr>
+            <?php } ?>
             <p><b>Age:</b> <?php echo $userInfoAge; ?></p><hr>
             <p><b>Location:</b> <?php echo $userInfo['location']; ?></p><hr>
             <p><b>Joined:</b> <?php echo $userInfo['joined']; ?></p><hr>

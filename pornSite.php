@@ -5,10 +5,9 @@ $sitePage = $_GET['site'];
 
 $conn = PDOConnect::getPDOInstance();
 
-$sql = "SELECT * FROM pornpages WHERE name = '$sitePage'";
-$query = $conn->query($sql);
-$query->setFetchMode(PDO::FETCH_ASSOC);
-
+$query = $conn->prepare("SELECT * FROM pornpages WHERE name = :sitePage");
+$query->bindParam(':sitePage', $sitePage);
+$query->execute();
 $siteInfo = $query->fetch();
 
 $pageID = $siteInfo['id'];
@@ -122,12 +121,10 @@ if ($sitePage !== $name){
 
                 <!-- LIST REVIEWS -->
                 <ul class="list-group">
-
                 <?php
-                $sql = "SELECT users.user_uid, users.avatar as avatar, comments.content, comments.PageID, comments.datePublished FROM comments INNER JOIN users ON comments.personID = users.user_id WHERE comments.PageID = $pageID ORDER BY datePublished DESC";
-
-                $query = $conn->query($sql);
-                $query->setFetchMode(PDO::FETCH_ASSOC);
+                $query = $conn->prepare("SELECT users.user_uid, users.avatar as avatar, comments.content, comments.PageID, comments.datePublished FROM comments INNER JOIN users ON comments.personID = users.user_id WHERE comments.PageID = :pageID ORDER BY datePublished DESC");
+                $query->bindParam(':pageID', $pageID);
+                $query->execute();
                 $allComments = $query->fetchAll();
 
                 if (empty($allComments) == true) {

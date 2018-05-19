@@ -14,13 +14,16 @@ include "head.php";
                 <?php
                 if (array_key_exists("signup", $_GET) && $_GET["signup"] == "emailOrPasswordNotSame"){
                 echo "<p class='text-red'>Email or password error. Please try again.</p>";
-                }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "invalidCharacters"){
+                }
+                if (array_key_exists("signup", $_GET) && $_GET["signup"] == "invalidCharacters"){
                     echo "<p class='text-red'>Invalid characters in your choosen user name. Please choose another name and try again.</p>";
-                    }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "email"){
+                }
+                if (array_key_exists("signup", $_GET) && $_GET["signup"] == "email"){
                         echo "<p class='text-red'>Invalid e-mail. Please try again.</p>";
-                        }if (array_key_exists("signup", $_GET) && $_GET["signup"] == "usertaken"){
+                }
+                if (array_key_exists("signup", $_GET) && $_GET["signup"] == "usertaken"){
                             echo "<p class='text-red'>User name is taken. Please choose another name and try again.</p>";
-                            }
+                }
                 ?>
 
                 <div class="form-group">
@@ -33,25 +36,51 @@ include "head.php";
                     <input type="date" class="form-control" name="dateOfBirth" required>
                 </div>
                 <hr>
+                <div class="row col-sm-12">
+                <!--Radio group GENDER-->
+                    <div class="form-group col-sm-5">
+                        <label>Gender</label>
+                        <div class="form-check">
+                            <input name="gender" type="radio" class="with-gap" value="male">
+                            <label for="male">Male</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input name="gender" type="radio" class="with-gap" value="female">
+                            <label for="female">Female</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input name="gender" type="radio" class="with-gap" value="other">
+                            <label for="other">Other</label>
+                        </div>
+                    </div>
+                    <hr>
+                    <!--Radio group SEXUAL ORIENTATION-->
+                    <div class="form-group col-sm-5">
+                        <label>Sexual orientation</label>
+                        <div class="form-check">
+                            <input name="sexOrientation" type="radio" class="with-gap" value="1">
+                            <label for="1">Heterosexual</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input name="sexOrientation" type="radio" class="with-gap" value="2">
+                            <label for="2">Homosexual</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input name="sexOrientation" type="radio" class="with-gap" value="3">
+                            <label for="3">Bisexual</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input name="sexOrientation" type="radio" class="with-gap" value="4">
+                            <label for="4">Undefined</label>
+                        </div>
+                    </div>
                 <!--Radio group-->
-                <div class="form-group">
-                    <label>Gender</label>
-                    <div class="form-check">
-                        <input name="gender" type="radio" class="with-gap" value="male">
-                        <label for="male">Male</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input name="gender" type="radio" class="with-gap" value="female">
-                        <label for="female">Female</label>
-                    </div>
-
-                    <div class="form-check">
-                        <input name="gender" type="radio" class="with-gap" value="other">
-                        <label for="other">Other</label>
-                    </div>
                 </div>
-                <!--Radio group-->
                 <hr>
                 <div class="form-group">
                     <label>Your location</label>

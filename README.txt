@@ -14,7 +14,7 @@ LOGIN, SIGN UP SUSTAV
 
 TREBAMO
 
-+LOGIN/SIGNUP - treba srediti da user dobije obavijest na svoj email da je obavio uspješan SIGNUP
++LOGIN/SIGNUP - treba srediti da user dobije obavijest na svoj email da je obavio uspješan SIGNUP (treba testirati)
 +POPIS STRANICA
 +SUSTAV RANGIRANJA
 +KOMENTARI

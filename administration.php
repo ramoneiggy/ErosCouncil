@@ -83,10 +83,22 @@ include "head.php";
             <br>
             </div>
         </div>
+        <div class="col-sm-1"><h4 class="text-center">ALL SITES</h4><hr>
+            <div class="user-info">
+                <?php
 
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
-        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
-        <div class="col-sm-2"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
+                $conn = PDOConnect::getPDOInstance();
+                $check = $conn->prepare("SELECT name FROM pornpages ORDER BY LOWER(name)");
+                $check->execute(array());
+                $result = $check->fetchAll(PDO::FETCH_ASSOC);
+
+                foreach($result as $pornSite){
+                    ?>
+                    <a class ="link-black" href="pornSite.php?site=<?php echo $pornSite['name']; ?>"><?php echo $pornSite['name']; ?></a><br>
+            <?php } ?>
+            <br>
+            </div>
+        </div>
     </div>
 </div>
 
