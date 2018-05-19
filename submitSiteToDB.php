@@ -7,12 +7,6 @@ include "classes.php";
 $conn = PDOConnect::getPDOInstance();
 
 if (isset($_POST['submit'])){
-
-    //make sure to choose first free ID slot
-
-    $cleanAI = $conn->prepare("ALTER TABLE pornpages AUTO_INCREMENT = 1");
-    $cleanAI->execute();
-
     //give variables
 
     $name = htmlspecialchars($_POST['name']);
@@ -22,8 +16,6 @@ if (isset($_POST['submit'])){
     $images = $_POST['images'];
     $isFeatured = htmlspecialchars($_POST['isFeatured']);
     $addedByUser = htmlspecialchars($_SESSION['u_id']);
-
-    //$name = str_replace(' ', '_', $name); možda da ovo koristimo?
 
     if (!preg_match("/\b(?:(?:https?|ftp):\/\/|www\.)[-a-z0-9+&@#\/%?=~_|!:,.;]*[-a-z0-9+&@#\/%=~_|]/i",$url)) {
         header("Location: administration.php?site=urlError");
