@@ -66,7 +66,7 @@ if (isset($_POST['submit'])){
                     $subject = "Signup successful";
                     $mailFrom = "contact@eroscouncil.com";
 
-                    $message = "Congratulations ".$name.", you are now a councilor of EROS COUNCIL!<br><br>www.eroscouncil.com";
+                    $message = "Congratulations ".$name.", you are now a councilor of EROS COUNCIL!".".\n\n"."<img src='../img/eros-council-logo.png'".".\n\n"."www.eroscouncil.com";
 
                     $mailTo = $email;
                     $headers = "From: ".$mailFrom;
