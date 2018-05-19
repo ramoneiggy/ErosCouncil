@@ -173,42 +173,143 @@ class Draw{
                 <div class='col-sm-5'>
                 <img class='avatar' src='<?php echo $userInfo['avatar']; ?>' alt='Avatar'>
                 </div>
-                <!-- CHANGE AVATAR -->
-                <?php
-                if ($userName == $_SESSION['u_uid']){
-                    ?>
-                    <div class='col-sm-7'>
-                        <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
-                        <b>Change avatar:</b>
-                            <input class='btn' type='file' name='avatar' id='avatar'>
-                            <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
-                        </form>
-                    </div>
-                    <?php
-                }
-                ?>
+
             <!-- USER INFO -->
             </div>
             <hr>
             <p><b>User name:</b> <?php echo $userInfo['name']; ?></p><hr>
             <p><b>Gender:</b> <?php echo $userInfo['gender']; ?></p><hr>
             <p><b>Sexual orientation:</b> <?php echo $userInfo['sexOrientation']; ?></p><hr>
+
+            <!-- show only for portfolio -->
             <?php
             if ($userName == $_SESSION['u_uid']){
                 ?>
-                <p><b>CHANGE YOUR DATA</b> <small class="text-red">- doesn't work yet</small></p>
-                <button class='btn btn-dark-purple'>E-mail</button>
-                <button class='btn btn-dark-purple'>Password</button>
-                <button class='btn btn-dark-purple'>Gender</button>
-                <button class='btn btn-dark-purple'>Sexual orientation</button>
-                <button class='btn btn-dark-purple'>Location</button>
-                <form action="" method="post">
-                    
-                </form>
+                <a class="link-black" data-toggle="collapse" href="#changeData" role="button"><b>CHANGE YOUR AVATAR & INFO</b></a>
+                <!-- <br><small>Avatar, E-mail, Password, Gender, Orientation, Location</small> -->
+                <div class="collapse" id="changeData">
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#Avatar">Avatar</button>
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#E-mail">E-mail</button>
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#Password">Password</button>
+                    <br><br>
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#Gender">Gender</button>
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#SexualOrientation">Sexual orientation</button>
+                    <button class='btn btn-dark-purple' type="button" data-toggle="collapse" data-target="#Location">Location</button>
+
+                    <br><br>
+
+                    <div class="collapse" id="Avatar">
+                        <div class="card card-body">
+                            <form action='submitAvatar.php' method='post' enctype='multipart/form-data'>
+                                <label><b>Change avatar:</b></label><br>
+                                <input class='btn' type='file' name='avatar' id='avatar' required>
+                                <input class='btn btn-dark-purple' type='submit' value='Upload Avatar' name='submit'>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="E-mail">
+                        <div class="card card-body">
+                            <form action="../infoChange/changeEmail.php" method="post">
+                                <div class="form-group">
+                                    <label><b>Email address</b></label>
+                                    <input type="email" class="form-control" name="email" placeholder="Enter email" required>
+                                    <label><b>Email address again</b></label>
+                                    <input type="email" class="form-control" name="emailAgain" placeholder="Enter email again" required>
+                                    <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="Password">
+                        <div class="card card-body">
+                            <form action="../infoChange/changePassword.php" method="post">
+                                <div class="form-group">
+                                    <label><b>Password</b></label>
+                                    <input type="password" class="form-control" name="pwd" placeholder="Password" required>
+                                    <label><b>Password again</b></label>
+                                    <input type="password" class="form-control" name="pwdAgain" placeholder="Repeat password" required>
+                                    <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="Gender">
+                        <div class="card card-body">
+                            <form action="../infoChange/changeGender.php" method="post">
+                            <div class="form-group col-sm-5">
+                                <label><b>Gender</b></label>
+                                <div class="form-check">
+                                    <input name="gender" type="radio" class="with-gap" value="male">
+                                    <label for="male">Male</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input name="gender" type="radio" class="with-gap" value="female">
+                                    <label for="female">Female</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input name="gender" type="radio" class="with-gap" value="other">
+                                    <label for="other">Other</label>
+                                </div>
+                                <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="SexualOrientation">
+                        <div class="card card-body">
+                        <form action="../infoChange/changeSexualOrientation.php" method="post">
+                            <div class="form-group col-sm-5">
+                                <label><b>Sexual orientation</b></label>
+                                <div class="form-check">
+                                    <input name="sexOrientation" type="radio" class="with-gap" value="1">
+                                    <label for="1">Heterosexual</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input name="sexOrientation" type="radio" class="with-gap" value="2">
+                                    <label for="2">Homosexual</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input name="sexOrientation" type="radio" class="with-gap" value="3">
+                                    <label for="3">Bisexual</label>
+                                </div>
+
+                                <div class="form-check">
+                                    <input name="sexOrientation" type="radio" class="with-gap" value="4">
+                                    <label for="4">Undefined</label>
+                                </div>
+                                <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
+                            </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="Location">
+                        <div class="card card-body">
+                            <form action="../infoChange/Location.php" method="post">
+                                <div class="form-group">
+                                    <label><b>Your location</b></label>
+                                    <select class="form-control" name="location" required>
+                                        <?php Draw::listCountries() ?>
+                                    </select>
+                                    <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
                 <hr>
                 <p><b>E-mail:</b> <?php echo $userInfo['user_email']; ?></p><hr>
                 <p><b>Date of birth:</b> <?php echo $userInfo['dob']; ?></p><hr>
             <?php } ?>
+
             <p><b>Age:</b> <?php echo $userInfoAge; ?></p><hr>
             <p><b>Location:</b> <?php echo $userInfo['location']; ?></p><hr>
             <p><b>Joined:</b> <?php echo $userInfo['joined']; ?></p><hr>
