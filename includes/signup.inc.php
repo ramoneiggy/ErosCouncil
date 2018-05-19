@@ -59,6 +59,20 @@ if (isset($_POST['submit'])){
                     //Insert the user into the database
                     $sql = "INSERT INTO users (user_email, user_uid, dateOfBirth, avatar, gender, location, user_pwd) VALUES ('$email', '$uid', '$dateOfBirth', '$avatar', '$gender', '$location', '$hashedPwd');";
                     mysqli_query($conn, $sql);
+
+                    //Send success email
+                    $name = $uid;
+                    $subject = "Signup successful";
+                    $mailFrom = "contact@eroscouncil.com";
+
+                    $message = "Congratulations ".$name.", you are now a councilor of EROS COUNCIL!<br><br>www.eroscouncil.com";
+
+                    $mailTo = $email;
+                    $headers = "From: ".$mailFrom;
+                    $txt = $message;
+
+                    mail($mailTo, $subject, $txt, $headers);
+
                     header("Location: ../index.php?signup=success");
                     exit();
                 }
@@ -67,7 +81,7 @@ if (isset($_POST['submit'])){
     }
 
 }else{
-    header("Location: ../signup.php?signup=nesto");
+    header("Location: ../signup.php?signup=error");
     exit();
 }
 
