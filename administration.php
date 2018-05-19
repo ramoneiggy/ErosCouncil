@@ -14,11 +14,10 @@ include "head.php";
 
 <div class="container-fluid">
     <div class="row">
-        <!-- ADD PORN SITE TO DB -->
+         <!-- ADD PORN SITE TO DB -->
         <div class="col-sm-3">
 
-            <h4 class="text-center">ADD PORN SITE TO DATABASE</h4>
-            <hr>
+            <h4 class="text-center">ADD PORN SITE TO DATABASE</h4><hr>
 
             <form class="form-control" action="submitSiteToDB.php" method="post">
                 <?php
@@ -30,57 +29,45 @@ include "head.php";
                         echo "<p class='text-center text-red'>ERROR: Please read guidelines about proper name input.</p>";
                     }
                 ?>
-                    <br>
+                <br>
 
-                    <label for="name">Porn site name*</label>
-                    <br>
-                    <input class="form-control" type="text" name="name" required>
-                    <small class="form-text text-muted">Make sure site name doesn't have links, dots... Write just the name of the site.</small>
-                    <br>
+                <label for="name">Porn site name*</label><br>
+                <input class="form-control" type="text" name="name" required>
+                <small class="form-text text-muted">Make sure site name doesn't have links, dots... Write just the name of the site.</small><br>
 
-                    <label for="url">Porn site url*</label>
-                    <br>
-                    <input class="form-control" type="url" name="url" required>
-                    <small class="form-text text-muted">Url must be like http://www.example.com</small>
-                    <br>
+                <label for="url">Porn site url*</label><br>
+                <input class="form-control" type="url" name="url" required>
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
-                    <label for="description">Porn site description*</label>
-                    <br>
-                    <textarea class="form-control" type="text" name="description" row="3" required></textarea>
-                    <br>
+                <label for="description">Porn site description*</label><br>
+                <textarea class="form-control" type="text" name="description" row="3" required></textarea><br>
 
-                    <label for="logo">Porn site logo*</label>
-                    <br>
-                    <input class="form-control" type="url" name="logo" required>
-                    <small class="form-text text-muted">Url must be like http://www.example.com</small>
-                    <br>
+                <label for="logo">Porn site logo*</label><br>
+                <input class="form-control" type="url" name="logo" required>
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
-                    <label for="images">Porn site image</label>
-                    <br>
-                    <input class="form-control" type="url" name="images">
-                    <small class="form-text text-muted">Url must be like http://www.example.com</small>
-                    <br>
+                <label for="images">Porn site image</label><br>
+                <input class="form-control" type="url" name="images">
+                <small class="form-text text-muted">Url must be like http://www.example.com</small><br>
 
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="1" name="isFeatured">
-                        <label class="form-check-label" for="defaultCheck1">Is porn site "STAFF FAVORITE"?</label>
-                    </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="1" name="isFeatured">
+                    <label class="form-check-label" for="defaultCheck1">Is porn site "STAFF FAVORITE"?</label>
+                </div>
 
-                    <br>
-                    <p class="lead">When you submit the porn site you
-                        <b>MUST</b> give the site a rating for it to show on the home page.</p>
+                <br>
+                <p class="lead">When you submit the porn site you <b>MUST</b> give the site a rating for it to show on the home page.</p>
 
-                    <button type="submit" class="btn btn-dark-purple" name="submit">Add site</button>
+                <button type="submit" class="btn btn-dark-purple" name="submit">Add site</button>
 
-                    <small class="form-text text-muted text-right">* fields are required. Make sure you entered everything correctly!</small>
+                <small class="form-text text-muted text-right">* fields are required. Make sure you entered everything correctly!</small>
 
             </form>
 
         </div>
 
         <div class="col-sm-1">
-            <h4 class="text-center">ALL USERS</h4>
-            <hr>
+            <h4 class="text-center">ALL USERS</h4><hr>
             <div class="user-info">
                 <?php
 
@@ -91,27 +78,15 @@ include "head.php";
 
                 foreach($result as $user){
                     ?>
-                    <a class="link-black" href="profile.php?user=<?php echo $user['user_uid']; ?>">
-                        <?php echo $user['user_uid']; ?>
-                    </a>
-                    <br>
-                    <?php } ?>
-                    <br>
+                    <a class ="link-black" href="profile.php?user=<?php echo $user['user_uid']; ?>"><?php echo $user['user_uid']; ?></a><br>
+            <?php } ?>
+            <br>
             </div>
         </div>
 
-        <div class="col-sm-3">
-            <h4 class="text-center">EMPTY FOR NOW</h4>
-            <hr>
-        </div>
-        <div class="col-sm-3">
-            <h4 class="text-center">EMPTY FOR NOW</h4>
-            <hr>
-        </div>
-        <div class="col-sm-2">
-            <h4 class="text-center">EMPTY FOR NOW</h4>
-            <hr>
-        </div>
+        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-3"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
+        <div class="col-sm-2"><h4 class="text-center">EMPTY FOR NOW</h4><hr></div>
     </div>
 </div>
 

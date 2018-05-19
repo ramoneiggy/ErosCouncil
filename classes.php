@@ -1,9 +1,39 @@
 <?php
 
+class PDOConnect{
+
+    private static $servername = "localhost"; // 127.0.0.1
+    private static $username = "root";
+    private static $password = "";
+    private static $database = "pornreview";
+    private static $pdoInstance=NULL;
+
+    //Singleton, we only need to open connection to DB once
+    public static function getPDOInstance() {
+        //echo "<br><br>";
+        if (self::$pdoInstance == null) { //$pdoInstance will be null if we didn't create the connection yet
+          self::$pdoInstance = new PDO("mysql:dbname=".self::$database.";host=".self::$servername, self::$username, self::$password);
+        }
+        return self::$pdoInstance;
+      }
+}
+
+class test{
+
+    public static function input($data){
+        $data = trim($data);
+        $data = stripslashes($data);
+        $data = htmlspecialchars($data);
+        return $data;
+    }
+}
+
 class Draw{
     //  We will use Draw class to draw different elements of the page.
 
     public static function drawListUserRecommendedSites($sortBy){
+
+        $sortBy = test::input($sortBy);
         //CODE TO DRAW LIST OF ALL SITES
 
         $conn = PDOConnect::getPDOInstance();
@@ -358,24 +388,3 @@ class Check{
     }
 
 }
-
-class PDOConnect{
-
-    private static $servername = "localhost"; // 127.0.0.1
-    private static $username = "root";
-    private static $password = "";
-    private static $database = "pornreview";
-    private static $pdoInstance=NULL;
-
-
-
-    //Singleton, we only need to open connection to DB once
-    public static function getPDOInstance() {
-        //echo "<br><br>";
-        if (self::$pdoInstance == null) { //$pdoInstance will be null if we didnt create the connection yet
-          self::$pdoInstance = new PDO("mysql:dbname=".self::$database.";host=".self::$servername, self::$username, self::$password);
-        }
-        return self::$pdoInstance;
-      }
-}
-
