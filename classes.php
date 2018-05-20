@@ -28,6 +28,23 @@ class test{
     }
 }
 
+class Check{
+
+    public static function ifAdmin($personID){
+        //CHECK IF USER IS ADMIN
+
+        $conn = PDOConnect::getPDOInstance();
+        $query = $conn->prepare("SELECT isAdmin FROM users where user_id = :personID");
+        $query->bindParam(':personID', $personID);
+        $query->execute();
+        $isAdmin = $query->fetch('0');
+
+        return $isAdmin[0];
+
+    }
+
+}
+
 class Draw{
     //  We will use Draw class to draw different elements of the page.
 
@@ -493,21 +510,4 @@ class Draw{
         ?></ul><?php
 
     }
-}
-
-class Check{
-
-    public static function ifAdmin($personID){
-        //CHECK IF USER IS ADMIN
-
-        $conn = PDOConnect::getPDOInstance();
-        $query = $conn->prepare("SELECT isAdmin FROM users where user_id = :personID");
-        $query->bindParam(':personID', $personID);
-        $query->execute();
-        $isAdmin = $query->fetch('0');
-
-        return $isAdmin[0];
-
-    }
-
 }

@@ -75,8 +75,9 @@ include_once "classes.php";
           </div>
         </li>
         <li class="nav-item">
-          <button class="btn btn-dark-purple my-2 my-sm-0" href="signup.php">Sign up</button>
-        </li><?php
+          <a class="btn btn-dark-purple my-2 my-sm-0 header-link-white" href="signup.php">Sign up</a>
+        </li>
+        <?php
         }
         ?>
       </ul>

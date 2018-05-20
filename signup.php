@@ -9,14 +9,14 @@ include "head.php";
         <div class="col-sm-6 user-info">
             <h2>SIGN UP</h2>
 
-            <form action="includes/signup.inc.php" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form action="includes/signup.inc.php" method="POST" enctype="multipart/form-data">
                 <!-- ERROR REPORTS -->
                 <?php
                 if (array_key_exists("signup", $_GET) && $_GET["signup"] == "emailOrPasswordNotSame"){
                 echo "<p class='text-red'>Email or password error. Please try again.</p>";
                 }
                 if (array_key_exists("signup", $_GET) && $_GET["signup"] == "invalidCharacters"){
-                    echo "<p class='text-red'>Invalid characters in your choosen user name. Please choose another name and try again.</p>";
+                    echo "<p class='text-red'>Invalid characters in your chosen user name. Please choose another name and try again.</p>";
                 }
                 if (array_key_exists("signup", $_GET) && $_GET["signup"] == "email"){
                         echo "<p class='text-red'>Invalid e-mail. Please try again.</p>";
