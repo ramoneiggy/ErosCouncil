@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 19, 2018 at 06:52 PM
+-- Generation Time: May 20, 2018 at 04:47 PM
 -- Server version: 10.1.30-MariaDB
 -- PHP Version: 7.2.2
 
@@ -414,6 +414,15 @@ CREATE TABLE `userfavorites` (
   `dateTimeAdded` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_croatian_ci;
 
+--
+-- Dumping data for table `userfavorites`
+--
+
+INSERT INTO `userfavorites` (`id`, `userID`, `pornPageID`, `dateTimeAdded`) VALUES
+(1, 1, 6, '2018-05-19 19:09:24'),
+(2, 1, 5, '2018-05-19 19:09:33'),
+(3, 1, 1, '2018-05-19 19:09:42');
+
 -- --------------------------------------------------------
 
 --
@@ -439,8 +448,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`user_id`, `user_uid`, `dateOfBirth`, `location`, `gender`, `sexOrientation`, `user_email`, `avatar`, `joined`, `user_pwd`, `isAdmin`) VALUES
-(1, 'Iggy', '1985-02-06', 'HR', 'male', 1, 'ramoneiggy@gmail.com', 'uploads/profilePics/Iggy-1445597018-mikimaus.png', '2018-05-19 18:40:53', '$2y$10$1YU6tCn8JAyaGpi/VIL5je3idrhQBGwQr0/uAidGZ/jR3ss8Z3Qg.', 1),
-(2, 'test', '1855-01-01', 'AL', 'other', 3, 'test@mail.com', 'uploads/profilePics/user-default.png', '2018-05-19 18:48:01', '$2y$10$NcBVtLTiO0bhnAgYYYm6SOx2NcASmQkX5tuDCFdxaFOmOszxXIu36', 0);
+(1, 'Iggy', '1985-02-06', 'HR', 'male', 1, '123@mail.com', 'uploads/profilePics/Iggy-111594600-41s46Ca33CL.jpg', '2018-05-19 18:40:53', '$2y$10$1YU6tCn8JAyaGpi/VIL5je3idrhQBGwQr0/uAidGZ/jR3ss8Z3Qg.', 1),
+(2, 'test', '1855-01-01', 'GR', 'other', 3, 'novitest@mail.com', 'uploads/profilePics/test-371506974-mikimaus.png', '2018-05-19 18:48:01', '$2y$10$Fy1Kb3xE9lvnt75GjlsJWOLrXci7tYrwOrI81ccXR2.iKF/KyDvU2', 0);
 
 --
 -- Indexes for dumped tables
@@ -533,7 +542,7 @@ ALTER TABLE `sexual_orientation`
 -- AUTO_INCREMENT for table `userfavorites`
 --
 ALTER TABLE `userfavorites`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `users`
