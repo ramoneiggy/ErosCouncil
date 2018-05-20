@@ -169,6 +169,11 @@ class Draw{
 
         ?>
         <div class='user-info col-sm-12'>
+        <?php
+            if (array_key_exists("error", $_GET)) {
+                echo "<p class='text-red'>An error occurred, please try again</p>";
+            }
+            ?>
             <div class='row'>
                 <div class='col-sm-5'>
                 <img class='avatar' src='<?php echo $userInfo['avatar']; ?>' alt='Avatar'>
@@ -210,7 +215,7 @@ class Draw{
 
                     <div class="collapse" id="E-mail">
                         <div class="card card-body">
-                            <form action="../infoChange/changeEmail.php" method="post">
+                            <form action="infoChange/changeEmail.php" method="post">
                                 <div class="form-group">
                                     <label><b>Email address</b></label>
                                     <input type="email" class="form-control" name="email" placeholder="Enter email" required>
@@ -224,12 +229,14 @@ class Draw{
 
                     <div class="collapse" id="Password">
                         <div class="card card-body">
-                            <form action="../infoChange/changePassword.php" method="post">
+                            <form action="infoChange/changePassword.php" method="post">
                                 <div class="form-group">
-                                    <label><b>Password</b></label>
-                                    <input type="password" class="form-control" name="pwd" placeholder="Password" required>
-                                    <label><b>Password again</b></label>
-                                    <input type="password" class="form-control" name="pwdAgain" placeholder="Repeat password" required>
+                                    <label><b>Old password</b></label>
+                                    <input type="password" class="form-control" name="oldPwd" placeholder="Old password" required>
+                                    <label><b>New password</b></label>
+                                    <input type="password" class="form-control" name="newPwd" placeholder="New password" required>
+                                    <label><b>New password again</b></label>
+                                    <input type="password" class="form-control" name="newPwdAgain" placeholder="New password again" required>
                                     <button type="submit" name="submit" class="float-right btn btn-dark-purple">Submit</button>
                                 </div>
                             </form>
@@ -238,7 +245,7 @@ class Draw{
 
                     <div class="collapse" id="Gender">
                         <div class="card card-body">
-                            <form action="../infoChange/changeGender.php" method="post">
+                            <form action="infoChange/changeGender.php" method="post">
                             <div class="form-group col-sm-5">
                                 <label><b>Gender</b></label>
                                 <div class="form-check">
@@ -263,7 +270,7 @@ class Draw{
 
                     <div class="collapse" id="SexualOrientation">
                         <div class="card card-body">
-                        <form action="../infoChange/changeSexualOrientation.php" method="post">
+                        <form action="infoChange/changeSexOrientation.php" method="post">
                             <div class="form-group col-sm-5">
                                 <label><b>Sexual orientation</b></label>
                                 <div class="form-check">
@@ -293,7 +300,7 @@ class Draw{
 
                     <div class="collapse" id="Location">
                         <div class="card card-body">
-                            <form action="../infoChange/Location.php" method="post">
+                            <form action="infoChange/changeLocation.php" method="post">
                                 <div class="form-group">
                                     <label><b>Your location</b></label>
                                     <select class="form-control" name="location" required>
